@@ -1,0 +1,59 @@
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\HubManPractices.Repository.dll.config
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\HubManPractices.Repository.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\HubManPractices.Repository.pdb
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\EntityFramework.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\HubManPractices.Model.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\System.Web.Mvc.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\System.Web.Razor.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\System.Web.WebPages.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\HubManPractices.Model.pdb
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\EntityFramework.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\System.Web.Mvc.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\System.Web.Razor.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\System.Web.WebPages.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\obj\Debug\HubManPractices.Repository.csprojResolveAssemblyReference.cache
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\obj\Debug\HubManPractices.Repository.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\HubManPractices.Repository\obj\Debug\HubManPractices.Repository.pdb
+C:\HubMan\HubManPractices.Repository\bin\Debug\HubManPractices.Repository.dll.config
+C:\HubMan\HubManPractices.Repository\bin\Debug\HubManPractices.Repository.dll
+C:\HubMan\HubManPractices.Repository\bin\Debug\HubManPractices.Repository.pdb
+C:\HubMan\HubManPractices.Repository\bin\Debug\EntityFramework.dll
+C:\HubMan\HubManPractices.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\HubMan\HubManPractices.Repository\bin\Debug\HubManPractices.Model.dll
+C:\HubMan\HubManPractices.Repository\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\HubMan\HubManPractices.Repository\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\HubMan\HubManPractices.Repository\bin\Debug\HubManPractices.Model.pdb
+C:\HubMan\HubManPractices.Repository\bin\Debug\EntityFramework.xml
+C:\HubMan\HubManPractices.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\HubMan\HubManPractices.Repository\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\HubMan\HubManPractices.Repository\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\HubMan\HubManPractices.Repository\obj\Debug\HubManPractices.Repository.csprojResolveAssemblyReference.cache
+C:\HubMan\HubManPractices.Repository\obj\Debug\HubManPractices.Repository.dll
+C:\HubMan\HubManPractices.Repository\obj\Debug\HubManPractices.Repository.pdb
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\bin\Debug\HubManPractices.Repository.dll.config
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\bin\Debug\HubManPractices.Repository.dll
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\bin\Debug\HubManPractices.Repository.pdb
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\bin\Debug\EntityFramework.dll
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\bin\Debug\HubManPractices.Model.dll
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\bin\Debug\HubManPractices.Model.pdb
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\bin\Debug\EntityFramework.xml
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\obj\Debug\HubManPractices.Repository.csprojResolveAssemblyReference.cache
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\obj\Debug\HubManPractices.Repository.dll
+C:\Users\Hesham\Documents\HubMan\HubManPractices.Repository\obj\Debug\HubManPractices.Repository.pdb

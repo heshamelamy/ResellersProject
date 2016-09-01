@@ -1,0 +1,96 @@
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\Util.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\Util.pdb
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\Autofac.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\Autofac.Integration.Mvc.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\HubManPractices.Repository.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\System.Web.Helpers.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\System.Web.Mvc.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\System.Web.Razor.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\System.Web.WebPages.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\HubManPractices.Model.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\EntityFramework.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\HubManPractices.Repository.pdb
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\Autofac.xml
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\Autofac.Integration.Mvc.xml
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\System.Web.Helpers.xml
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\System.Web.Mvc.xml
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\System.Web.Razor.xml
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\System.Web.WebPages.xml
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\HubManPractices.Model.pdb
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\EntityFramework.xml
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\obj\Debug\Util.csprojResolveAssemblyReference.cache
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\obj\Debug\Util.dll
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Util\obj\Debug\Util.pdb
+C:\HubMan\Util\bin\Debug\Util.dll
+C:\HubMan\Util\bin\Debug\Util.pdb
+C:\HubMan\Util\bin\Debug\Autofac.dll
+C:\HubMan\Util\bin\Debug\Autofac.Integration.Mvc.dll
+C:\HubMan\Util\bin\Debug\HubManPractices.Repository.dll
+C:\HubMan\Util\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\HubMan\Util\bin\Debug\System.Web.Helpers.dll
+C:\HubMan\Util\bin\Debug\System.Web.Mvc.dll
+C:\HubMan\Util\bin\Debug\System.Web.Razor.dll
+C:\HubMan\Util\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\HubMan\Util\bin\Debug\System.Web.WebPages.dll
+C:\HubMan\Util\bin\Debug\System.Web.WebPages.Razor.dll
+C:\HubMan\Util\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\HubMan\Util\bin\Debug\HubManPractices.Model.dll
+C:\HubMan\Util\bin\Debug\EntityFramework.dll
+C:\HubMan\Util\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\HubMan\Util\bin\Debug\HubManPractices.Repository.pdb
+C:\HubMan\Util\bin\Debug\Autofac.xml
+C:\HubMan\Util\bin\Debug\Autofac.Integration.Mvc.xml
+C:\HubMan\Util\bin\Debug\System.Web.Helpers.xml
+C:\HubMan\Util\bin\Debug\System.Web.Mvc.xml
+C:\HubMan\Util\bin\Debug\System.Web.Razor.xml
+C:\HubMan\Util\bin\Debug\System.Web.WebPages.xml
+C:\HubMan\Util\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\HubMan\Util\bin\Debug\System.Web.WebPages.Razor.xml
+C:\HubMan\Util\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\HubMan\Util\bin\Debug\HubManPractices.Model.pdb
+C:\HubMan\Util\bin\Debug\EntityFramework.xml
+C:\HubMan\Util\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\HubMan\Util\obj\Debug\Util.csprojResolveAssemblyReference.cache
+C:\HubMan\Util\obj\Debug\Util.dll
+C:\HubMan\Util\obj\Debug\Util.pdb
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\Util.dll
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\Util.pdb
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\Autofac.dll
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\Autofac.Integration.Mvc.dll
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\HubManPractices.Repository.dll
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\System.Web.Helpers.dll
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\System.Web.Mvc.dll
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\System.Web.Razor.dll
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\System.Web.WebPages.dll
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\HubManPractices.Model.dll
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\EntityFramework.dll
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\HubManPractices.Repository.pdb
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\Autofac.xml
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\Autofac.Integration.Mvc.xml
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\System.Web.Helpers.xml
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\System.Web.Mvc.xml
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\System.Web.Razor.xml
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\System.Web.WebPages.xml
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\HubManPractices.Model.pdb
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\EntityFramework.xml
+C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Hesham\Documents\HubMan\Util\obj\Debug\Util.csprojResolveAssemblyReference.cache
+C:\Users\Hesham\Documents\HubMan\Util\obj\Debug\Util.dll
+C:\Users\Hesham\Documents\HubMan\Util\obj\Debug\Util.pdb

@@ -1,0 +1,4 @@
+C:\Users\konsowa\documents\visual studio 2015\Projects\HubManPractices\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
+C:\HubMan\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
+C:\HubMan\Web\obj\Debug\Web.dll
+C:\HubMan\Web\obj\Debug\Web.pdb

@@ -1,0 +1,280 @@
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\ApplicationInsights.config
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\roslyn\csc.exe
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\roslyn\vbc.exe
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\roslyn\VBCSCompiler.exe
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\WebApp.dll.config
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\WebApp.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\WebApp.pdb
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Antlr3.Runtime.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Autofac.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Autofac.Integration.Mvc.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\AutoMapper.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\EntityFramework.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\EntityFramework.SqlServer.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\HubManPractices.Model.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\HubManPractices.Repository.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\HubManPractices.Service.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AI.Web.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.ApplicationInsights.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.Owin.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.Owin.Security.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Newtonsoft.Json.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Owin.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Net.Http.Formatting.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Helpers.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Http.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Http.Owin.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Mvc.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Optimization.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Razor.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Webpages.Deployment.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Webpages.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Webpages.Razor.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\WebGrease.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\HubManPractices.Model.pdb
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\HubManPractices.Repository.pdb
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\HubManPractices.Service.pdb
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Antlr3.Runtime.pdb
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Autofac.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Autofac.Integration.Mvc.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\AutoMapper.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\EntityFramework.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\EntityFramework.SqlServer.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AI.Web.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.ApplicationInsights.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.Owin.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.Owin.Security.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\Newtonsoft.Json.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Net.Http.Formatting.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Http.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Http.Owin.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Mvc.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Optimization.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Razor.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Webpages.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Webpages.Deployment.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Webpages.Razor.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\bin\System.Web.Helpers.xml
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\obj\Debug\WebApp.dll
+C:\Users\konsowa\Documents\Visual Studio 2015\Projects\HubManPractices\Web\obj\Debug\WebApp.pdb
+C:\HubMan\Web\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
+C:\HubMan\Web\bin\ApplicationInsights.config
+C:\HubMan\Web\bin\roslyn\csc.exe
+C:\HubMan\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\HubMan\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\HubMan\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\HubMan\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\HubMan\Web\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\HubMan\Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\HubMan\Web\bin\roslyn\System.Collections.Immutable.dll
+C:\HubMan\Web\bin\roslyn\System.Reflection.Metadata.dll
+C:\HubMan\Web\bin\roslyn\vbc.exe
+C:\HubMan\Web\bin\roslyn\VBCSCompiler.exe
+C:\HubMan\Web\bin\roslyn\VBCSCompiler.exe.config
+C:\HubMan\Web\bin\WebApp.dll.config
+C:\HubMan\Web\bin\WebApp.dll
+C:\HubMan\Web\bin\WebApp.pdb
+C:\HubMan\Web\bin\Antlr3.Runtime.dll
+C:\HubMan\Web\bin\Autofac.dll
+C:\HubMan\Web\bin\Autofac.Integration.Mvc.dll
+C:\HubMan\Web\bin\AutoMapper.dll
+C:\HubMan\Web\bin\EntityFramework.dll
+C:\HubMan\Web\bin\EntityFramework.SqlServer.dll
+C:\HubMan\Web\bin\HubManPractices.Model.dll
+C:\HubMan\Web\bin\HubManPractices.Service.dll
+C:\HubMan\Web\bin\Microsoft.AI.Agent.Intercept.dll
+C:\HubMan\Web\bin\Microsoft.AI.DependencyCollector.dll
+C:\HubMan\Web\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\HubMan\Web\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\HubMan\Web\bin\Microsoft.AI.Web.dll
+C:\HubMan\Web\bin\Microsoft.AI.WindowsServer.dll
+C:\HubMan\Web\bin\Microsoft.ApplicationInsights.dll
+C:\HubMan\Web\bin\Microsoft.AspNet.Identity.Core.dll
+C:\HubMan\Web\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\HubMan\Web\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\HubMan\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\HubMan\Web\bin\Microsoft.Owin.dll
+C:\HubMan\Web\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\HubMan\Web\bin\Microsoft.Owin.Security.Cookies.dll
+C:\HubMan\Web\bin\Microsoft.Owin.Security.dll
+C:\HubMan\Web\bin\Microsoft.Owin.Security.OAuth.dll
+C:\HubMan\Web\bin\Microsoft.Web.Infrastructure.dll
+C:\HubMan\Web\bin\Newtonsoft.Json.dll
+C:\HubMan\Web\bin\Owin.dll
+C:\HubMan\Web\bin\System.Net.Http.Formatting.dll
+C:\HubMan\Web\bin\System.Web.Helpers.dll
+C:\HubMan\Web\bin\System.Web.Http.dll
+C:\HubMan\Web\bin\System.Web.Http.Owin.dll
+C:\HubMan\Web\bin\System.Web.Mvc.dll
+C:\HubMan\Web\bin\System.Web.Optimization.dll
+C:\HubMan\Web\bin\System.Web.Razor.dll
+C:\HubMan\Web\bin\System.Web.Webpages.Deployment.dll
+C:\HubMan\Web\bin\System.Web.Webpages.dll
+C:\HubMan\Web\bin\System.Web.Webpages.Razor.dll
+C:\HubMan\Web\bin\Util.dll
+C:\HubMan\Web\bin\WebGrease.dll
+C:\HubMan\Web\bin\HubManPractices.Repository.dll
+C:\HubMan\Web\bin\HubManPractices.Model.pdb
+C:\HubMan\Web\bin\HubManPractices.Service.pdb
+C:\HubMan\Web\bin\Util.pdb
+C:\HubMan\Web\bin\Antlr3.Runtime.pdb
+C:\HubMan\Web\bin\Autofac.xml
+C:\HubMan\Web\bin\Autofac.Integration.Mvc.xml
+C:\HubMan\Web\bin\AutoMapper.xml
+C:\HubMan\Web\bin\EntityFramework.xml
+C:\HubMan\Web\bin\EntityFramework.SqlServer.xml
+C:\HubMan\Web\bin\Microsoft.AI.DependencyCollector.xml
+C:\HubMan\Web\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\HubMan\Web\bin\Microsoft.AI.Web.xml
+C:\HubMan\Web\bin\Microsoft.AI.WindowsServer.xml
+C:\HubMan\Web\bin\Microsoft.ApplicationInsights.xml
+C:\HubMan\Web\bin\Microsoft.AspNet.Identity.Core.xml
+C:\HubMan\Web\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\HubMan\Web\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\HubMan\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\HubMan\Web\bin\Microsoft.Owin.xml
+C:\HubMan\Web\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\HubMan\Web\bin\Microsoft.Owin.Security.xml
+C:\HubMan\Web\bin\Microsoft.Owin.Security.Cookies.xml
+C:\HubMan\Web\bin\Microsoft.Owin.Security.OAuth.xml
+C:\HubMan\Web\bin\Newtonsoft.Json.xml
+C:\HubMan\Web\bin\System.Net.Http.Formatting.xml
+C:\HubMan\Web\bin\System.Web.Http.xml
+C:\HubMan\Web\bin\System.Web.Http.Owin.xml
+C:\HubMan\Web\bin\System.Web.Mvc.xml
+C:\HubMan\Web\bin\System.Web.Optimization.xml
+C:\HubMan\Web\bin\System.Web.Razor.xml
+C:\HubMan\Web\bin\System.Web.Webpages.xml
+C:\HubMan\Web\bin\System.Web.Webpages.Deployment.xml
+C:\HubMan\Web\bin\System.Web.Webpages.Razor.xml
+C:\HubMan\Web\bin\System.Web.Helpers.xml
+C:\HubMan\Web\bin\HubManPractices.Repository.pdb
+C:\HubMan\Web\obj\Debug\WebApp.dll
+C:\HubMan\Web\obj\Debug\WebApp.pdb
+C:\Users\Hesham\Documents\HubMan\Web\bin\ApplicationInsights.config
+C:\Users\Hesham\Documents\HubMan\Web\bin\roslyn\csc.exe
+C:\Users\Hesham\Documents\HubMan\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Hesham\Documents\HubMan\Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Hesham\Documents\HubMan\Web\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\roslyn\vbc.exe
+C:\Users\Hesham\Documents\HubMan\Web\bin\roslyn\VBCSCompiler.exe
+C:\Users\Hesham\Documents\HubMan\Web\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Hesham\Documents\HubMan\Web\bin\WebApp.dll.config
+C:\Users\Hesham\Documents\HubMan\Web\bin\WebApp.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\WebApp.pdb
+C:\Users\Hesham\Documents\HubMan\Web\bin\Antlr3.Runtime.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Autofac.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Autofac.Integration.Mvc.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\AutoMapper.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\EntityFramework.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\EntityFramework.SqlServer.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\HubManPractices.Model.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\HubManPractices.Service.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AI.Web.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.Owin.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.Owin.Security.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Newtonsoft.Json.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Owin.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Net.Http.Formatting.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Helpers.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Http.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Http.Owin.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Mvc.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Optimization.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Razor.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Webpages.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Webpages.Razor.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\Util.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\WebGrease.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\HubManPractices.Repository.dll
+C:\Users\Hesham\Documents\HubMan\Web\bin\HubManPractices.Model.pdb
+C:\Users\Hesham\Documents\HubMan\Web\bin\HubManPractices.Service.pdb
+C:\Users\Hesham\Documents\HubMan\Web\bin\Util.pdb
+C:\Users\Hesham\Documents\HubMan\Web\bin\Antlr3.Runtime.pdb
+C:\Users\Hesham\Documents\HubMan\Web\bin\Autofac.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Autofac.Integration.Mvc.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\AutoMapper.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\EntityFramework.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\EntityFramework.SqlServer.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AI.Web.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.Owin.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.Owin.Security.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\Newtonsoft.Json.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Net.Http.Formatting.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Http.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Http.Owin.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Mvc.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Optimization.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Razor.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Webpages.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Webpages.Razor.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\System.Web.Helpers.xml
+C:\Users\Hesham\Documents\HubMan\Web\bin\HubManPractices.Repository.pdb
+C:\Users\Hesham\Documents\HubMan\Web\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
+C:\Users\Hesham\Documents\HubMan\Web\obj\Debug\WebApp.dll
+C:\Users\Hesham\Documents\HubMan\Web\obj\Debug\WebApp.pdb
