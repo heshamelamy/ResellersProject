@@ -15,34 +15,36 @@ namespace WebApp.Controllers
 {
     public class ResellerController : Controller
     {
-        private readonly IClientService ClientService;
         private readonly IRoleService RoleService;
         private readonly IResellerService ResellerService;
 
 
-        public ResellerController(IClientService clientservice, IResellerService resellerservice,IRoleService Rs)
+        public ResellerController(IResellerService resellerservice,IRoleService Rs)
         {
-            this.ClientService = clientservice;
             this.ResellerService = resellerservice;
             this.RoleService = Rs;
         }
         // GET: Reseller
+        [MyAuthFilter(Roles= "Global Admin , Reseller Admin")]
         public ActionResult Index()
         { 
             IEnumerable<ResellerViewModel> ResellerViewModels;
-            if (User.IsInRole("Global Admin"))
-            {
-                ResellerViewModels = ResellerService.MapToViewModel(ResellerService.GetResellers());
+                if (User.IsInRole("Global Admin"))
+                {
+                    ResellerViewModels = ResellerService.MapToViewModel(ResellerService.GetResellers());
 
-                return View(ResellerViewModels);
-            }
+                    return View(ResellerViewModels);
+                }
 
-            else
-            {
-                ResellerViewModels = ResellerService.MapToViewModel(ResellerService.GetUserReseller(User.Identity.GetUserId()));
-                return View(ResellerViewModels);
-            }
+                else
+                {
+                    ResellerViewModels = ResellerService.MapToViewModel(ResellerService.GetUserReseller(User.Identity.GetUserId()));
+                    return View(ResellerViewModels);
+                }
+            
         }
+
+        [MyAuthFilter(Roles = "Global Admin")]
         public ActionResult Create()
         {
             if (HasPermission("Add Reseller"))
@@ -62,12 +64,12 @@ namespace WebApp.Controllers
                 }
                 catch (DbUpdateException ex)
                 {
-                    TempData["Exists"] = "Client already exists";
+                    TempData["Exists"] = "Reseller already exists";
                     return RedirectToAction("Create");
                 }
                 catch (Exception ex)
                 {
-                    TempData["Error Adding Client"] = "Error while creating the client";
+                    TempData["Error Adding Reseller"] = "Error while creating the Reseller";
                     return RedirectToAction("Create");
                 }
 
@@ -75,6 +77,71 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index");
             }
             return View("~/Views/Home/UnAuthorized.cshtml");
+        }
+
+        [MyAuthFilter(Roles = "Global Admin, Reseller Admin")]
+        public ActionResult Edit(Guid ResellerID)
+        {
+            if(HasPermission("Edit Reseller"))
+            {
+                Reseller ToBeEdited=ResellerService.GetById(ResellerID);
+                return View(ResellerService.MapToViewModel(ToBeEdited));
+            }
+            return View("~/Views/Home/UnAuthorized.cshtml");
+        }
+
+        [MyAuthFilter(Roles = "Global Admin, Reseller Admin")]
+        [HttpPost]
+        public ActionResult Edit(Reseller reseller)
+        {
+            if (HasPermission("Edit Reseller"))
+            {
+                try
+                {
+                    ResellerService.EditReseller(reseller);
+                }
+                catch (DbUpdateException ex)
+                {
+                    TempData["EditFail"] = "Reseller already exists";
+                    return RedirectToAction("Edit", new { id = reseller.ResellerID });
+                }
+                catch(Exception ex)
+                {
+                    TempData["EditError"] = "Error in Editing the Reseller";
+                    return RedirectToAction("Edit", new { id = reseller.ResellerID });
+                }
+                TempData["EditSuccess"] = "Edit successful";
+                return RedirectToAction("Index");
+            }
+            return View("~/Views/Home/UnAuthorized.cshtml");
+        }
+
+        [MyAuthFilter(Roles= "Global Admin")]
+        [HttpPost]
+        public ActionResult Delete(Guid ResellerID)
+        {
+            if(HasPermission("Delete Reseller"))
+            {
+                
+                Reseller ToBeDeleted =ResellerService.GetById(ResellerID);
+                try
+                {
+                    ResellerService.DeleteReseller(ToBeDeleted);
+                    return RedirectToAction("Index");
+                }
+                catch(Exception ex)
+                {
+                    TempData["DeleteError"]="Error in Deleting the Reseller";
+                    return RedirectToAction("Index");
+                }
+                
+            }
+            return View("~/Views/Home/UnAuthorized.cshtml");
+        }
+
+        public ActionResult Search(string Query)
+        {
+            return View("Index", ResellerService.MapToViewModel(ResellerService.SearchForResellers(Query)));
         }
 
         public bool HasPermission(string PName)

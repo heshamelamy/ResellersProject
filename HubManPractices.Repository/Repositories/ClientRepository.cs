@@ -1,0 +1,33 @@
+﻿using HubManPractices.Models;
+using HubManPractices.Repository.Infastructure;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HubManPractices.Repository.Repositories
+{
+    public class ClientRepository : RepositoryBase<Client>, IClientRepository
+    {
+         public ClientRepository(IDbFactory dbFactory) : base(dbFactory){}
+
+         public override void Add(Client client)
+         {
+                 Client Found = DbContext.Clients.Where(c => c.ClientName == client.ClientName).Where(c => c.IsDeleted == true).FirstOrDefault();
+                 if (Found != null)
+                 {
+                     Found.IsDeleted = false;
+                     Found.reseller = client.reseller;
+                     DbContext.Commit();
+                 }
+                 else
+                 {
+                     DbContext.Clients.Add(client);
+                     DbContext.Commit();
+                 }
+         }
+
+    }
+
+}

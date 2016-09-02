@@ -11,9 +11,16 @@ namespace HubManPractices.Service
     public interface IResellerService
     {
         IEnumerable<Reseller> GetResellers();
+        Reseller GetById(Guid ResellerID);
+        void EditReseller(Reseller reseller);
         IEnumerable<ResellerViewModel> MapToViewModel(IEnumerable<Reseller> resellers);
-
+        ResellerViewModel MapToViewModel(Reseller reseller);
+        IEnumerable<Client> GetResellerClients(Guid ResellerID);
         IEnumerable<Reseller> GetUserReseller(string UserID);
         void CreateReseller(Reseller r);
+        void DeleteReseller(Reseller ToBeDeleted);
+
+        bool QuotaFull(Guid ResellerID);
+        IEnumerable<Reseller> SearchForResellers(string Query);
     }
 }

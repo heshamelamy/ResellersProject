@@ -78,6 +78,7 @@ namespace HubManPractices.Repository
                 ResellerRole.Permissions.Add(AddClient);
                 ResellerRole.Permissions.Add(EditClient);
                 ResellerRole.Permissions.Add(DeleteClient);
+                ResellerRole.Permissions.Add(EditReseller);
 
                 
 

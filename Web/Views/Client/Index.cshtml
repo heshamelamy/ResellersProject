@@ -1,0 +1,43 @@
+﻿@model IEnumerable<HubManPractices.Service.ViewModels.ClientViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@if (TempData["Create Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Create Success"]</div>
+}
+
+@if (TempData["QuotaFull"] != null)
+{
+    <div class="alert alert-danger">@TempData["QuotaFull"]</div>
+}
+
+
+<p>
+    @Html.ActionLink("Add Client", "Create", new { ResellerID =TempData["ResellerID"]})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.ClientID  }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

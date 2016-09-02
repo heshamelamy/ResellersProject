@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
-using HubManPractices.Repository.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -45,5 +45,47 @@ namespace HubManPractices.Service
         {
             resellersRepository.Add(r);
         }
+
+
+        public ResellerViewModel MapToViewModel(Reseller reseller)
+        {
+            return Mapper.Map<Reseller,ResellerViewModel>(reseller);
+        }
+
+
+        public Reseller GetById(Guid ResellerID)
+        {
+            return resellersRepository.GetById(ResellerID);
+        }
+
+
+        public void EditReseller(Reseller reseller)
+        {
+            resellersRepository.Update(reseller);
+        }
+
+
+        public void DeleteReseller(Reseller ToBeDeleted)
+        {
+            resellersRepository.Delete(ToBeDeleted);
+        }
+
+
+        public IEnumerable<Reseller> SearchForResellers(string Query)
+        {
+            return resellersRepository.SearchForResellers(Query);
+        }
+
+
+        public IEnumerable<Client> GetResellerClients(Guid ResellerID)
+        {
+            return resellersRepository.GetResellerClients(ResellerID);
+        }
+
+
+        public bool QuotaFull(Guid ResellerID)
+        {
+            return resellersRepository.QuotaFull(ResellerID);
+        }
     }
 }

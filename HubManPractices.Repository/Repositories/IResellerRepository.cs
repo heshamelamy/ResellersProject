@@ -11,5 +11,10 @@ namespace HubManPractices.Repository.Repositories
     public interface IResellerRepository : IRepository<Reseller>
     {
         IEnumerable<Reseller> GetUserReseller(string UserId);
+
+        IEnumerable<Reseller> SearchForResellers(string Query);
+
+        IEnumerable<Client> GetResellerClients(Guid ResellerID);
+        bool QuotaFull(Guid ResellerID);
     }
 }

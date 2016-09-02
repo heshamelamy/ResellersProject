@@ -7,12 +7,35 @@
 
 <h2>Index</h2>
 
+@if (TempData["EditSuccess"] != null)
+{
+    <div class="alert alert-success">@TempData["EditSuccess"]</div>
+}
+
+@if (TempData["CreateSuccess"] != null)
+{
+    <div class="alert alert-success">@TempData["CreateSuccess"]</div>
+}
+
+@if (TempData["DeleteError"] != null)
+{
+    <div class="alert alert-danger">@TempData["DeleteError"]</div>
+}
 
 @if (Html.Action("HasPermission", "Reseller", new { pname = "Add Reseller" }).ToString() == "True")
 {
     <p>
         @Html.ActionLink("Add Reseller", "Create")
     </p>
+}
+
+@if (User.IsInRole("Global Admin"))
+{
+    using (Html.BeginForm("Search", "Reseller", FormMethod.Get, new { @style = "float:right;margin-bottom:15px" }))
+    {
+        @Html.TextBox("Query", null, new { @placeholder = "Reseller Name.." })
+        <button type="submit" value="" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+    }
 }
 
 <table class="table">
@@ -35,9 +58,21 @@
             @Html.DisplayFor(modelItem => item.ClientsQuota)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.ResellerID  }) |
-            @Html.ActionLink("Clients", "ShowClients", new {  id=item.ResellerID  }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new {  ResellerID=item.ResellerID  }) |
+            @using (Html.BeginForm("Index", "Client", FormMethod.Get, new { @style = "display:inline-block" }))
+            {
+                @Html.Hidden("ResellerID", item.ResellerID)
+                <input type="submit" value="Clients" class="btn btn-info btn-xs" />
+            }  
+           @if (Html.Action("HasPermission", "Reseller", new { pname = "Delete Reseller" }).ToString() == "True")
+            {
+                 @: |
+                    using (Html.BeginForm("Delete", "Reseller", FormMethod.Post, new { @style = "display:inline-block" }))
+                    {
+                        @Html.Hidden("ResellerID", item.ResellerID)
+                        <input type="submit" value="Delete" class="btn btn-danger btn-xs" />
+                    }
+            }
         </td>
     </tr>
 }

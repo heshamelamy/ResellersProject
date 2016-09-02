@@ -12,10 +12,54 @@ namespace HubManPractices.Repository.Repositories
     {
         public ResellerRepository(IDbFactory dbFactory) : base(dbFactory){}
 
-        public IEnumerable<Reseller> GetUserReseller(string UserId)
+
+        public override void Add(Reseller reseller)
         {
-            return new List<Reseller>() { DbContext.Users.Find(UserId).Reseller }.AsEnumerable();
+            Reseller Found = DbContext.Resellers.Where(u => u.Name == reseller.Name).Where(u => u.IsDeleted == true).FirstOrDefault();
+            if (Found != null)
+            {
+                Found.IsDeleted = false;
+                Found.ClientsQuota = reseller.ClientsQuota;
+                DbContext.Commit();
+            }
+            else
+            {
+                DbContext.Resellers.Add(reseller);
+                DbContext.Commit();
+            }
         }
 
+        public override void Delete(Reseller reseller)
+        {
+            Reseller ToBeDeleted = GetById(reseller.ResellerID);
+            ToBeDeleted.IsDeleted = true;
+            DbContext.Commit();
+        }
+        public IEnumerable<Reseller> GetUserReseller(string UserId)
+        {
+            if (DbContext.Users.Find(UserId).Reseller.IsDeleted.Equals(false))
+            {
+                return new List<Reseller>() { DbContext.Users.Find(UserId).Reseller }.AsEnumerable();
+            }
+            else return new List<Reseller>();
+        }
+
+        public IEnumerable<Reseller> SearchForResellers(string Query)
+        {
+            return GetMany(u => u.Name.StartsWith(Query) && u.IsDeleted == false);
+        }
+
+        public IEnumerable<Client> GetResellerClients(Guid ResellerID)
+        {
+            return this.DbContext.Resellers.Find(ResellerID).Clients.Where(c => c.IsDeleted == false);
+        }
+        public bool QuotaFull(Guid ResellerID)
+        {
+            Reseller reseller = GetById(ResellerID);
+            if (reseller.ClientsQuota == GetResellerClients(ResellerID).Count())
+                return true;
+            else return false;
+
+        }
     }
 }
