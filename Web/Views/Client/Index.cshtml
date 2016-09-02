@@ -11,9 +11,19 @@
     <div class="alert alert-success">@TempData["Create Success"]</div>
 }
 
+@if (TempData["EditSuccess"] != null)
+{
+    <div class="alert alert-success">@TempData["EditSuccess"]</div>
+}
+
 @if (TempData["QuotaFull"] != null)
 {
     <div class="alert alert-danger">@TempData["QuotaFull"]</div>
+}
+
+@if (TempData["DeleteError"] != null)
+{
+    <div class="alert alert-danger">@TempData["DeleteError"]</div>
 }
 
 
@@ -34,8 +44,16 @@
             @Html.DisplayFor(modelItem => item.ClientName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.ClientID  }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new {  ClientID=item.ClientID  }) 
+            @if (Html.Action("HasPermission", "Client", new { pname = "Delete Client" }).ToString() == "True")
+            {
+                @: |
+                    using (Html.BeginForm("Delete", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
+                    {
+                        @Html.Hidden("ClientID", item.ClientID)
+                        <input type="submit" value="Delete" class="btn btn-danger btn-xs" />
+                    }
+            }
         </td>
     </tr>
 }

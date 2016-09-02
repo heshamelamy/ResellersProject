@@ -14,5 +14,9 @@ namespace HubManPractices.Service
         ClientViewModel MapToViewModel(Client client);
         Client GetById(Guid ClientID);
         void CreateClient(Client client);
+        void EditClient(Client client);
+        void SaveClient();
+
+        void DeleteReseller(Client ToBeDeleted);
     }
 }

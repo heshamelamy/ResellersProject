@@ -38,11 +38,19 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ClientsQuota, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ClientsQuota)
-                @Html.ValidationMessageFor(model => model.ClientsQuota)
-            </div>
+            @if (User.IsInRole("Global Admin"))
+               {
+                     @Html.LabelFor(model => model.ClientsQuota, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ClientsQuota)
+                        @Html.ValidationMessageFor(model => model.ClientsQuota)
+                    </div>
+               }
+               else
+                 {
+                     @Html.Hidden("ClientsQuota",Model.ClientsQuota)
+                 }
+              
         </div>
 
         <div class="form-group">

@@ -27,6 +27,12 @@ namespace HubManPractices.Repository.Repositories
                      DbContext.Commit();
                  }
          }
+         public override void Delete(Client client)
+         {
+             Client ToBeDeleted = Get(c => c.ClientID == client.ClientID);
+             ToBeDeleted.IsDeleted = true;
+             DbContext.Commit();
+         }
 
     }
 

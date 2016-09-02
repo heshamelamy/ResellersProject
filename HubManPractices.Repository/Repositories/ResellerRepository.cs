@@ -31,7 +31,7 @@ namespace HubManPractices.Repository.Repositories
 
         public override void Delete(Reseller reseller)
         {
-            Reseller ToBeDeleted = GetById(reseller.ResellerID);
+            Reseller ToBeDeleted = Get(r=>r.ResellerID==reseller.ResellerID);
             ToBeDeleted.IsDeleted = true;
             DbContext.Commit();
         }

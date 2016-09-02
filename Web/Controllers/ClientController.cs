@@ -85,17 +85,66 @@ namespace WebApp.Controllers
             return View("~/Views/Home/UnAuthorized.cshtml");
         }
 
-        /*[MyAuthFilter(Roles="Reseller Admin")]
+        [MyAuthFilter(Roles="Reseller Admin")]
         public ActionResult Edit(Guid ClientID)
         {
             if(HasPermission("Edit Client"))
             {
+                return View(ClientService.MapToViewModel(ClientService.GetById(ClientID)));
+            }
 
-                return View();
+            return View("~/Views/Home/UnAuthorized.cshtml");
+        }
+
+        [MyAuthFilter(Roles = "Reseller Admin")]
+        [HttpPost]
+        public ActionResult Edit(Client client)
+        {
+            if (HasPermission("Edit Client"))
+            {
+                try
+                {
+                    ClientService.EditClient(client);
+                }
+                catch (DbUpdateException ex)
+                {
+                    TempData["EditFail"] = "Client already exists";
+                    return RedirectToAction("Edit", new { ClientID = client.ClientID });
+                }
+                catch (Exception ex)
+                {
+                    TempData["EditError"] = "Error in Editing the Client";
+                    return RedirectToAction("Edit", new { ClientID = client.ClientID });
+                }
+                TempData["EditSuccess"] = "Edit successful";
+                return RedirectToAction("Index", new { ResellerID=client.ResellerID});
             }
             return View("~/Views/Home/UnAuthorized.cshtml");
         }
-        */
+
+        [MyAuthFilter(Roles = "Reseller Admin")]
+        [HttpPost]
+        public ActionResult Delete(Guid ClientID)
+        {
+            if (HasPermission("Delete Client"))
+            {
+
+                Client ToBeDeleted = ClientService.GetById(ClientID);
+                try
+                {
+                    ClientService.DeleteReseller(ToBeDeleted);
+                    return RedirectToAction("Index",new { ResellerID = ToBeDeleted.ResellerID });
+                }
+                catch (Exception ex)
+                {
+                    TempData["DeleteError"] = "Error in Deleting the Reseller";
+                    return RedirectToAction("Index", new { ResellerID=ToBeDeleted.ResellerID});
+                }
+
+            }
+            return View("~/Views/Home/UnAuthorized.cshtml");
+        }
+
 
         public bool HasPermission(string PName)
         {

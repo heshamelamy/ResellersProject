@@ -41,5 +41,19 @@ namespace HubManPractices.Service
         {
             clientsRepository.Add(c);
         }
+        public void EditClient(Client client)
+        {
+            clientsRepository.Update(client);
+        }
+        public void SaveClient()
+        {
+            ApplicationEntity.Commit();
+        }
+
+
+        public void DeleteReseller(Client ToBeDeleted)
+        {
+            clientsRepository.Delete(ToBeDeleted);
+        }
     }
 }
