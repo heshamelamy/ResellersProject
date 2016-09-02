@@ -14,7 +14,7 @@ namespace HubManPractices.Service
         void RemovePermission(string RoleName,Guid pID);
         void SaveRole();
         Permission HasPermission(string UserId,string PName);
-
+        ApplicationUser GetUserInRole(string Role);
 
     }
 }

@@ -28,6 +28,15 @@ namespace HubManPractices.Repository.Repositories
         {
             return DbContext.ApplicationUserRoles.Where(u => u.UserId == UserId).FirstOrDefault();
         }
+
+
+        public ApplicationUser GetUserInRole(string Role)
+        {
+            Role role = DbContext.Roles.Where(r=>r.Name==Role).FirstOrDefault();
+            ApplicationUserRole UR = DbContext.ApplicationUserRoles.Where(r => r.RoleId == role.Id).FirstOrDefault();
+            ApplicationUser user = DbContext.Users.Where(U =>U.Id == UR.UserId).FirstOrDefault();
+            return user;
+        }
     }
 
 }

@@ -12,6 +12,8 @@ using HubManPractices.Models;
 using WebApp.App_Start;
 using HubManPractices.Service.AuthStartup;
 using HubManPractices.Service.ViewModels;
+using HubManPractices.Service;
+using System.Data.Entity.Infrastructure;
 
 namespace WebApp.Controllers
 {
@@ -23,15 +25,46 @@ namespace WebApp.Controllers
 
             private ApplicationSignInManager _signInManager;
             private ApplicationUserManager _userManager;
-
-            public AccountController()
+            private readonly IRoleService roleService;
+            private readonly IClientService ClientService;
+            private readonly IResellerService ResellerService;
+            public AccountController(IRoleService Rs, IClientService Cs,IResellerService ResellerServ)
             {
+                roleService = Rs;
+                ClientService = Cs;
+                ResellerService = ResellerServ;
             }
 
+            //Added By Hesham El-Elamy ... Send An Email 
+            [HttpPost]
+            public async Task<ActionResult> SendEmail(Client client)
+            {
+                try
+                {
+                    client.ClientID = Guid.NewGuid();
+                    client.reseller = ResellerService.GetById(client.ResellerID);
+                    ClientService.CreateClient(client);
+                    await UserManager.SendEmailAsync(roleService.GetUserInRole("Global Admin").Id, "Fuck You", "I AM SUPERMAN!");
+                    TempData["Create Success"] = "Client Created Successfully";
+                    return RedirectToAction("Index","Client", new { ResellerID = client.ResellerID });
+                }
+                catch (DbUpdateException ex)
+                {
+                    TempData["Exists"] = "Client Name Exists";
+                    return RedirectToAction("Create","Client",new { ResellerID = client.ResellerID });
+                }
+                catch (Exception ex)
+                {
+                    TempData["ErrorCreate"] = "Error in adding Client";
+                    return RedirectToAction("Create","Client",new { ResellerID = client.ResellerID });
+                }
+              
+            }
             public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
             {
                 UserManager = userManager;
                 SignInManager = signInManager;
+               
             }
 
             public ApplicationSignInManager SignInManager
@@ -168,6 +201,7 @@ namespace WebApp.Controllers
                         // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                         // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                         // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
 
                         return RedirectToAction("Index", "Home");
                     }

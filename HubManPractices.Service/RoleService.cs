@@ -51,5 +51,11 @@ namespace HubManPractices.Service
         {
             ApplicationEntity.Commit();
         }
+
+
+        public ApplicationUser GetUserInRole(string Role)
+        {
+            return rolesRepository.GetUserInRole(Role);
+        }
     }
 }

@@ -13,5 +13,7 @@ namespace HubManPractices.Repository.Repositories
         void RemovePermission(string RoleName, Guid pID);
         Role GetRoleByName(string RoleName);
         ApplicationUserRole GetUserRoles(string UserId);
+
+        ApplicationUser GetUserInRole(string Role);
     }
 }

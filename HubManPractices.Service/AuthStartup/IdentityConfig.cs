@@ -19,7 +19,36 @@ namespace HubManPractices.Service.AuthStartup
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+
+            // Credentials:
+            var credentialUserName = "etsh_1994@hotmail.com"; 
+            var sentFrom = "etsh_1994@hotmail.com";
+            var pwd = "topspin2000";
+
+            // Configure the client:
+            System.Net.Mail.SmtpClient client =
+                new System.Net.Mail.SmtpClient("smtp-mail.outlook.com");
+
+            client.Port = 587;
+            client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+
+            // Create the credentials:
+            System.Net.NetworkCredential credentials =
+                new System.Net.NetworkCredential(credentialUserName, pwd);
+
+            client.EnableSsl = true;
+            client.Credentials = credentials;
+
+            // Create the message:
+            var mail =
+                new System.Net.Mail.MailMessage(sentFrom, message.Destination);
+
+            mail.Subject = message.Subject;
+            mail.Body = message.Body;
+
+            // Send:
+            return client.SendMailAsync(mail);
         }
     }
 
@@ -38,6 +67,8 @@ namespace HubManPractices.Service.AuthStartup
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
+            this.UserTokenProvider = new TotpSecurityStampBasedTokenProvider<ApplicationUser, string>();
+            this.EmailService = new EmailService();
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
@@ -49,6 +80,8 @@ namespace HubManPractices.Service.AuthStartup
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
             };
+
+            
 
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
