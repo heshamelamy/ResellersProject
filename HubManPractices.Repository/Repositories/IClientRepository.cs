@@ -10,6 +10,6 @@ namespace HubManPractices.Repository.Repositories
 {
     public interface IClientRepository : IRepository<Client>
     {
-
+        void AddOfficeSubscription(Guid ClientID, Guid SubID, int UsersPerSub);
     }
 }

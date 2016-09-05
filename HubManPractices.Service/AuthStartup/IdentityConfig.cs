@@ -6,24 +6,32 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
-
+using Util;
 namespace HubManPractices.Service.AuthStartup
 {
+    
     public class EmailService : IIdentityMessageService
     {
+        private static string UserID;
+
+        public static void SetID(string ID)
+        {
+            UserID=ID;
+        }
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
+            // Credentials..
 
-            // Credentials:
-            var credentialUserName = "etsh_1994@hotmail.com"; 
-            var sentFrom = "etsh_1994@hotmail.com";
-            var pwd = "topspin2000";
+            var credentialUserName = ConfigurationManager.AppSettings["SystemMail"];
+            var sentFrom = ConfigurationManager.AppSettings["SystemMail"];
+            var pwd = ConfigurationManager.AppSettings["Pwd"];
 
             // Configure the client:
             System.Net.Mail.SmtpClient client =
@@ -43,10 +51,12 @@ namespace HubManPractices.Service.AuthStartup
             // Create the message:
             var mail =
                 new System.Net.Mail.MailMessage(sentFrom, message.Destination);
+           
+            mail.IsBodyHtml = true;
 
             mail.Subject = message.Subject;
             mail.Body = message.Body;
-
+            
             // Send:
             return client.SendMailAsync(mail);
         }

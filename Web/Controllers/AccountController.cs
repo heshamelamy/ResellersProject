@@ -28,35 +28,65 @@ namespace WebApp.Controllers
             private readonly IRoleService roleService;
             private readonly IClientService ClientService;
             private readonly IResellerService ResellerService;
-            public AccountController(IRoleService Rs, IClientService Cs,IResellerService ResellerServ)
+            private readonly ISubscriptionsService SubscriptionsService;
+            public AccountController(IRoleService Rs, IClientService Cs,IResellerService ResellerServ,ISubscriptionsService SS)
             {
                 roleService = Rs;
                 ClientService = Cs;
                 ResellerService = ResellerServ;
+                SubscriptionsService = SS;
             }
 
             //Added By Hesham El-Elamy ... Send An Email 
             [HttpPost]
-            public async Task<ActionResult> SendEmail(Client client)
+            public async Task<ActionResult> SendEmail(FormCollection Fc)
             {
+                
                 try
                 {
-                    client.ClientID = Guid.NewGuid();
-                    client.reseller = ResellerService.GetById(client.ResellerID);
+                    Client client = new Client() { ClientID = Guid.NewGuid(), ClientName = Fc["Item1.ClientName"], ContactMail = Fc["Item1.ContactMail"], ContactName = Fc["Item1.ContactName"], ContactNumber = Int32.Parse(Fc["Item1.ContactNumber"]), ContactTitle = Fc["Item1.ContactTitle"],ResellerID=Guid.Parse(Fc["ResellerID"])};
+                    client.reseller = ResellerService.GetById(Guid.Parse(Fc["ResellerID"]));
+                    
+
+                    IEnumerable<OfficeSubscription> Subscriptions = SubscriptionsService.GetAllSubscriptions();
+                    int NumberOfLicenses=0;
+                    foreach(var Sub in Subscriptions)
+                    {
+                         NumberOfLicenses+=Int32.Parse(Fc[Sub.SubscriptionName]);
+                        string idx= Sub.MonthlyFee.ToString();
+                        ClientService.AddOfficeSubscription(client.ClientID,Guid.Parse(Fc[idx]),Int32.Parse(Fc[Sub.SubscriptionName]));
+                    }
+
+                    client.NumberofLicenses=NumberOfLicenses;
                     ClientService.CreateClient(client);
-                    await UserManager.SendEmailAsync(roleService.GetUserInRole("Global Admin").Id, "Fuck You", "I AM SUPERMAN!");
+
+                    ApplicationUser  LoggedInUser= UserManager.FindById(User.Identity.GetUserId());
+
+
+                    
+
+                    string Body =String.Format("Dear Global Admin, <br />"
+                        + "The Client {0} has been added to your system by Reseller {1} <br /> "
+                        + "Please Click {2}",client.ClientName,User.Identity.GetUserName(), "<a href='http://localhost:41301/Client?ResellerID=" + LoggedInUser.ResellerID + "'>here</a>");
+
+                    IEnumerable<ApplicationUser> GlobalAdmins = roleService.GetUserInRole("Global Admin");
+
+                    foreach(var global in GlobalAdmins)
+                    {
+                        await UserManager.SendEmailAsync(global.Id, "Client is Added ", Body);
+                    }
                     TempData["Create Success"] = "Client Created Successfully";
-                    return RedirectToAction("Index","Client", new { ResellerID = client.ResellerID });
+                    return RedirectToAction("Index", "Client", new { ResellerID = Guid.Parse(Fc["ResellerID"]) });
                 }
                 catch (DbUpdateException ex)
                 {
                     TempData["Exists"] = "Client Name Exists";
-                    return RedirectToAction("Create","Client",new { ResellerID = client.ResellerID });
+                    return RedirectToAction("Create","Client",new { ResellerID = Guid.Parse(Fc["ResellerID"]) });
                 }
                 catch (Exception ex)
                 {
                     TempData["ErrorCreate"] = "Error in adding Client";
-                    return RedirectToAction("Create","Client",new { ResellerID = client.ResellerID });
+                    return RedirectToAction("Create", "Client", new { ResellerID = Guid.Parse(Fc["ResellerID"]) });
                 }
               
             }

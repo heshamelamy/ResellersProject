@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HubManPractices.Repository</RootNamespace>
     <AssemblyName>HubManPractices.Repository</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -65,6 +65,7 @@
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Configuration\ApplicationUserConfiguration.cs" />
     <Compile Include="Configuration\ApplicationUserRoleConfiguration.cs" />
+    <Compile Include="Configuration\ClientSubscriptionsConfiguration.cs" />
     <Compile Include="Infastructure\DbFactory.cs" />
     <Compile Include="Configuration\PermissionConfiguration.cs" />
     <Compile Include="Configuration\RoleConfiguration.cs" />
@@ -78,9 +79,11 @@
     <Compile Include="Repositories\IPermissionRepository.cs" />
     <Compile Include="Repositories\IResellerRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
+    <Compile Include="Repositories\ISubscriptionsRepository.cs" />
     <Compile Include="Repositories\PermissionRepository.cs" />
     <Compile Include="Repositories\ResellerRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\SubscriptionRepository.cs" />
     <Compile Include="StoreSeedData.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +94,10 @@
     <ProjectReference Include="..\HubManPractices.Model\HubManPractices.Model.csproj">
       <Project>{45f339c1-699d-419d-b243-f6336d6b0d9b}</Project>
       <Name>HubManPractices.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{7c99ea78-b832-4734-9335-8c94786856af}</Project>
+      <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

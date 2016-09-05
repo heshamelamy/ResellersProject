@@ -99,7 +99,6 @@ D:\ResellersProject\Util\bin\Debug\Util.pdb
 D:\ResellersProject\Util\bin\Debug\Autofac.dll
 D:\ResellersProject\Util\bin\Debug\Autofac.Integration.Mvc.dll
 D:\ResellersProject\Util\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\ResellersProject\Util\bin\Debug\mscorlib.dll
 D:\ResellersProject\Util\bin\Debug\System.Web.Helpers.dll
 D:\ResellersProject\Util\bin\Debug\System.Web.Mvc.dll
 D:\ResellersProject\Util\bin\Debug\System.Web.Razor.dll
@@ -114,10 +113,6 @@ D:\ResellersProject\Util\bin\Debug\System.Web.Razor.xml
 D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.xml
 D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.Razor.xml
-D:\ResellersProject\Util\bin\Debug\normidna.nlp
-D:\ResellersProject\Util\bin\Debug\normnfc.nlp
-D:\ResellersProject\Util\bin\Debug\normnfd.nlp
-D:\ResellersProject\Util\bin\Debug\normnfkc.nlp
-D:\ResellersProject\Util\bin\Debug\normnfkd.nlp
+D:\ResellersProject\Util\obj\Debug\Util.csprojResolveAssemblyReference.cache
 D:\ResellersProject\Util\obj\Debug\Util.dll
 D:\ResellersProject\Util\obj\Debug\Util.pdb

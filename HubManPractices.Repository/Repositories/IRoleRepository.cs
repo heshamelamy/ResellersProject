@@ -14,6 +14,6 @@ namespace HubManPractices.Repository.Repositories
         Role GetRoleByName(string RoleName);
         ApplicationUserRole GetUserRoles(string UserId);
 
-        ApplicationUser GetUserInRole(string Role);
+        IEnumerable <ApplicationUser> GetUserInRole(string Role);
     }
 }

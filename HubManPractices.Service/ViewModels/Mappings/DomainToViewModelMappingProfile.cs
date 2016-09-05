@@ -21,6 +21,7 @@ namespace HubManPractices.Service.ViewModels.Mappings
         {
             CreateMap<Client, ClientViewModel>();
             CreateMap<Reseller, ResellerViewModel>();
+            CreateMap<OfficeSubscription, OfficeSubscriptionViewModel>();
         }
     }
 }

@@ -15,6 +15,8 @@ namespace HubManPractices.Repository
         public DbSet<Client> Clients { get; set; }
         public DbSet<Reseller> Resellers { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<ClientSubscriptions> ClientSubscriptions { get; set; }
+        public DbSet<OfficeSubscription> OfficeSubscriptions { get; set; }
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<ApplicationUserRole> ApplicationUserRoles { get; set; }
         public static ApplicationEntities Create()
@@ -40,7 +42,7 @@ namespace HubManPractices.Repository
             modelBuilder.Configurations.Add(new PermissionConfiguration());
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
             modelBuilder.Configurations.Add(new ApplicationUserRoleConfiguration());
-
+            modelBuilder.Configurations.Add(new ClientSubscriptionsConfiguration());
 
         }
 

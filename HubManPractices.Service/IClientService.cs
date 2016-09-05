@@ -11,6 +11,7 @@ namespace HubManPractices.Service
     public interface IClientService
     {
         IEnumerable<ClientViewModel> MapToViewModel(IEnumerable<Client> Clients);
+        void AddOfficeSubscription(Guid ClientID, Guid SubID, int UsersPerSub);
         ClientViewModel MapToViewModel(Client client);
         Client GetById(Guid ClientID);
         void CreateClient(Client client);

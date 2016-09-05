@@ -17,13 +17,14 @@ namespace WebApp.Controllers
         private readonly IClientService ClientService;
         private readonly IRoleService RoleService;
         private readonly IResellerService ResellerService;
+        private readonly ISubscriptionsService SubscriptionService;
 
-
-        public ClientController(IClientService clientservice, IResellerService resellerservice,IRoleService Rs)
+        public ClientController(IClientService clientservice, IResellerService resellerservice,IRoleService Rs,ISubscriptionsService SS)
         {
             this.ClientService = clientservice;
             this.ResellerService = resellerservice;
             this.RoleService = Rs;
+            this.SubscriptionService = SS;
         }
         // GET: Client
         [MyAuthFilter(Roles="Global Admin , Reseller Admin")]
@@ -37,7 +38,7 @@ namespace WebApp.Controllers
             TempData["ResellerID"] = ResellerID;
             return View(ClientService.MapToViewModel(ResellerClients));
         }
-        [MyAuthFilter(Roles="Reseller Admin")]
+        [MyAuthFilter(Roles="Global Admin,Reseller Admin")]
         public ActionResult Create(Guid ResellerID)
         {
             if(HasPermission("Add Client"))
@@ -50,13 +51,17 @@ namespace WebApp.Controllers
                 else
                 {
                     TempData["ResellerID"] = ResellerID;
-                    return View();
+                    Client client = new Client();
+                    ClientViewModel c= ClientService.MapToViewModel(client);
+                    IEnumerable<OfficeSubscriptionViewModel> Subscriptions= SubscriptionService.MapToViewModel(SubscriptionService.GetAllSubscriptions());
+                    var myTuple = new Tuple<ClientViewModel, IEnumerable<OfficeSubscriptionViewModel>>(c, Subscriptions);
+                    return View(myTuple);
                 }  
             }
             return View("~/Views/Home/UnAuthorized.cshtml");
         }
 
-        [MyAuthFilter(Roles = "Reseller Admin")]
+        [MyAuthFilter(Roles = "Global Admin,Reseller Admin")]
         [HttpPost]
         public ActionResult Create(Client client)
         {
@@ -85,7 +90,7 @@ namespace WebApp.Controllers
             return View("~/Views/Home/UnAuthorized.cshtml");
         }
 
-        [MyAuthFilter(Roles="Reseller Admin")]
+        [MyAuthFilter(Roles = "Global Admin,Reseller Admin")]
         public ActionResult Edit(Guid ClientID)
         {
             if(HasPermission("Edit Client"))

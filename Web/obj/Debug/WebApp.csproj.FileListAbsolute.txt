@@ -278,6 +278,7 @@ C:\Users\Hesham\Documents\HubMan\Web\bin\HubManPractices.Repository.pdb
 C:\Users\Hesham\Documents\HubMan\Web\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 C:\Users\Hesham\Documents\HubMan\Web\obj\Debug\WebApp.dll
 C:\Users\Hesham\Documents\HubMan\Web\obj\Debug\WebApp.pdb
+D:\ResellersProject\Web\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 D:\ResellersProject\Web\bin\ApplicationInsights.config
 D:\ResellersProject\Web\bin\roslyn\csc.exe
 D:\ResellersProject\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -318,7 +319,6 @@ D:\ResellersProject\Web\bin\Microsoft.Owin.Host.SystemWeb.dll
 D:\ResellersProject\Web\bin\Microsoft.Owin.Security.Cookies.dll
 D:\ResellersProject\Web\bin\Microsoft.Owin.Security.dll
 D:\ResellersProject\Web\bin\Microsoft.Owin.Security.OAuth.dll
-D:\ResellersProject\Web\bin\mscorlib.dll
 D:\ResellersProject\Web\bin\Newtonsoft.Json.dll
 D:\ResellersProject\Web\bin\Owin.dll
 D:\ResellersProject\Web\bin\System.Net.Http.Formatting.dll
@@ -369,11 +369,5 @@ D:\ResellersProject\Web\bin\System.Web.Webpages.Deployment.xml
 D:\ResellersProject\Web\bin\System.Web.Webpages.Razor.xml
 D:\ResellersProject\Web\bin\System.Web.Helpers.xml
 D:\ResellersProject\Web\bin\HubManPractices.Repository.pdb
-D:\ResellersProject\Web\bin\normidna.nlp
-D:\ResellersProject\Web\bin\normnfc.nlp
-D:\ResellersProject\Web\bin\normnfd.nlp
-D:\ResellersProject\Web\bin\normnfkc.nlp
-D:\ResellersProject\Web\bin\normnfkd.nlp
-D:\ResellersProject\Web\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 D:\ResellersProject\Web\obj\Debug\WebApp.dll
 D:\ResellersProject\Web\obj\Debug\WebApp.pdb

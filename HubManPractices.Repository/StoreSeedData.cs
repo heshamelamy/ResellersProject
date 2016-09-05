@@ -8,13 +8,14 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Util;
 
 namespace HubManPractices.Repository
 {
     public class StoreSeedData : DropCreateDatabaseIfModelChanges<ApplicationEntities>
     {
         private static Role GlobalRole = new Role { Name = "Global Admin", Permissions = new List<Permission>() };
-        private static Role ResellerRole = new Role { Name = "Reseller Admin", Permissions = new List<Permission>() };
+        private static Role ResellerRole = new Role {Name = "Reseller Admin", Permissions = new List<Permission>() };
 
 
 
@@ -23,24 +24,41 @@ namespace HubManPractices.Repository
 
             AddRolesPermissions(context);
             AddUserAndRoles(context);
+            AddSubscriptions(context);
             context.Commit();
 
             //base.Seed(context);
+        }
+
+        private static void AddSubscriptions(ApplicationEntities context)
+        {
+            var ProPlus = new OfficeSubscription() { SubscriptionID = Guid.NewGuid(), SubscriptionName = "Office Pro Plus", MonthlyFee = 12 };
+            var E1 = new OfficeSubscription() { SubscriptionID = Guid.NewGuid(), SubscriptionName = "Office E1", MonthlyFee = 8 };
+            var E3 = new OfficeSubscription() { SubscriptionID = Guid.NewGuid(), SubscriptionName = "Office E3", MonthlyFee = 20 };
+            var E5 = new OfficeSubscription() { SubscriptionID = Guid.NewGuid(), SubscriptionName = "Office E5", MonthlyFee = 33 };
+
+            context.OfficeSubscriptions.AddOrUpdate(ProPlus);
+            context.OfficeSubscriptions.AddOrUpdate(E1);
+            context.OfficeSubscriptions.AddOrUpdate(E3);
+            context.OfficeSubscriptions.AddOrUpdate(E5);
         }
 
 
         private static void AddUserAndRoles(ApplicationEntities context)
         {
             var GlobalAdmin = new ApplicationUser() { Email = "heshamelelamy@gmail.com", SecurityStamp = Guid.NewGuid().ToString(), UserName = "admin", PasswordHash = new PasswordHasher().HashPassword("global123") };
+            var GlobalAdmin2 = new ApplicationUser() { Email = "omar.elsakka@itworx.com", SecurityStamp = Guid.NewGuid().ToString(), UserName = "sakka", PasswordHash = new PasswordHasher().HashPassword("global123") };
             var ResellerAdmin = new ApplicationUser() {SecurityStamp = Guid.NewGuid().ToString(), UserName = "adminreseller", PasswordHash = new PasswordHasher().HashPassword("reseller123") };
            
 
 
             //password must be greater than 6 chars
             context.Users.AddOrUpdate(GlobalAdmin);
+            context.Users.AddOrUpdate(GlobalAdmin2);
             context.Users.AddOrUpdate(ResellerAdmin);
 
             context.ApplicationUserRoles.AddOrUpdate(t => t.UserId, new ApplicationUserRole() { RoleId = GlobalRole.Id, UserId = GlobalAdmin.Id });
+            context.ApplicationUserRoles.AddOrUpdate(t => t.UserId, new ApplicationUserRole() { RoleId = GlobalRole.Id, UserId = GlobalAdmin2.Id });
             context.ApplicationUserRoles.AddOrUpdate(t => t.UserId, new ApplicationUserRole() { RoleId = ResellerRole.Id, UserId = ResellerAdmin.Id });
 
         }

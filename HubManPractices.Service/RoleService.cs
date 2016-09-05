@@ -53,7 +53,7 @@ namespace HubManPractices.Service
         }
 
 
-        public ApplicationUser GetUserInRole(string Role)
+        public IEnumerable<ApplicationUser> GetUserInRole(string Role)
         {
             return rolesRepository.GetUserInRole(Role);
         }

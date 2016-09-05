@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HubManPractices.Model</RootNamespace>
     <AssemblyName>HubManPractices.Model</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -92,6 +92,8 @@
     <Compile Include="Models\ApplicationUserLogin.cs" />
     <Compile Include="Models\ApplicationUserRole.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ClientSubscriptions.cs" />
+    <Compile Include="Models\OfficeSubscription.cs" />
     <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\Reseller.cs" />
     <Compile Include="Models\Role.cs" />

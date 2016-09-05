@@ -13,7 +13,7 @@ namespace HubManPractices.Service
 {
     public class ClientService : IClientService
     {
-
+        
         private readonly IClientRepository clientsRepository;
 
         private readonly ApplicationEntities ApplicationEntity;
@@ -54,6 +54,12 @@ namespace HubManPractices.Service
         public void DeleteReseller(Client ToBeDeleted)
         {
             clientsRepository.Delete(ToBeDeleted);
+        }
+
+
+        public void AddOfficeSubscription(Guid ClientID, Guid SubID, int UsersPerSub)
+        {
+            clientsRepository.AddOfficeSubscription(ClientID, SubID, UsersPerSub);
         }
     }
 }

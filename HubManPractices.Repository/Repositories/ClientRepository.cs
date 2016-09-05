@@ -34,6 +34,12 @@ namespace HubManPractices.Repository.Repositories
              DbContext.Commit();
          }
 
+
+         public void AddOfficeSubscription(Guid ClientID, Guid SubID, int UsersPerSub)
+         {
+             ClientSubscriptions ToAdd= new ClientSubscriptions(){ClientID=ClientID,SubscriptionID=SubID,UsersPerSubscription=UsersPerSub,};
+             DbContext.ClientSubscriptions.Add(ToAdd);
+         }
     }
 
 }
