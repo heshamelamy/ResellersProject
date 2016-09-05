@@ -46,8 +46,8 @@ namespace HubManPractices.Repository
 
         private static void AddUserAndRoles(ApplicationEntities context)
         {
-            var GlobalAdmin = new ApplicationUser() { Email = "heshamelelamy@gmail.com", SecurityStamp = Guid.NewGuid().ToString(), UserName = "admin", PasswordHash = new PasswordHasher().HashPassword("global123") };
-            var GlobalAdmin2 = new ApplicationUser() { Email = "omar.elsakka@itworx.com", SecurityStamp = Guid.NewGuid().ToString(), UserName = "sakka", PasswordHash = new PasswordHasher().HashPassword("global123") };
+            var GlobalAdmin = new ApplicationUser() { Email = "amr.elsehemy@itworx.com", SecurityStamp = Guid.NewGuid().ToString(), UserName = "AmrElSehemy", PasswordHash = new PasswordHasher().HashPassword("global123") };
+            var GlobalAdmin2 = new ApplicationUser() { Email = "omar.elsakka@itworx.com", SecurityStamp = Guid.NewGuid().ToString(), UserName = "OmarElSakka", PasswordHash = new PasswordHasher().HashPassword("global123") };
             var ResellerAdmin = new ApplicationUser() {SecurityStamp = Guid.NewGuid().ToString(), UserName = "adminreseller", PasswordHash = new PasswordHasher().HashPassword("reseller123") };
            
 

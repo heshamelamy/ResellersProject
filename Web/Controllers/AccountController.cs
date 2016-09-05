@@ -65,14 +65,16 @@ namespace WebApp.Controllers
 
                     
 
-                    string Body =String.Format("Dear Global Admin, <br />"
-                        + "The Client {0} has been added to your system by Reseller {1} <br /> "
-                        + "Please Click {2}",client.ClientName,User.Identity.GetUserName(), "<a href='http://localhost:41301/Client?ResellerID=" + LoggedInUser.ResellerID + "'>here</a>");
-
+                   
                     IEnumerable<ApplicationUser> GlobalAdmins = roleService.GetUserInRole("Global Admin");
 
+                   
                     foreach(var global in GlobalAdmins)
                     {
+                        string Body = String.Format("Dear {0}, <br />"
+                      + "The Client {1} has been added to your system by Reseller {2} <br /> "
+                      + "Please Click {3}",global.UserName,client.ClientName, User.Identity.GetUserName(), "<a href='http://localhost:41301/Client?ResellerID=" + LoggedInUser.ResellerID + "'>here</a>");
+
                         await UserManager.SendEmailAsync(global.Id, "Client is Added ", Body);
                     }
                     TempData["Create Success"] = "Client Created Successfully";
