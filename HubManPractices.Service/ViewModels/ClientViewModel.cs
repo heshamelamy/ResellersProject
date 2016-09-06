@@ -11,6 +11,7 @@ namespace HubManPractices.Service.ViewModels
     {
         public Guid ClientID { get; set; }
         public Guid ResellerID { get; set; }
+        public string Status { get; set; }
         public string ClientName { get; set; }
         public string ContactName { get; set; }
         public int ContactNumber { get; set; }
@@ -18,6 +19,7 @@ namespace HubManPractices.Service.ViewModels
         public string ContactTitle { get; set; }
         public int NumberofLicenses { get; set; }
         public bool IsDeleted { get; set; }
+        public DateTime Expiry { get; set; }
         public virtual Reseller reseller { get; set; }
     }
 }

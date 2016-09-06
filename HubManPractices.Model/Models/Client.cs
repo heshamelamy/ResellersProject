@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,9 @@ namespace HubManPractices.Models
         public int ContactNumber { get; set; }
         public string ContactMail { get; set; }
         public string ContactTitle { get; set; }
+        public string Status { get; set; }
         public int NumberofLicenses { get; set; }
+        public DateTime? Expiry { get; set; }
         public bool IsDeleted { get; set; }
         public virtual ICollection<ClientSubscriptions> ClientSubscriptions { get; set; }
         public virtual Reseller reseller { get; set; }

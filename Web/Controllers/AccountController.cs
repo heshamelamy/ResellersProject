@@ -29,8 +29,11 @@ namespace WebApp.Controllers
             private readonly IClientService ClientService;
             private readonly IResellerService ResellerService;
             private readonly ISubscriptionsService SubscriptionsService;
-            public AccountController(IRoleService Rs, IClientService Cs,IResellerService ResellerServ,ISubscriptionsService SS)
+            private readonly IActionService ActionService;
+
+        public AccountController(IActionService As,IRoleService Rs, IClientService Cs,IResellerService ResellerServ,ISubscriptionsService SS)
             {
+                ActionService = As;
                 roleService = Rs;
                 ClientService = Cs;
                 ResellerService = ResellerServ;
@@ -57,10 +60,14 @@ namespace WebApp.Controllers
                         ClientService.AddOfficeSubscription(client.ClientID,Guid.Parse(Fc[idx]),Int32.Parse(Fc[Sub.SubscriptionName]));
                     }
 
-                    client.NumberofLicenses=NumberOfLicenses;
+                    client.NumberofLicenses = NumberOfLicenses;
+                    client.Status = "On Hold";
                     ClientService.CreateClient(client);
 
-                    ApplicationUser  LoggedInUser= UserManager.FindById(User.Identity.GetUserId());
+                    HubManPractices.Models.Action OnHold = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "On Hold", Client = client, Date = DateTime.Now.Date };
+                    ActionService.CreateAction(OnHold);
+
+                ApplicationUser  LoggedInUser= UserManager.FindById(User.Identity.GetUserId());
 
 
                     

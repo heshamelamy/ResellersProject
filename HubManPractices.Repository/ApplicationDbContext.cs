@@ -13,6 +13,7 @@ namespace HubManPractices.Repository
         public ApplicationEntities() : base("BestPractices") { }
 
         public DbSet<Client> Clients { get; set; }
+        public DbSet<Models.Action> Actions { get; set; }
         public DbSet<Reseller> Resellers { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<ClientSubscriptions> ClientSubscriptions { get; set; }

@@ -17,8 +17,7 @@ namespace HubManPractices.Repository.Repositories
                  Client Found = DbContext.Clients.Where(c => c.ClientName == client.ClientName).Where(c => c.IsDeleted == true).FirstOrDefault();
                  if (Found != null)
                  {
-                     Found.IsDeleted = false;
-                     Found.reseller = client.reseller;
+                     Found.IsDeleted = false;            
                      DbContext.Commit();
                  }
                  else

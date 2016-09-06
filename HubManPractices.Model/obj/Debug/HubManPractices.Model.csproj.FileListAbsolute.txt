@@ -105,3 +105,30 @@ D:\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.WebPages.Razor.xm
 D:\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.csprojResolveAssemblyReference.cache
 D:\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.dll
 D:\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.pdb
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\HubManPractices.Model.dll.config
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\HubManPractices.Model.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\HubManPractices.Model.pdb
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\EntityFramework.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.Helpers.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.Mvc.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.Razor.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.WebPages.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\EntityFramework.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.Helpers.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.Mvc.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.Razor.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.WebPages.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.csprojResolveAssemblyReference.cache
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.pdb

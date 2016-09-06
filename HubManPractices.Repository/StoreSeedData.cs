@@ -71,7 +71,11 @@ namespace HubManPractices.Repository
             var EditReseller = new Permission { PermissionId = Guid.NewGuid(), PermissionName = "Edit Reseller" };
             var DeleteReseller = new Permission { PermissionId = Guid.NewGuid(), PermissionName = "Delete Reseller" };
             var DeleteClient = new Permission { PermissionId = Guid.NewGuid(), PermissionName = "Delete Client" };
-
+            var SuspendClient = new Permission { PermissionId = Guid.NewGuid(), PermissionName = "Suspend Client" };
+            var ActivateClient = new Permission { PermissionId = Guid.NewGuid(), PermissionName = "Activate Client" };
+            var UpgradeClient = new Permission { PermissionId = Guid.NewGuid(), PermissionName = "Upgrade Client" };
+            var RenewClient = new Permission { PermissionId = Guid.NewGuid(), PermissionName = "Renew Client" };
+            
 
             List<Permission> permissions = new List<Permission>() {
                 AddReseller,
@@ -80,6 +84,10 @@ namespace HubManPractices.Repository
                 EditClient,
                 DeleteReseller,
                 DeleteClient,
+                SuspendClient,
+                ActivateClient,
+                UpgradeClient,
+                RenewClient,
             };
 
 
@@ -95,11 +103,12 @@ namespace HubManPractices.Repository
 
                 ResellerRole.Permissions.Add(AddClient);
                 ResellerRole.Permissions.Add(EditClient);
+                ResellerRole.Permissions.Add(SuspendClient);
                 ResellerRole.Permissions.Add(DeleteClient);
                 ResellerRole.Permissions.Add(EditReseller);
-
-                
-
+                ResellerRole.Permissions.Add(ActivateClient);
+                ResellerRole.Permissions.Add(UpgradeClient);
+                ResellerRole.Permissions.Add(RenewClient);
 
 
                 context.Roles.AddOrUpdate(t => t.Name, GlobalRole);

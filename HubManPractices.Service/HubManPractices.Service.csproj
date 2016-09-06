@@ -152,10 +152,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionService.cs" />
     <Compile Include="AuthStartup\IdentityConfig.cs" />
     <Compile Include="AuthStartup\Startup.Auth.cs" />
     <Compile Include="ClientService.cs" />
     <Compile Include="DatabaseInitializer.cs" />
+    <Compile Include="IActionService.cs" />
     <Compile Include="IClientService.cs" />
     <Compile Include="IPermissionService.cs" />
     <Compile Include="IResellerService.cs" />

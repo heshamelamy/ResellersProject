@@ -116,3 +116,25 @@ D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.Razor.xml
 D:\ResellersProject\Util\obj\Debug\Util.csprojResolveAssemblyReference.cache
 D:\ResellersProject\Util\obj\Debug\Util.dll
 D:\ResellersProject\Util\obj\Debug\Util.pdb
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\Util.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\Util.pdb
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\Autofac.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\Autofac.Integration.Mvc.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\System.Web.Helpers.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\System.Web.Mvc.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\System.Web.Razor.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\System.Web.WebPages.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\Autofac.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\Autofac.Integration.Mvc.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\System.Web.Helpers.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\System.Web.Mvc.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\System.Web.Razor.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\System.Web.WebPages.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\obj\Debug\Util.csprojResolveAssemblyReference.cache
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\obj\Debug\Util.dll
+C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\obj\Debug\Util.pdb

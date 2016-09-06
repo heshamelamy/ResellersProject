@@ -11,10 +11,12 @@
     <div class="alert alert-success">@TempData["Create Success"]</div>
 }
 
-@if (TempData["EditSuccess"] != null)
+
+@if (TempData["Upgrade Success"] != null)
 {
-    <div class="alert alert-success">@TempData["EditSuccess"]</div>
+    <div class="alert alert-success">@TempData["Upgrade Success"]</div>
 }
+
 
 @if (TempData["QuotaFull"] != null)
 {
@@ -35,6 +37,9 @@
         <th>
             @Html.DisplayNameFor(model => model.ClientName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
         <th></th>
     </tr>
 
@@ -44,7 +49,23 @@
             @Html.DisplayFor(modelItem => item.ClientName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  ClientID=item.ClientID  }) 
+            @Html.DisplayFor(modelItem=>item.Status)
+        </td>
+        <td>
+            @if (Html.Action("HasPermission", "Client", new { pname = "Upgrade Client" }).ToString() == "True")
+            {
+                @Html.ActionLink("Upgrade", "Upgrade", new { ClientID = item.ClientID }, new { @class = "btn btn-primary btn-xs" })
+            }        
+            @if(Html.Action("HasPermission", "Client", new { pname = "Activate Client" }).ToString() == "True" && item.Status != "Activated")
+            {
+                @: |
+                    using (Html.BeginForm("Activate", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
+                    {
+                    @Html.Hidden("ClientID", item.ClientID)
+                    <input type="submit" value="Activate" class="btn btn-success btn-xs" />
+                }
+            }
+
             @if (Html.Action("HasPermission", "Client", new { pname = "Delete Client" }).ToString() == "True")
             {
                 @: |
@@ -53,6 +74,25 @@
                         @Html.Hidden("ClientID", item.ClientID)
                         <input type="submit" value="Delete" class="btn btn-danger btn-xs" />
                     }
+            }
+            @if (Html.Action("HasPermission", "Client", new { pname = "Suspend Client" }).ToString() == "True" && item.Status!= "Suspended")
+            {
+                @: |
+                    using (Html.BeginForm("Suspend", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
+                    {
+                    @Html.Hidden("ClientID", item.ClientID)
+                    <input type="submit" value="Suspend" class="btn btn-info btn-xs" />
+                }
+            }
+
+            @if (Html.Action("HasPermission", "Client", new { pname = "Renew Client" }).ToString() == "True" && item.Expiry<=DateTime.Now)
+            {
+                @: |
+                    using (Html.BeginForm("Renew", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
+                    {
+                    @Html.Hidden("ClientID", item.ClientID)
+                    <input type="submit" value="Renew" class="btn btn-primary btn-xs" />
+                }
             }
         </td>
     </tr>
