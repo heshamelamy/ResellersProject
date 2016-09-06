@@ -102,7 +102,6 @@ D:\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.Razor.xml
 D:\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.WebPages.xml
 D:\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.WebPages.Razor.xml
-D:\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.csprojResolveAssemblyReference.cache
 D:\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.dll
 D:\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.pdb
 C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\Debug\HubManPractices.Model.dll.config
@@ -132,3 +131,4 @@ C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\De
 C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.csprojResolveAssemblyReference.cache
 C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.dll
 C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.pdb
+D:\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.csprojResolveAssemblyReference.cache

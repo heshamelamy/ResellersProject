@@ -47,7 +47,7 @@ namespace WebApp.Controllers
                 
                 try
                 {
-                    Client client = new Client() { ClientID = Guid.NewGuid(), ClientName = Fc["Item1.ClientName"], ContactMail = Fc["Item1.ContactMail"], ContactName = Fc["Item1.ContactName"], ContactNumber = Int32.Parse(Fc["Item1.ContactNumber"]), ContactTitle = Fc["Item1.ContactTitle"],ResellerID=Guid.Parse(Fc["ResellerID"])};
+                    Client client = new Client() { ClientID = Guid.NewGuid(),Expiry=null,ClientName = Fc["Item1.ClientName"], ContactMail = Fc["Item1.ContactMail"], ContactName = Fc["Item1.ContactName"], ContactNumber = Int32.Parse(Fc["Item1.ContactNumber"]), ContactTitle = Fc["Item1.ContactTitle"],ResellerID=Guid.Parse(Fc["ResellerID"])};
                     client.reseller = ResellerService.GetById(Guid.Parse(Fc["ResellerID"]));
                     
 
@@ -56,23 +56,36 @@ namespace WebApp.Controllers
                     foreach(var Sub in Subscriptions)
                     {
                          NumberOfLicenses+=Int32.Parse(Fc[Sub.SubscriptionName]);
-                        string idx= Sub.MonthlyFee.ToString();
-                        ClientService.AddOfficeSubscription(client.ClientID,Guid.Parse(Fc[idx]),Int32.Parse(Fc[Sub.SubscriptionName]));
                     }
 
-                    client.NumberofLicenses = NumberOfLicenses;
-                    client.Status = "On Hold";
-                    ClientService.CreateClient(client);
-
-                    HubManPractices.Models.Action OnHold = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "On Hold", Client = client, Date = DateTime.Now.Date };
-                    ActionService.CreateAction(OnHold);
-
-                ApplicationUser  LoggedInUser= UserManager.FindById(User.Identity.GetUserId());
-
-
-                    
-
                    
+                    if(!ClientService.Exists(client) || ClientService.ExistsAndDeleted(client))
+                    {
+                        
+                        if (ClientService.ExistsAndDeleted(client))
+                        {
+                            client = ClientService.GetDeletedClient(client);
+                        }
+                        client.NumberofLicenses = NumberOfLicenses;
+                        client.Status = "On Hold";
+                        foreach (var Sub in Subscriptions)
+                        {
+                            string idx = Sub.MonthlyFee.ToString();
+                            client.ClientSubscriptions.Add(new ClientSubscriptions(){ClientID=client.ClientID,SubscriptionID=Guid.Parse(Fc[idx]),UsersPerSubscription=Int32.Parse(Fc[Sub.SubscriptionName])});
+                            //ClientService.AddOfficeSubscription(ID, Guid.Parse(Fc[idx]), Int32.Parse(Fc[Sub.SubscriptionName]));
+                        }
+                        ClientService.CreateClient(client);
+                        HubManPractices.Models.Action OnHold = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "On Hold", Client = client, Date = DateTime.Now.Date };
+                        ActionService.CreateAction(OnHold);
+                    }
+                    else
+                    {
+                        TempData["Exists"] = "This Client is already added in the system";
+                        return RedirectToAction("Create", "Client", new { ResellerID = Guid.Parse(Fc["ResellerID"]) });
+                    }
+                   
+                    ApplicationUser  LoggedInUser= UserManager.FindById(User.Identity.GetUserId());
+
                     IEnumerable<ApplicationUser> GlobalAdmins = roleService.GetUserInRole("Global Admin");
 
                    
@@ -89,7 +102,7 @@ namespace WebApp.Controllers
                 }
                 catch (DbUpdateException ex)
                 {
-                    TempData["Exists"] = "Client Name Exists";
+                    TempData["Exists"] = "This Client is already added in the system";
                     return RedirectToAction("Create","Client",new { ResellerID = Guid.Parse(Fc["ResellerID"]) });
                 }
                 catch (Exception ex)

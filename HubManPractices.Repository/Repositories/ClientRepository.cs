@@ -14,7 +14,7 @@ namespace HubManPractices.Repository.Repositories
 
          public override void Add(Client client)
          {
-                 Client Found = DbContext.Clients.Where(c => c.ClientName == client.ClientName).Where(c => c.IsDeleted == true).FirstOrDefault();
+                 Client Found = DbContext.Clients.Where(c => c.ClientName == client.ClientName && c.ContactMail==client.ContactMail).Where(c => c.IsDeleted == true).FirstOrDefault();
                  if (Found != null)
                  {
                      Found.IsDeleted = false;            
@@ -31,6 +31,12 @@ namespace HubManPractices.Repository.Repositories
              Client ToBeDeleted = Get(c => c.ClientID == client.ClientID);
              ToBeDeleted.IsDeleted = true;
              DbContext.Commit();
+             IEnumerable<ClientSubscriptions> ClientSubs = DbContext.ClientSubscriptions.Where(c => c.ClientID == client.ClientID);
+             foreach(var Sub in ClientSubs)
+             {
+                 DbContext.ClientSubscriptions.Remove(Sub);
+             }
+             DbContext.Commit();
          }
 
 
@@ -39,6 +45,22 @@ namespace HubManPractices.Repository.Repositories
              ClientSubscriptions ToAdd= new ClientSubscriptions(){ClientID=ClientID,SubscriptionID=SubID,UsersPerSubscription=UsersPerSub,};
              DbContext.ClientSubscriptions.Add(ToAdd);
          }
+        public bool CheckIfExistsAndDeleted(Client client)
+         {
+             if (DbContext.Clients.Where(c => c.ClientName == client.ClientName && c.ContactMail == client.ContactMail).Where(c => c.IsDeleted == true).FirstOrDefault() == null) return false;
+             else return true;
+         }
+        public bool CheckIfExists(Client client)
+        {
+            if (DbContext.Clients.Where(c => c.ClientName == client.ClientName && c.ContactMail == client.ContactMail).Where(c => c.IsDeleted == false).FirstOrDefault() == null) return false;
+            else return true;
+        }
+
+
+        public Client GetDeletedClient(Client client)
+        {
+            return DbContext.Clients.Where(c => c.ClientName == client.ClientName && c.ContactMail == client.ContactMail).Where(c => c.IsDeleted == true).FirstOrDefault();
+        }
     }
 
 }

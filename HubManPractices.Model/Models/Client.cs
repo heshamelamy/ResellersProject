@@ -10,6 +10,10 @@ namespace HubManPractices.Models
 {
     public class Client
     {
+        public Client()
+        {
+            ClientSubscriptions = new List<ClientSubscriptions>();
+        }
         [Key]
         public Guid ClientID { get; set; }
         public Guid ResellerID { get; set; }

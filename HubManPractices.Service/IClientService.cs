@@ -16,8 +16,12 @@ namespace HubManPractices.Service
         Client GetById(Guid ClientID);
         void CreateClient(Client client);
         void EditClient(Client client);
+        bool Exists(Client client);
+        bool ExistsAndDeleted(Client client);
         void SaveClient();
 
         void DeleteReseller(Client ToBeDeleted);
+
+        Client GetDeletedClient(Client client);
     }
 }

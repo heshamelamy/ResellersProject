@@ -61,5 +61,22 @@ namespace HubManPractices.Service
         {
             clientsRepository.AddOfficeSubscription(ClientID, SubID, UsersPerSub);
         }
+
+
+        public bool Exists(Client client)
+        {
+            return clientsRepository.CheckIfExists(client);
+        }
+
+        public bool ExistsAndDeleted(Client client)
+        {
+            return clientsRepository.CheckIfExistsAndDeleted(client);
+        }
+
+
+        public Client GetDeletedClient(Client client)
+        {
+            return clientsRepository.GetDeletedClient(client);
+        }
     }
 }
