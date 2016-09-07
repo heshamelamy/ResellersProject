@@ -20,8 +20,9 @@ namespace HubManPractices.Service
         bool ExistsAndDeleted(Client client);
         void SaveClient();
 
-        void DeleteReseller(Client ToBeDeleted);
+        void DeleteClient(Client ToBeDeleted);
 
         Client GetDeletedClient(Client client);
+        bool NeedsRenewal(Client client);
     }
 }

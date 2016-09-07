@@ -47,7 +47,7 @@ namespace WebApp.Controllers
                 
                 try
                 {
-                    Client client = new Client() { ClientID = Guid.NewGuid(),Expiry=null,ClientName = Fc["Item1.ClientName"], ContactMail = Fc["Item1.ContactMail"], ContactName = Fc["Item1.ContactName"], ContactNumber = Int32.Parse(Fc["Item1.ContactNumber"]), ContactTitle = Fc["Item1.ContactTitle"],ResellerID=Guid.Parse(Fc["ResellerID"])};
+                    Client client = new Client() { ClientID = Guid.NewGuid(),Expiry=null,IsExpiryNull=true,ClientName = Fc["Item1.ClientName"], ContactMail = Fc["Item1.ContactMail"], ContactName = Fc["Item1.ContactName"], ContactNumber = Int32.Parse(Fc["Item1.ContactNumber"]), ContactTitle = Fc["Item1.ContactTitle"],ResellerID=Guid.Parse(Fc["ResellerID"])};
                     client.reseller = ResellerService.GetById(Guid.Parse(Fc["ResellerID"]));
                     
 
@@ -72,10 +72,9 @@ namespace WebApp.Controllers
                         {
                             string idx = Sub.MonthlyFee.ToString();
                             client.ClientSubscriptions.Add(new ClientSubscriptions(){ClientID=client.ClientID,SubscriptionID=Guid.Parse(Fc[idx]),UsersPerSubscription=Int32.Parse(Fc[Sub.SubscriptionName])});
-                            //ClientService.AddOfficeSubscription(ID, Guid.Parse(Fc[idx]), Int32.Parse(Fc[Sub.SubscriptionName]));
                         }
                         ClientService.CreateClient(client);
-                        HubManPractices.Models.Action OnHold = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "On Hold", Client = client, Date = DateTime.Now.Date };
+                        HubManPractices.Models.Action OnHold = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "On Hold", Client = client, Date = DateTime.Now};
                         ActionService.CreateAction(OnHold);
                     }
                     else

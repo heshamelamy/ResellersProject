@@ -17,19 +17,26 @@ namespace HubManPractices.Repository.Repositories
                  Client Found = DbContext.Clients.Where(c => c.ClientName == client.ClientName && c.ContactMail==client.ContactMail).Where(c => c.IsDeleted == true).FirstOrDefault();
                  if (Found != null)
                  {
-                     Found.IsDeleted = false;            
-                     DbContext.Commit();
+                        Found.IsDeleted = false;
+                        Found.Expiry = null;
+                        Found.ContactName = client.ContactName;
+                        Found.ContactNumber = client.ContactNumber;
+                        Found.ContactTitle = client.ContactTitle;
+                        Found.NumberofLicenses = client.NumberofLicenses;
+                        Found.IsExpiryNull = true;            
+                        DbContext.Commit();
                  }
                  else
                  {
-                     DbContext.Clients.Add(client);
-                     DbContext.Commit();
+                        DbContext.Clients.Add(client);
+                        DbContext.Commit();
                  }
          }
          public override void Delete(Client client)
          {
              Client ToBeDeleted = Get(c => c.ClientID == client.ClientID);
              ToBeDeleted.IsDeleted = true;
+             ToBeDeleted.Status = "Terminated";
              DbContext.Commit();
              IEnumerable<ClientSubscriptions> ClientSubs = DbContext.ClientSubscriptions.Where(c => c.ClientID == client.ClientID);
              foreach(var Sub in ClientSubs)
@@ -54,6 +61,14 @@ namespace HubManPractices.Repository.Repositories
         {
             if (DbContext.Clients.Where(c => c.ClientName == client.ClientName && c.ContactMail == client.ContactMail).Where(c => c.IsDeleted == false).FirstOrDefault() == null) return false;
             else return true;
+        }
+
+        public bool NeedsRenewal(Client client)
+        {
+            Client checkclient = DbContext.Clients.Where(c=>c.ClientID == client.ClientID).FirstOrDefault();
+            if (checkclient.Expiry <= DateTime.Now)
+                return true;
+            else return false;
         }
 
 

@@ -1,4 +1,4 @@
-﻿@model HubManPractices.Service.ViewModels.ClientViewModel
+﻿@model Tuple<HubManPractices.Service.ViewModels.ClientViewModel, IEnumerable<HubManPractices.Service.ViewModels.OfficeSubscriptionViewModel>>
 
 @{
     ViewBag.Title = "Upgrade";
@@ -15,6 +15,19 @@
     <div class="alert alert-danger">@TempData["Upgrade Error"]</div>
 }
 
+
+@{
+    List<SelectListItem> select = new List<SelectListItem>();
+    foreach (var item in Model.Item2)
+    {
+        select.Add(new SelectListItem
+        {
+            Text = item.SubscriptionName,
+            Value = item.SubscriptionID.ToString()
+        });
+    }
+}
+
 <h2>Upgrade</h2>
 
 @using (Html.BeginForm())
@@ -26,19 +39,46 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-           @Html.HiddenFor(m=>m.ClientID)
+           @Html.HiddenFor(m=>m.Item1.ClientID)
         </div>
         <div class="form-group">
-            @Html.HiddenFor(m => m.ResellerID)
+            @Html.HiddenFor(m => m.Item1.ResellerID)
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NumberofLicenses, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumberofLicenses, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumberofLicenses, "", new { @class = "text-danger" })
-            </div>
+            @Html.HiddenFor(m => m.Item1.ClientName)
         </div>
+        <div class="form-group">
+            @Html.HiddenFor(m => m.Item1.ContactMail)
+        </div>
+        <div class="form-group">
+            @Html.HiddenFor(m => m.Item1.ContactName)
+        </div>
+        <div class="form-group">
+            @Html.HiddenFor(m => m.Item1.ContactNumber)
+        </div>
+        <div class="form-group">
+            @Html.HiddenFor(m => m.Item1.ContactTitle)
+        </div>
+        <div class="form-group">
+            @Html.HiddenFor(m => m.Item1.Expiry)
+        </div>
+
+        <div class="form-group">
+            @Html.Hidden("Status", "Activated")
+        </div>
+
+        @Html.LabelFor(m => m.Item1.NumberofLicenses)
+
+        @foreach (var Sub in Model.Item2)
+        {
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.DropDownList(Sub.MonthlyFee.ToString(), select)
+                    @Html.TextBox(Sub.SubscriptionName, null, new { @type = "number" })
+                </div>
+            </div>
+        }
 
 
         <div class="form-group">
@@ -50,5 +90,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index",new {ResellerID=Model.ResellerID})
+    @Html.ActionLink("Back to List", "Index",new {ResellerID=Model.Item1.ResellerID})
 </div>

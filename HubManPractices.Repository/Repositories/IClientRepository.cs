@@ -15,5 +15,6 @@ namespace HubManPractices.Repository.Repositories
           bool CheckIfExistsAndDeleted(Client client);
 
           Client GetDeletedClient(Client client);
+          bool NeedsRenewal(Client client);
     }
 }

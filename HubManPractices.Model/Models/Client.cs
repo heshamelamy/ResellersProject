@@ -26,6 +26,7 @@ namespace HubManPractices.Models
         public int NumberofLicenses { get; set; }
         public DateTime? Expiry { get; set; }
         public bool IsDeleted { get; set; }
+        public bool IsExpiryNull { get; set; }
         public virtual ICollection<ClientSubscriptions> ClientSubscriptions { get; set; }
         public virtual Reseller reseller { get; set; }
     }

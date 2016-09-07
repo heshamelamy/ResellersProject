@@ -52,30 +52,32 @@
             @Html.DisplayFor(modelItem=>item.Status)
         </td>
         <td>
-            @if (Html.Action("HasPermission", "Client", new { pname = "Upgrade Client" }).ToString() == "True")
+            @if (Html.Action("HasPermission", "Client", new { pname = "Upgrade Client" }).ToString() == "True" && item.Status!= "Upgraded" && item.Status != "On Hold" && item.Status!="Waiting For Renewal")
             {
                 @Html.ActionLink("Upgrade", "Upgrade", new { ClientID = item.ClientID }, new { @class = "btn btn-primary btn-xs" })
-            }        
-            @if(Html.Action("HasPermission", "Client", new { pname = "Activate Client" }).ToString() == "True" && item.Status != "Activated")
-            {
                 @: |
-                    using (Html.BeginForm("Activate", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
-                    {
+            }        
+            @if(Html.Action("HasPermission", "Client", new { pname = "Activate Client" }).ToString() == "True" && item.Status != "Activated" && item.Status != "Waiting For Renewal")
+            {
+                using (Html.BeginForm("Activate", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
+                {
                     @Html.Hidden("ClientID", item.ClientID)
                     <input type="submit" value="Activate" class="btn btn-success btn-xs" />
                 }
+                @: |
             }
 
             @if (Html.Action("HasPermission", "Client", new { pname = "Delete Client" }).ToString() == "True")
             {
-                @: |
+       
                     using (Html.BeginForm("Delete", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
                     {
                         @Html.Hidden("ClientID", item.ClientID)
                         <input type="submit" value="Delete" class="btn btn-danger btn-xs" />
-                    }
+                }
+                
             }
-            @if (Html.Action("HasPermission", "Client", new { pname = "Suspend Client" }).ToString() == "True" && item.Status!= "Suspended")
+            @if (Html.Action("HasPermission", "Client", new { pname = "Suspend Client" }).ToString() == "True" && item.Status!= "Suspended" && item.Status!="On Hold" && item.Status != "Waiting For Renewal")
             {
                 @: |
                     using (Html.BeginForm("Suspend", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
@@ -83,9 +85,10 @@
                     @Html.Hidden("ClientID", item.ClientID)
                     <input type="submit" value="Suspend" class="btn btn-info btn-xs" />
                 }
+               
             }
 
-            @if (Html.Action("HasPermission", "Client", new { pname = "Renew Client" }).ToString() == "True" && item.Expiry<=DateTime.Now)
+            @if (Html.Action("HasPermission", "Client", new { pname = "Renew Client" }).ToString() == "True" && item.Expiry <= DateTime.Now && !item.IsExpiryNull)
             {
                 @: |
                     using (Html.BeginForm("Renew", "Client", FormMethod.Post, new { @style = "display:inline-block" }))

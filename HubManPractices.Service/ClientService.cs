@@ -51,7 +51,7 @@ namespace HubManPractices.Service
         }
 
 
-        public void DeleteReseller(Client ToBeDeleted)
+        public void DeleteClient(Client ToBeDeleted)
         {
             clientsRepository.Delete(ToBeDeleted);
         }
@@ -77,6 +77,11 @@ namespace HubManPractices.Service
         public Client GetDeletedClient(Client client)
         {
             return clientsRepository.GetDeletedClient(client);
+        }
+
+        public bool NeedsRenewal(Client client)
+        {
+            return clientsRepository.NeedsRenewal(client);
         }
     }
 }

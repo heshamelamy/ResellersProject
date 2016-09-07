@@ -36,6 +36,11 @@ namespace WebApp.Controllers
             foreach(var client in ResellerClients)
             {
                 client.reseller = ResellerService.GetById(ResellerID);
+                if (ClientService.NeedsRenewal(client))
+                {
+                    client.Status = "Waiting For Renewal";
+                    ClientService.SaveClient();
+                }
             }
             TempData["ResellerID"] = ResellerID;
             return View(ClientService.MapToViewModel(ResellerClients));
@@ -74,8 +79,8 @@ namespace WebApp.Controllers
                 Client ToBeDeleted = ClientService.GetById(ClientID);
                 try
                 {
-                    ClientService.DeleteReseller(ToBeDeleted);
-                    HubManPractices.Models.Action Terminate = new HubManPractices.Models.Action() {ActionID=Guid.NewGuid(),ActionName="Terminated",Client=ToBeDeleted,Date=DateTime.Now.Date};
+                    ClientService.DeleteClient(ToBeDeleted);
+                    HubManPractices.Models.Action Terminate = new HubManPractices.Models.Action() {ActionID=Guid.NewGuid(),ActionName="Terminated",Client=ToBeDeleted,Date=DateTime.Now};
                     ActionService.CreateAction(Terminate);
                     return RedirectToAction("Index",new { ResellerID = ToBeDeleted.ResellerID });
                 }
@@ -101,7 +106,7 @@ namespace WebApp.Controllers
                 {
                     ToBeSuspended.Status = "Suspended";
                     ClientService.SaveClient();
-                    HubManPractices.Models.Action Suspend = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Suspended", Client = ToBeSuspended, Date = DateTime.Now.Date };
+                    HubManPractices.Models.Action Suspend = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Suspended", Client = ToBeSuspended, Date = DateTime.Now};
                     ActionService.CreateAction(Suspend);
                     return RedirectToAction("Index", new { ResellerID = ToBeSuspended.ResellerID });
                 }
@@ -127,8 +132,9 @@ namespace WebApp.Controllers
                 {
                     ToBeActivated.Status = "Activated";
                     ToBeActivated.Expiry = DateTime.Now.AddMonths(1).Date;
+                    ToBeActivated.IsExpiryNull = false;
                     ClientService.SaveClient();
-                    HubManPractices.Models.Action Activate = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Activated", Client = ToBeActivated, Date = DateTime.Now.Date };
+                    HubManPractices.Models.Action Activate = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Activated", Client = ToBeActivated, Date = DateTime.Now };
                     ActionService.CreateAction(Activate);
                     return RedirectToAction("Index", new { ResellerID = ToBeActivated.ResellerID });
                 }
@@ -147,24 +153,40 @@ namespace WebApp.Controllers
         {
             if (HasPermission("Upgrade Client"))
             {
-                return View(ClientService.MapToViewModel(ClientService.GetById(ClientID)));
+                IEnumerable<OfficeSubscriptionViewModel> Subscriptions = SubscriptionService.MapToViewModel(SubscriptionService.GetAllSubscriptions());
+                ClientViewModel client = ClientService.MapToViewModel(ClientService.GetById(ClientID));
+                var myTuple = new Tuple<ClientViewModel, IEnumerable<OfficeSubscriptionViewModel>>(client, Subscriptions);
+                return View(myTuple);
             }
-                
             return View("~/Views/Home/UnAuthorized.cshtml");
         }
 
         [MyAuthFilter(Roles = "Global Admin, Reseller Admin")]
         [HttpPost]
-        public ActionResult Upgrade(Client client)
+        public ActionResult Upgrade(FormCollection Fc)
         {
             if (HasPermission("Upgrade Client"))
             {
+                Client client = ClientService.GetById(Guid.Parse(Fc["Item1.ClientID"]));
                 try
                 {
-                    Client ToBeUpgraded = ClientService.GetById(client.ClientID);
-                    client.Expiry = DateTime.Now.AddMonths(1);
-                    ClientService.EditClient(client);
-                    HubManPractices.Models.Action Upgrade = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Upgraded", Client = ToBeUpgraded, Date = DateTime.Now.Date };
+                    IEnumerable<OfficeSubscription> Subscriptions = SubscriptionService.GetAllSubscriptions();
+                    client.IsExpiryNull = false;
+                    foreach (var Sub in Subscriptions)
+                    {
+                        if(Fc[Sub.SubscriptionName]!="")
+                        client.NumberofLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
+                    }
+                    foreach (var Sub in Subscriptions)
+                    {
+                        if (Fc[Sub.SubscriptionName] != "")
+                        {
+                            string idx = Sub.MonthlyFee.ToString();
+                            client.ClientSubscriptions.Add(new ClientSubscriptions() { ClientID = client.ClientID, SubscriptionID = Guid.Parse(Fc[idx]), UsersPerSubscription = Int32.Parse(Fc[Sub.SubscriptionName]) });
+                        }
+                    }
+                    ClientService.SaveClient();
+                    HubManPractices.Models.Action Upgrade = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Upgraded", Client = ClientService.GetById(client.ClientID), Date = DateTime.Now};
                     ActionService.CreateAction(Upgrade);
                 }
                 catch(DbUpdateException ex)
@@ -195,10 +217,11 @@ namespace WebApp.Controllers
                 Client ToBeRenewd = ClientService.GetById(ClientID);
                 try
                 {
-                    ToBeRenewd.Status = "Renewal";
+                    ToBeRenewd.Status = "Activated";
                     ToBeRenewd.Expiry = DateTime.Now.AddMonths(1).Date;
+                    ToBeRenewd.IsExpiryNull = false;
                     ClientService.SaveClient();
-                    HubManPractices.Models.Action Renewal = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Renewal", Client = ToBeRenewd, Date = DateTime.Now.Date };
+                    HubManPractices.Models.Action Renewal = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Renewal", Client = ToBeRenewd, Date = DateTime.Now};
                     ActionService.CreateAction(Renewal);
                     return RedirectToAction("Index", new { ResellerID = ToBeRenewd.ResellerID });
                 }

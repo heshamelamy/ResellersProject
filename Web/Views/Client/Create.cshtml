@@ -16,11 +16,10 @@
             Value = item.SubscriptionID.ToString()
         });
     }
-
 }
 
 
-@if(TempData["Exists"]!=null)
+@if (TempData["Exists"]!=null)
 {
     <div class="alert alert-danger" >@TempData["Exists"]</div>
 }

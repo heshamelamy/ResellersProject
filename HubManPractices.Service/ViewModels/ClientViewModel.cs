@@ -20,6 +20,7 @@ namespace HubManPractices.Service.ViewModels
         public int NumberofLicenses { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime Expiry { get; set; }
+        public bool IsExpiryNull { get; set; }
         public virtual Reseller reseller { get; set; }
     }
 }
