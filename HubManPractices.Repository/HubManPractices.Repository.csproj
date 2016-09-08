@@ -65,6 +65,7 @@
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Configuration\ApplicationUserConfiguration.cs" />
     <Compile Include="Configuration\ApplicationUserRoleConfiguration.cs" />
+    <Compile Include="Configuration\ClientConfiguration.cs" />
     <Compile Include="Configuration\ClientSubscriptionsConfiguration.cs" />
     <Compile Include="Infastructure\DbFactory.cs" />
     <Compile Include="Configuration\PermissionConfiguration.cs" />

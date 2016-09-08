@@ -267,6 +267,7 @@
     <Content Include="Views\Client\Index.cshtml" />
     <Content Include="Views\Client\Create.cshtml" />
     <Content Include="Views\Client\Upgrade.cshtml" />
+    <Content Include="Views\Client\Exist.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

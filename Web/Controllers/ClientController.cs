@@ -68,6 +68,52 @@ namespace WebApp.Controllers
             return View("~/Views/Home/UnAuthorized.cshtml");
         }
 
+        [HttpPost]
+        public ActionResult Reactivate(FormCollection Fc)
+        {
+            Client ToReactivate = ClientService.GetClientByNameAndMail(Fc["ClientName"], Fc["ContactMail"]);
+            ToReactivate.IsDeleted = false;
+            ToReactivate.Status = "On Hold";
+            foreach(var Sub in ToReactivate.ClientSubscriptions)
+            {
+                Sub.IsDeleted = false;
+            }
+            ClientService.EditClient(ToReactivate);
+            
+            TempData["ReactivateClient"] = "The Client has been Reactivated";
+            return RedirectToAction("Index", new { ResellerID = ToReactivate.ResellerID});
+        }
+
+        [HttpPost]
+        public ActionResult ReAdd(FormCollection Fc)
+        {
+            Client ToReAdd = ClientService.GetClientByNameAndMail(Fc["ClientName"], Fc["ContactMail"]);
+             ToReAdd.NumberofLicenses=0;
+              IEnumerable<OfficeSubscription> Subscriptions = SubscriptionService.GetAllSubscriptions();
+                foreach (var Sub in Subscriptions)
+                {
+                    string idx = Sub.MonthlyFee.ToString();
+                    if(Fc[Sub.SubscriptionName]!="")
+                    {   
+                        ToReAdd.NumberofLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
+                    }
+                }
+
+                foreach(var Sub in ToReAdd.ClientSubscriptions)
+                {
+                    Sub.IsDeleted = false;
+                    Sub.UsersPerSubscription = Int32.Parse(Fc[Sub.OfficeSubscription.SubscriptionName]);
+                }
+                ToReAdd.ContactName = Fc["ContactName"];
+                ToReAdd.ContactNumber = Int32.Parse(Fc["ContactNumber"]);
+                ToReAdd.ContactTitle = Fc["ContactTitle"];
+                ToReAdd.Expiry = DateTime.Parse(Fc["Expiry"]);
+                ToReAdd.IsDeleted = false;
+                ToReAdd.IsExpiryNull = true;
+                ToReAdd.Status = Fc["Status"];
+                ClientService.EditClient(ToReAdd);
+                return RedirectToAction("Index", new { ResellerID = ToReAdd.ResellerID }); 
+        }
 
         [MyAuthFilter(Roles = "Global Admin,Reseller Admin")]
         [HttpPost]

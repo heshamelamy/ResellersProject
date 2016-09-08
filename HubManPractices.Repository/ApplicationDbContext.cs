@@ -44,6 +44,7 @@ namespace HubManPractices.Repository
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
             modelBuilder.Configurations.Add(new ApplicationUserRoleConfiguration());
             modelBuilder.Configurations.Add(new ClientSubscriptionsConfiguration());
+            modelBuilder.Configurations.Add(new ClientConfiguration());
 
         }
 

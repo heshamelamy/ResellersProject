@@ -41,7 +41,7 @@ namespace HubManPractices.Repository.Repositories
              IEnumerable<ClientSubscriptions> ClientSubs = DbContext.ClientSubscriptions.Where(c => c.ClientID == client.ClientID);
              foreach(var Sub in ClientSubs)
              {
-                 DbContext.ClientSubscriptions.Remove(Sub);
+                 Sub.IsDeleted = true;
              }
              DbContext.Commit();
          }
@@ -81,6 +81,27 @@ namespace HubManPractices.Repository.Repositories
         public ClientSubscriptions GetClientSubscription(Guid ClientID, Guid SubID)
         {
             return DbContext.ClientSubscriptions.Where(c => c.ClientID == ClientID && c.SubscriptionID == SubID).FirstOrDefault();
+        }
+
+
+        public bool ClientNameAndMailExists(string ClientName, string ContactMail)
+        {
+            List<Client> clients =DbContext.Clients.Where(c => c.ClientName == ClientName && c.ContactMail == ContactMail && c.IsDeleted==false).ToList();
+            if (clients.Count == 0) return false;
+            else return true;
+        }
+
+        public bool ClientNameAndMailExistsAndDeleted(string ClientName, string ContactMail)
+        {
+            List<Client> clients = DbContext.Clients.Where(c => c.ClientName == ClientName && c.ContactMail == ContactMail && c.IsDeleted == true).ToList();
+            if (clients.Count == 0) return false;
+            else return true;
+        }
+
+
+        public Client GetByNameAndMail(string ClientName, string ContactMail)
+        {
+            return DbContext.Clients.Where(c => c.ContactMail == ContactMail && c.ClientName == ClientName).FirstOrDefault();
         }
     }
 

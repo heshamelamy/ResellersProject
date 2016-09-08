@@ -1,12 +1,13 @@
-﻿using System;
+﻿using HubManPractices.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HubManPractices.Models
+namespace HubManPractices.Service.ViewModels
 {
-    public class ClientSubscriptions
+    public class ClientSubscriptionViewModel
     {
         public Guid ClientID { get; set; }
         public Guid SubscriptionID { get; set; }

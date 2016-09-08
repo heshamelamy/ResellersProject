@@ -26,5 +26,10 @@ namespace HubManPractices.Service
         bool NeedsRenewal(Client client);
 
         ClientSubscriptions GetClientSubscription(Guid ClientID, Guid SubID);
+
+        bool ClientNameAndMailExists(string ClientName, string ContactMail);
+
+        bool ClientNameAndMailExistsAndDeleted(string ClientName, string ContactMail);
+        Client GetClientByNameAndMail(string ClientName, string ContactMail);
     }
 }

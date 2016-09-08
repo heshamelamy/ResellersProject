@@ -169,6 +169,7 @@
     <Compile Include="RoleService.cs" />
     <Compile Include="SubscriptionsService.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\ClientSubscriptionViewModel.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="ViewModels\Mappings\DomainToViewModelMappingProfile.cs" />

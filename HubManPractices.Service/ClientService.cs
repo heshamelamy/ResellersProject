@@ -89,5 +89,21 @@ namespace HubManPractices.Service
         {
             return clientsRepository.GetClientSubscription(ClientID, SubID);
         }
+
+
+        public bool ClientNameAndMailExists(string ClientName, string ContactMail)
+        {
+            return clientsRepository.ClientNameAndMailExists(ClientName, ContactMail);
+        }
+
+
+        public bool ClientNameAndMailExistsAndDeleted(string ClientName, string ContactMail)
+        {
+            return clientsRepository.ClientNameAndMailExistsAndDeleted(ClientName, ContactMail);
+        }
+        public Client GetClientByNameAndMail(string ClientName,string ContactMail)
+        {
+            return clientsRepository.GetByNameAndMail(ClientName, ContactMail);
+        }
     }
 }

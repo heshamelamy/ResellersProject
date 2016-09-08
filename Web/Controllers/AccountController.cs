@@ -44,6 +44,25 @@ namespace WebApp.Controllers
             [HttpPost]
             public async Task<ActionResult> SendEmail(FormCollection Fc)
             {
+
+                if (ClientService.ClientNameAndMailExistsAndDeleted(Fc["Item1.ClientName"], Fc["Item1.ContactMail"]))
+                {
+                    TempData["NameAndMailExistsAndDeleted"] = "The Client you are trying to add was deleted , Choose What To Do :";
+                    Client client = new Client() {Expiry=null,IsExpiryNull=true,ClientName = Fc["Item1.ClientName"], ContactMail = Fc["Item1.ContactMail"], ContactName = Fc["Item1.ContactName"], ContactNumber = Int32.Parse(Fc["Item1.ContactNumber"]), ContactTitle = Fc["Item1.ContactTitle"],ResellerID=Guid.Parse(Fc["ResellerID"])};
+                    IEnumerable<OfficeSubscription> Subscriptions = SubscriptionsService.GetAllSubscriptions();
+                    foreach (var Sub in Subscriptions)
+                    {
+                        string idx = Sub.MonthlyFee.ToString();
+                        if(Fc[Sub.SubscriptionName]!="")
+                        {
+                            client.NumberofLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
+                            client.ClientSubscriptions.Add(new ClientSubscriptions() { SubscriptionID = Guid.Parse(Fc[idx]), UsersPerSubscription = Int32.Parse(Fc[Sub.SubscriptionName]),OfficeSubscription=Sub });
+                            
+                        }
+                    }
+
+                    return View("~/Views/Client/Exist.cshtml",ClientService.MapToViewModel(client));
+                }
                 
                 try
                 {
@@ -57,7 +76,6 @@ namespace WebApp.Controllers
                     {
                          NumberOfLicenses+=Int32.Parse(Fc[Sub.SubscriptionName]);
                     }
-
                    
                     if(!ClientService.Exists(client) || ClientService.ExistsAndDeleted(client))
                     {
@@ -101,7 +119,7 @@ namespace WebApp.Controllers
                 }
                 catch (DbUpdateException ex)
                 {
-                    TempData["Exists"] = "This Client is already added in the system";
+                    TempData["Exists"] = "Contact Mail Can not be repeated";
                     return RedirectToAction("Create","Client",new { ResellerID = Guid.Parse(Fc["ResellerID"]) });
                 }
                 catch (Exception ex)
