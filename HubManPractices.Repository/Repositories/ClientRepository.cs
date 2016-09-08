@@ -76,6 +76,12 @@ namespace HubManPractices.Repository.Repositories
         {
             return DbContext.Clients.Where(c => c.ClientName == client.ClientName && c.ContactMail == client.ContactMail).Where(c => c.IsDeleted == true).FirstOrDefault();
         }
+
+
+        public ClientSubscriptions GetClientSubscription(Guid ClientID, Guid SubID)
+        {
+            return DbContext.ClientSubscriptions.Where(c => c.ClientID == ClientID && c.SubscriptionID == SubID).FirstOrDefault();
+        }
     }
 
 }

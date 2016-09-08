@@ -182,7 +182,8 @@ namespace WebApp.Controllers
                         if (Fc[Sub.SubscriptionName] != "")
                         {
                             string idx = Sub.MonthlyFee.ToString();
-                            client.ClientSubscriptions.Add(new ClientSubscriptions() { ClientID = client.ClientID, SubscriptionID = Guid.Parse(Fc[idx]), UsersPerSubscription = Int32.Parse(Fc[Sub.SubscriptionName]) });
+                            ClientSubscriptions ClientSub= ClientService.GetClientSubscription(client.ClientID, Sub.SubscriptionID);
+                            ClientSub.UsersPerSubscription += Int32.Parse(Fc[Sub.SubscriptionName]);
                         }
                     }
                     ClientService.SaveClient();

@@ -52,7 +52,7 @@
             @Html.DisplayFor(modelItem=>item.Status)
         </td>
         <td>
-            @if (Html.Action("HasPermission", "Client", new { pname = "Upgrade Client" }).ToString() == "True" && item.Status!= "Upgraded" && item.Status != "On Hold" && item.Status!="Waiting For Renewal")
+            @if (Html.Action("HasPermission", "Client", new { pname = "Upgrade Client" }).ToString() == "True"  && item.Status != "On Hold" && item.Status!="Waiting For Renewal")
             {
                 @Html.ActionLink("Upgrade", "Upgrade", new { ClientID = item.ClientID }, new { @class = "btn btn-primary btn-xs" })
                 @: |

@@ -83,5 +83,11 @@ namespace HubManPractices.Service
         {
             return clientsRepository.NeedsRenewal(client);
         }
+
+
+        public ClientSubscriptions GetClientSubscription(Guid ClientID, Guid SubID)
+        {
+            return clientsRepository.GetClientSubscription(ClientID, SubID);
+        }
     }
 }

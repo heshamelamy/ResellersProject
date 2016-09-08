@@ -16,5 +16,7 @@ namespace HubManPractices.Repository.Repositories
 
           Client GetDeletedClient(Client client);
           bool NeedsRenewal(Client client);
+
+          ClientSubscriptions GetClientSubscription(Guid ClientID, Guid SubID);
     }
 }
