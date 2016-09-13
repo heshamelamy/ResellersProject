@@ -23,5 +23,6 @@ namespace HubManPractices.Repository.Repositories
           bool ClientNameAndMailExistsAndDeleted(string ClientName, string ContactMail);
 
           Client GetByNameAndMail(string ClientName, string ContactMail);
+
     }
 }

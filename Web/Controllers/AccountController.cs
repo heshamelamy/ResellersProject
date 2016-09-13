@@ -56,8 +56,7 @@ namespace WebApp.Controllers
                         if(Fc[Sub.SubscriptionName]!="")
                         {
                             client.NumberofLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
-                            client.ClientSubscriptions.Add(new ClientSubscriptions() { SubscriptionID = Guid.Parse(Fc[idx]), UsersPerSubscription = Int32.Parse(Fc[Sub.SubscriptionName]),OfficeSubscription=Sub });
-                            
+                            client.ClientSubscriptions.Add(new ClientSubscriptions() {SubscriptionID = Guid.Parse(Fc[idx]), UsersPerSubscription = Int32.Parse(Fc[Sub.SubscriptionName]), OfficeSubscription = SubscriptionsService.GetById(Guid.Parse(Fc[idx]))});
                         }
                     }
 

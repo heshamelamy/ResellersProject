@@ -12,5 +12,7 @@ namespace HubManPractices.Service
     {
         IEnumerable<OfficeSubscription> GetAllSubscriptions();
         IEnumerable<OfficeSubscriptionViewModel> MapToViewModel(IEnumerable<OfficeSubscription> OfficeSubscriptions);
+
+        OfficeSubscription GetById(Guid SubID);
     }
 }

@@ -2,6 +2,7 @@
 using HubManPractices.Repository.Infastructure;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,8 @@ namespace HubManPractices.Repository.Repositories
              Client ToBeDeleted = Get(c => c.ClientID == client.ClientID);
              ToBeDeleted.IsDeleted = true;
              ToBeDeleted.Status = "Terminated";
+             ToBeDeleted.IsExpiryNull = true;
+             ToBeDeleted.Expiry = null;
              DbContext.Commit();
              IEnumerable<ClientSubscriptions> ClientSubs = DbContext.ClientSubscriptions.Where(c => c.ClientID == client.ClientID);
              foreach(var Sub in ClientSubs)
@@ -101,8 +104,10 @@ namespace HubManPractices.Repository.Repositories
 
         public Client GetByNameAndMail(string ClientName, string ContactMail)
         {
-            return DbContext.Clients.Where(c => c.ContactMail == ContactMail && c.ClientName == ClientName).FirstOrDefault();
+            Client client= DbContext.Clients.Where(c => c.ContactMail == ContactMail && c.ClientName == ClientName).FirstOrDefault();
+            return DbContext.Clients.Find(client.ClientID);
         }
+
     }
 
 }

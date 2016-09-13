@@ -27,6 +27,16 @@
 {
     <div class="alert alert-danger">@TempData["ErrorCreate"]</div>
 }
+
+@if (TempData["ReAddError"] != null)
+{
+    <div class="alert alert-danger">@TempData["ReAddError"]</div>
+}
+
+@if (TempData["ReActivateError"] != null)
+{
+    <div class="alert alert-danger">@TempData["ReActivateError"]</div>
+}
 <h2>Create</h2>
 
 

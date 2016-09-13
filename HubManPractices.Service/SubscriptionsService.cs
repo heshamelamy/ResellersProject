@@ -32,5 +32,12 @@ namespace HubManPractices.Service
         {
             return Mapper.Map<IEnumerable<OfficeSubscription>, IEnumerable<OfficeSubscriptionViewModel>>(OfficeSubscriptions);
         }
+
+
+
+        public OfficeSubscription GetById(Guid SubID)
+        {
+            return SubscriptionsRepository.GetById(SubID);
+        }
     }
 }

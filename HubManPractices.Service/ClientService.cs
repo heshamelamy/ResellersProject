@@ -105,5 +105,6 @@ namespace HubManPractices.Service
         {
             return clientsRepository.GetByNameAndMail(ClientName, ContactMail);
         }
+
     }
 }

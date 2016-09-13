@@ -74,12 +74,26 @@ namespace WebApp.Controllers
             Client ToReactivate = ClientService.GetClientByNameAndMail(Fc["ClientName"], Fc["ContactMail"]);
             ToReactivate.IsDeleted = false;
             ToReactivate.Status = "On Hold";
+            ToReactivate.Expiry = null;
+            ToReactivate.IsExpiryNull = true;
+            var i=0;
             foreach(var Sub in ToReactivate.ClientSubscriptions)
             {
-                Sub.IsDeleted = false;
+                ToReactivate.ClientSubscriptions.ElementAt(i).IsDeleted = false;
+                i++;
             }
-            ClientService.EditClient(ToReactivate);
-            
+            try
+            {
+                ClientService.EditClient(ToReactivate);
+            }
+            catch(DbUpdateException ex)
+            {
+                TempData["ReActivateError"] = "Error in Readding the client again..";
+                return RedirectToAction("Create", new { ResellerID = ToReactivate.ResellerID });
+            }
+           
+            HubManPractices.Models.Action Reactivate = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "ReAactivated", Client = ToReactivate, Date = DateTime.Now };
+            ActionService.CreateAction(Reactivate);
             TempData["ReactivateClient"] = "The Client has been Reactivated";
             return RedirectToAction("Index", new { ResellerID = ToReactivate.ResellerID});
         }
@@ -93,25 +107,36 @@ namespace WebApp.Controllers
                 foreach (var Sub in Subscriptions)
                 {
                     string idx = Sub.MonthlyFee.ToString();
-                    if(Fc[Sub.SubscriptionName]!="")
+                    if (Fc[idx] != "")
                     {   
-                        ToReAdd.NumberofLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
+                        ToReAdd.NumberofLicenses += Int32.Parse(Fc[idx]);
                     }
                 }
 
                 foreach(var Sub in ToReAdd.ClientSubscriptions)
                 {
-                    Sub.IsDeleted = false;
-                    Sub.UsersPerSubscription = Int32.Parse(Fc[Sub.OfficeSubscription.SubscriptionName]);
+                    if (Fc[Sub.OfficeSubscription.MonthlyFee.ToString()]!= "")
+                    {
+                        Sub.IsDeleted = false;
+                        Sub.UsersPerSubscription = Int32.Parse(Fc[Sub.OfficeSubscription.MonthlyFee.ToString()]);
+                    }
                 }
                 ToReAdd.ContactName = Fc["ContactName"];
                 ToReAdd.ContactNumber = Int32.Parse(Fc["ContactNumber"]);
                 ToReAdd.ContactTitle = Fc["ContactTitle"];
-                ToReAdd.Expiry = DateTime.Parse(Fc["Expiry"]);
+                ToReAdd.Expiry = null;
                 ToReAdd.IsDeleted = false;
                 ToReAdd.IsExpiryNull = true;
                 ToReAdd.Status = Fc["Status"];
-                ClientService.EditClient(ToReAdd);
+                try
+                {
+                    ClientService.EditClient(ToReAdd);                
+                }
+                catch(DbUpdateException ex)
+                {
+                    TempData["ReAddError"] = "Error in Readding the client again..";
+                    return RedirectToAction("Create", new { ResellerID = ToReAdd.ResellerID});
+                }
                 return RedirectToAction("Index", new { ResellerID = ToReAdd.ResellerID }); 
         }
 
