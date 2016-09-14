@@ -16,5 +16,6 @@ namespace HubManPractices.Repository.Repositories
 
         IEnumerable<Client> GetResellerClients(Guid ResellerID);
         bool QuotaFull(Guid ResellerID);
+        IEnumerable<Client> GetResellerDeletedClients(Guid resellerID);
     }
 }

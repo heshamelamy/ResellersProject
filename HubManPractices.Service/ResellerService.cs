@@ -87,5 +87,10 @@ namespace HubManPractices.Service
         {
             return resellersRepository.QuotaFull(ResellerID);
         }
+
+        public IEnumerable<Client> GetResellerDeletedClients(Guid resellerID)
+        {
+            return resellersRepository.GetResellerDeletedClients(resellerID);
+        }
     }
 }

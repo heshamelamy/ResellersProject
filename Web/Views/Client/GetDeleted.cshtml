@@ -1,0 +1,70 @@
+﻿@model IEnumerable<HubManPractices.Service.ViewModels.ClientViewModel>
+
+@{
+    ViewBag.Title = "GetDeleted";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetDeleted</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactMail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberofLicenses)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactMail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberofLicenses)
+        </td>
+        <td>
+            @using (Html.BeginForm("Reactivate", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
+            {
+                @Html.Hidden("ClientName", item.ClientName)
+                @Html.Hidden("ContactMail", item.ContactMail)
+                <input type="submit" value="Reactivate" class="btn btn-danger btn-xs" style="margin-right:30px" />
+            }
+        </td>
+    </tr>
+}
+
+</table>

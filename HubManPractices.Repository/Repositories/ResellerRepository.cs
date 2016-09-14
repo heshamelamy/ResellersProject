@@ -61,5 +61,10 @@ namespace HubManPractices.Repository.Repositories
             else return false;
 
         }
+
+        public IEnumerable<Client> GetResellerDeletedClients(Guid resellerID)
+        {
+            return this.DbContext.Resellers.Find(resellerID).Clients.Where(c => c.IsDeleted == true);
+        }
     }
 }

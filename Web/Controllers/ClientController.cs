@@ -69,6 +69,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
+        [MyAuthFilter(Roles = "Global Admin,Reseller Admin")]
         public ActionResult Reactivate(FormCollection Fc)
         {
             Client ToReactivate = ClientService.GetClientByNameAndMail(Fc["ClientName"], Fc["ContactMail"]);
@@ -99,6 +100,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
+        [MyAuthFilter(Roles = "Global Admin,Reseller Admin")]
         public ActionResult ReAdd(FormCollection Fc)
         {
             Client ToReAdd = ClientService.GetClientByNameAndMail(Fc["ClientName"], Fc["ContactMail"]);
@@ -307,6 +309,11 @@ namespace WebApp.Controllers
             return View("~/Views/Home/UnAuthorized.cshtml");
         }
 
+        [MyAuthFilter(Roles = "Global Admin,Reseller Admin")]
+        public ActionResult GetDeleted(Guid ResellerID)
+        {
+            return View(ClientService.MapToViewModel(ResellerService.GetResellerDeletedClients(ResellerID)));
+        }
 
         public bool HasPermission(string PName)
         {

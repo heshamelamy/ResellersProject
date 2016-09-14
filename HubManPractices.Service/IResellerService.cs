@@ -22,5 +22,6 @@ namespace HubManPractices.Service
 
         bool QuotaFull(Guid ResellerID);
         IEnumerable<Reseller> SearchForResellers(string Query);
+        IEnumerable<Client> GetResellerDeletedClients(Guid resellerID);
     }
 }

@@ -36,7 +36,9 @@
 
 <p>
     @Html.ActionLink("Add Client", "Create", new { ResellerID =TempData["ResellerID"]})
+    @Html.ActionLink("Show Deleted Clients", "GetDeleted", new { ResellerID = TempData["ResellerID"] }, new { @style = "float:right" })
 </p>
+
 <table class="table">
     <tr>
         <th>

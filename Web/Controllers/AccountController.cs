@@ -53,7 +53,7 @@ namespace WebApp.Controllers
                     foreach (var Sub in Subscriptions)
                     {
                         string idx = Sub.MonthlyFee.ToString();
-                        if(Fc[Sub.SubscriptionName]!="")
+                        if(Fc[Sub.SubscriptionName]!="" && Fc[Sub.SubscriptionName] != "0")
                         {
                             client.NumberofLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
                             client.ClientSubscriptions.Add(new ClientSubscriptions() {SubscriptionID = Guid.Parse(Fc[idx]), UsersPerSubscription = Int32.Parse(Fc[Sub.SubscriptionName]), OfficeSubscription = SubscriptionsService.GetById(Guid.Parse(Fc[idx]))});
@@ -73,7 +73,10 @@ namespace WebApp.Controllers
                     int NumberOfLicenses=0;
                     foreach(var Sub in Subscriptions)
                     {
-                         NumberOfLicenses+=Int32.Parse(Fc[Sub.SubscriptionName]);
+                        if(Fc[Sub.SubscriptionName]!="" && Fc[Sub.SubscriptionName] != "0")
+                        {
+                             NumberOfLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
+                        }
                     }
                    
                     if(!ClientService.Exists(client) || ClientService.ExistsAndDeleted(client))
@@ -87,8 +90,11 @@ namespace WebApp.Controllers
                         client.Status = "On Hold";
                         foreach (var Sub in Subscriptions)
                         {
-                            string idx = Sub.MonthlyFee.ToString();
-                            client.ClientSubscriptions.Add(new ClientSubscriptions(){ClientID=client.ClientID,SubscriptionID=Guid.Parse(Fc[idx]),UsersPerSubscription=Int32.Parse(Fc[Sub.SubscriptionName])});
+                            if(Fc[Sub.SubscriptionName]!="" && Fc[Sub.SubscriptionName]!="0")
+                            {
+                                string idx = Sub.MonthlyFee.ToString();
+                                client.ClientSubscriptions.Add(new ClientSubscriptions() { ClientID = client.ClientID, SubscriptionID = Guid.Parse(Fc[idx]), UsersPerSubscription = Int32.Parse(Fc[Sub.SubscriptionName]) });
+                            }
                         }
                         ClientService.CreateClient(client);
                         HubManPractices.Models.Action OnHold = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "On Hold", Client = client, Date = DateTime.Now};
