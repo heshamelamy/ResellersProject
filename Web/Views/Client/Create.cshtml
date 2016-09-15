@@ -33,6 +33,8 @@
     <div class="alert alert-danger">@TempData["ReAddError"]</div>
 }
 
+
+
 @if (TempData["ReActivateError"] != null)
 {
     <div class="alert alert-danger">@TempData["ReActivateError"]</div>
@@ -81,8 +83,11 @@
             @Html.LabelFor(model => model.Item1.ContactNumber, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Item1.ContactNumber)
-                @Html.ValidationMessageFor(model => model.Item1.ContactNumber)
             </div>
+            @if (TempData["NumberWrongFormat"] != null)
+            {
+                <p>@TempData["NumberWrongFormat"]</p>
+            }
         </div>
 
         <div class="form-group">

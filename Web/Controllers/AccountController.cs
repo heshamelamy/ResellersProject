@@ -44,7 +44,7 @@ namespace WebApp.Controllers
             [HttpPost]
             public async Task<ActionResult> SendEmail(FormCollection Fc)
             {
-                if(EmailIsCorrectFormat(Fc["Item1.ContactMail"]))
+                if (EmailIsCorrectFormat(Fc["Item1.ContactMail"]) && Fc["Item1.ContactNumber"].ToString().Count()==11)
               {
                 if (ClientService.ClientNameAndMailExistsAndDeleted(Fc["Item1.ClientName"], Fc["Item1.ContactMail"]))
                 {
@@ -137,8 +137,16 @@ namespace WebApp.Controllers
             }
                else
             {
-                TempData["EmailWrongFormat"] = "The E-mail You entered is not in the correct format";
-                return RedirectToAction("Create", "Client", new { ResellerID = Guid.Parse(Fc["ResellerID"])});
+                if (!EmailIsCorrectFormat(Fc["Item1.ContactMail"]))
+                {
+                    TempData["EmailWrongFormat"] = "The E-mail You entered is not in the correct format";
+                    return RedirectToAction("Create", "Client", new { ResellerID = Guid.Parse(Fc["ResellerID"]) });
+                }
+                else
+                {
+                    TempData["NumberWrongFormat"] = "The Contact Number You entered is not a Mobile Number";
+                    return RedirectToAction("Create", "Client", new { ResellerID = Guid.Parse(Fc["ResellerID"]) });
+                }
             }
 
         }
