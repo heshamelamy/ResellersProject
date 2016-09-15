@@ -4,6 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+@if (TempData["NoReseller"] != null)
+{
+    <script>alert('This admin has no Reseller , Please Assign it to a Reseller from the Database');</script>
+}
+
 <h2>Index</h2>
 
 <div class="jumbotron">

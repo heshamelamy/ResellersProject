@@ -113,7 +113,6 @@ D:\ResellersProject\Util\bin\Debug\System.Web.Razor.xml
 D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.xml
 D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.Razor.xml
-D:\ResellersProject\Util\obj\Debug\Util.csprojResolveAssemblyReference.cache
 D:\ResellersProject\Util\obj\Debug\Util.dll
 D:\ResellersProject\Util\obj\Debug\Util.pdb
 C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\Util.dll

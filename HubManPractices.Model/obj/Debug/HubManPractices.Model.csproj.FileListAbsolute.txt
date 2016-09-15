@@ -131,4 +131,3 @@ C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\bin\De
 C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.csprojResolveAssemblyReference.cache
 C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.dll
 C:\Users\Hesham\Desktop\New folder\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.pdb
-D:\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.csprojResolveAssemblyReference.cache

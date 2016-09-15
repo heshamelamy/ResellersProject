@@ -9,6 +9,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using WebApp.Filters;
 
 namespace WebApp.Controllers
@@ -38,8 +39,16 @@ namespace WebApp.Controllers
 
                 else
                 {
-                    ResellerViewModels = ResellerService.MapToViewModel(ResellerService.GetUserReseller(User.Identity.GetUserId()));
-                    return View(ResellerViewModels);
+                    try
+                    {
+                        ResellerViewModels = ResellerService.MapToViewModel(ResellerService.GetUserReseller(User.Identity.GetUserId()));
+                        return View(ResellerViewModels);
+                    }
+                    catch(NullReferenceException ex)
+                    {
+                        TempData["NoReseller"] = "This admin has no reseller";
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
             
         }
