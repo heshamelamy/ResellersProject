@@ -15,7 +15,6 @@ namespace Util
         public static void Configure(ContainerBuilder builder)
         {
             builder.RegisterControllers(Assembly.GetCallingAssembly());
-
             Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
             builder.RegisterAssemblyTypes(assemblies).Where(t => t.Name.EndsWith("Service")).AsImplementedInterfaces().InstancePerRequest();
             builder.RegisterAssemblyTypes(assemblies).Where(t => t.Name.EndsWith("Repository")).AsImplementedInterfaces().InstancePerRequest();

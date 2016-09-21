@@ -32,5 +32,7 @@ namespace HubManPractices.Service
         bool ClientNameAndMailExistsAndDeleted(string ClientName, string ContactMail);
         Client GetClientByNameAndMail(string ClientName, string ContactMail);
 
+        IEnumerable<Client> GetClients();
+
     }
 }

@@ -23,5 +23,15 @@ namespace HubManPractices.Service
         {
             ActionsRepsoitory.Add(Action);
         }
+
+        public HubManPractices.Models.Action GetById(Guid id)
+        {
+            return ActionsRepsoitory.GetById(id);
+        }
+
+        public IEnumerable<HubManPractices.Models.Action> GetActions()
+        {
+            return ActionsRepsoitory.GetAll();
+        }
     }
 }

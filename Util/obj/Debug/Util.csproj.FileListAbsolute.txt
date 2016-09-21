@@ -94,27 +94,6 @@ C:\Users\Hesham\Documents\HubMan\Util\bin\Debug\Microsoft.AspNet.Identity.Core.x
 C:\Users\Hesham\Documents\HubMan\Util\obj\Debug\Util.csprojResolveAssemblyReference.cache
 C:\Users\Hesham\Documents\HubMan\Util\obj\Debug\Util.dll
 C:\Users\Hesham\Documents\HubMan\Util\obj\Debug\Util.pdb
-D:\ResellersProject\Util\bin\Debug\Util.dll
-D:\ResellersProject\Util\bin\Debug\Util.pdb
-D:\ResellersProject\Util\bin\Debug\Autofac.dll
-D:\ResellersProject\Util\bin\Debug\Autofac.Integration.Mvc.dll
-D:\ResellersProject\Util\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\ResellersProject\Util\bin\Debug\System.Web.Helpers.dll
-D:\ResellersProject\Util\bin\Debug\System.Web.Mvc.dll
-D:\ResellersProject\Util\bin\Debug\System.Web.Razor.dll
-D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.dll
-D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.Razor.dll
-D:\ResellersProject\Util\bin\Debug\Autofac.xml
-D:\ResellersProject\Util\bin\Debug\Autofac.Integration.Mvc.xml
-D:\ResellersProject\Util\bin\Debug\System.Web.Helpers.xml
-D:\ResellersProject\Util\bin\Debug\System.Web.Mvc.xml
-D:\ResellersProject\Util\bin\Debug\System.Web.Razor.xml
-D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.xml
-D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.Razor.xml
-D:\ResellersProject\Util\obj\Debug\Util.dll
-D:\ResellersProject\Util\obj\Debug\Util.pdb
 C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\Util.dll
 C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\Util.pdb
 C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\Autofac.dll
@@ -137,3 +116,27 @@ C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\bin\Debug\System.Web.We
 C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\obj\Debug\Util.csprojResolveAssemblyReference.cache
 C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\obj\Debug\Util.dll
 C:\Users\Hesham\Desktop\New folder\ResellersProject\Util\obj\Debug\Util.pdb
+D:\ResellersProject\Util\bin\Debug\Util.dll
+D:\ResellersProject\Util\bin\Debug\Util.pdb
+D:\ResellersProject\Util\bin\Debug\Autofac.dll
+D:\ResellersProject\Util\bin\Debug\Autofac.Integration.Mvc.dll
+D:\ResellersProject\Util\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\ResellersProject\Util\bin\Debug\System.Web.Helpers.dll
+D:\ResellersProject\Util\bin\Debug\System.Web.Mvc.dll
+D:\ResellersProject\Util\bin\Debug\System.Web.Razor.dll
+D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.dll
+D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.Razor.dll
+D:\ResellersProject\Util\bin\Debug\Autofac.xml
+D:\ResellersProject\Util\bin\Debug\Autofac.Integration.Mvc.xml
+D:\ResellersProject\Util\bin\Debug\System.Web.Helpers.xml
+D:\ResellersProject\Util\bin\Debug\System.Web.Mvc.xml
+D:\ResellersProject\Util\bin\Debug\System.Web.Razor.xml
+D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.xml
+D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\ResellersProject\Util\bin\Debug\System.Web.WebPages.Razor.xml
+D:\ResellersProject\Util\obj\Debug\Util.dll
+D:\ResellersProject\Util\obj\Debug\Util.pdb
+D:\ResellersProject\Util\bin\Debug\Castle.Core.dll
+D:\ResellersProject\Util\bin\Debug\Castle.Core.xml
+D:\ResellersProject\Util\obj\Debug\Util.csprojResolveAssemblyReference.cache

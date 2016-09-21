@@ -106,5 +106,10 @@ namespace HubManPractices.Service
             return clientsRepository.GetByNameAndMail(ClientName, ContactMail);
         }
 
+
+        public IEnumerable<Client> GetClients()
+        {
+            return clientsRepository.GetMany(c => c.IsDeleted == false);
+        }
     }
 }

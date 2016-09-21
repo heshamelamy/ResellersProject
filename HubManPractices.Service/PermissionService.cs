@@ -41,5 +41,15 @@ namespace HubManPractices.Service
         {
             ApplicationEntity.Commit();
         }
+
+        public Permission GetById(Guid id)
+        {
+            return permissionsRepository.GetById(id);
+        }
+
+        public IEnumerable<Permission> GetPermissions()
+        {
+            return permissionsRepository.GetAll();
+        }
     }
 }

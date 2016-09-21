@@ -16,5 +16,9 @@ namespace HubManPractices.Service
         Permission HasPermission(string UserId,string PName);
         IEnumerable <ApplicationUser> GetUserInRole(string Role);
 
+        Role GetById(string id);
+
+        IEnumerable<Role> GetRoles();
+
     }
 }

@@ -139,7 +139,7 @@ namespace WebApp.Controllers
             {
                 if (!EmailIsCorrectFormat(Fc["Item1.ContactMail"]))
                 {
-                    TempData["EmailWrongFormat"] = "The E-mail You entered is not in the correct format";
+                    TempData["EmailWrongFormhat"] = "The E-mail You entered is not in the correct format";
                     return RedirectToAction("Create", "Client", new { ResellerID = Guid.Parse(Fc["ResellerID"]) });
                 }
                 else

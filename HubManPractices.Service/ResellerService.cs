@@ -16,6 +16,11 @@ namespace HubManPractices.Service
         private readonly IResellerRepository resellersRepository;
 
         private readonly ApplicationEntities ApplicationEntity;
+
+        public ResellerService(ResellerRepository RR)
+        {
+            this.resellersRepository = RR;
+        }
         public ResellerService(ApplicationEntities Ae, IResellerRepository RR)
         {
             this.resellersRepository = RR;

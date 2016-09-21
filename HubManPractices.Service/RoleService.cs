@@ -57,5 +57,15 @@ namespace HubManPractices.Service
         {
             return rolesRepository.GetUserInRole(Role);
         }
+
+        public Role GetById(string id)
+        {
+            return rolesRepository.GetById(id);
+        }
+
+        public IEnumerable<Role> GetRoles()
+        {
+            return rolesRepository.GetAll();
+        }
     }
 }
