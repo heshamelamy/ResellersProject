@@ -49,19 +49,15 @@ namespace HubManPractices.Repository
         {
             var GlobalAdmin = new ApplicationUser() { Email = "heshamelelamy@gmail.com", SecurityStamp = Guid.NewGuid().ToString(), UserName = "AmrElSehemy", PasswordHash = new PasswordHasher().HashPassword("global123") };
             var GlobalAdmin2 = new ApplicationUser() { Email = "heshamelelamy@gmail.com", SecurityStamp = Guid.NewGuid().ToString(), UserName = "OmarElSakka", PasswordHash = new PasswordHasher().HashPassword("global123") };
-            var ResellerAdmin = new ApplicationUser() {SecurityStamp = Guid.NewGuid().ToString(), UserName = "adminreseller", PasswordHash = new PasswordHasher().HashPassword("reseller123") };
            
 
 
             //password must be greater than 6 chars
             context.Users.AddOrUpdate(GlobalAdmin);
             context.Users.AddOrUpdate(GlobalAdmin2);
-            context.Users.AddOrUpdate(ResellerAdmin);
 
             context.ApplicationUserRoles.AddOrUpdate(t => t.UserId, new ApplicationUserRole() { RoleId = GlobalRole.Id, UserId = GlobalAdmin.Id });
             context.ApplicationUserRoles.AddOrUpdate(t => t.UserId, new ApplicationUserRole() { RoleId = GlobalRole.Id, UserId = GlobalAdmin2.Id });
-            context.ApplicationUserRoles.AddOrUpdate(t => t.UserId, new ApplicationUserRole() { RoleId = ResellerRole.Id, UserId = ResellerAdmin.Id });
-
         }
 
         private static void AddRolesPermissions(ApplicationEntities context)
