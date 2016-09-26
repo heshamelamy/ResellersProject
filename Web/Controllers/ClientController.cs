@@ -245,18 +245,34 @@ namespace WebApp.Controllers
                 {
                     IEnumerable<OfficeSubscription> Subscriptions = SubscriptionService.GetAllSubscriptions();
                     client.IsExpiryNull = false;
-                    foreach (var Sub in Subscriptions)
+                    if(Fc["OfficeRequest"]=="")
                     {
-                        if(Fc[Sub.SubscriptionName]!="")
-                        client.NumberofLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
+                        foreach (var Sub in Subscriptions)
+                        {
+                            if (Fc[Sub.SubscriptionName] != "")
+                                client.NumberofLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
+                        }
                     }
+                    else
+                    {
+                        client.NumberofLicenses += Int32.Parse(Fc["OfficeRequest"]);
+                    }
+                   
                     foreach (var Sub in Subscriptions)
                     {
-                        if (Fc[Sub.SubscriptionName] != "")
+                        if (Fc[Sub.SubscriptionName] != "" && Fc[Sub.SubscriptionName] != "0")
                         {
                             string idx = Sub.MonthlyFee.ToString();
                             ClientSubscriptions ClientSub= ClientService.GetClientSubscription(client.ClientID, Sub.SubscriptionID);
-                            ClientSub.UsersPerSubscription += Int32.Parse(Fc[Sub.SubscriptionName]);
+                            if(ClientSub==null)
+                            {
+                                //No Determined Office Licenses but now he has ..
+                                client.ClientSubscriptions.Add(new ClientSubscriptions() { SubscriptionID = Guid.Parse(Fc[idx]), UsersPerSubscription = Int32.Parse(Fc[Sub.SubscriptionName]), OfficeSubscription = SubscriptionService.GetById(Guid.Parse(Fc[idx])) });
+                            }
+                            else
+                            {
+                                ClientSub.UsersPerSubscription += Int32.Parse(Fc[Sub.SubscriptionName]);
+                            }
                         }
                     }
                     ClientService.SaveClient();

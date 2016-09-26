@@ -5,20 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-@{
-    List<SelectListItem> select = new List<SelectListItem>();
-    foreach (var item in Model.Item2)
-    {
-        select.Add(new SelectListItem
-        {
-            Text = item.SubscriptionName,
-            Value = item.SubscriptionID.ToString()
-        });
-    }
-}
-
-
 @if (TempData["Exists"]!=null)
 {
     <div class="alert alert-danger" >@TempData["Exists"]</div>
@@ -39,88 +25,78 @@
 {
     <div class="alert alert-danger">@TempData["ReActivateError"]</div>
 }
-<h2>Create</h2>
 
 
-@using (Html.BeginForm("SendEmail","Account",FormMethod.Post)) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>ClientViewModel</h4>
-        <hr />
-        @Html.ValidationSummary(true)
-
-        <div class="form-group">
-            @Html.Hidden("ResellerID",TempData["ResellerID"])
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Item1.ClientName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Item1.ClientName)
-                @Html.ValidationMessageFor(model => model.Item1.ClientName)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Item1.ContactName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Item1.ContactName)
-                @Html.ValidationMessageFor(model => model.Item1.ContactName)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Item1.ContactTitle, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Item1.ContactTitle)
-                @Html.ValidationMessageFor(model => model.Item1.ContactTitle)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Item1.ContactNumber, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Item1.ContactNumber)
-            </div>
-            @if (TempData["NumberWrongFormat"] != null)
-            {
-                <p>@TempData["NumberWrongFormat"]</p>
-            }
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Item1.ContactMail, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Item1.ContactMail)
-            </div>
-            @if (TempData["EmailWrongFormat"] != null)
-            {
-                <p>@TempData["EmailWrongFormat"]</p>
-            }
-        </div>
-
-
-        @foreach(var Sub in Model.Item2)
-        {
-         <div class="form-group">
-            <div class="col-md-10">
-                @Html.DropDownList(Sub.MonthlyFee.ToString(), select)
-                @Html.TextBox(Sub.SubscriptionName, null, new { @type = "number" })
-            </div>
-        </div>   
-        }
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-
+<div class="contactContainer">
+    <div class="banner">
+        <div>Create View Module</div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Show Clients List", "Index", new {ResellerID =TempData["ResellerID"]})
+    @using (Html.BeginForm("SendEmail", "Account", FormMethod.Post, new {@id="contactItem"}))
+    {
+        @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+        
+            @Html.Hidden("ResellerID", TempData["ResellerID"])
+
+            <label for="Item1.ClientName">@Html.DisplayNameFor(model => model.Item1.ClientName)</label>
+            @Html.EditorFor(model => model.Item1.ClientName, new { htmlAttributes = new { placeholder = "Enter Client Name" } })
+            @Html.ValidationMessageFor(model => model.Item1.ClientName)
+   
+
+            <label for="Item1.ContactName">@Html.DisplayNameFor(model => model.Item1.ContactName)</label>
+            @Html.EditorFor(model => model.Item1.ContactName, new { htmlAttributes = new { placeholder = "Enter Contact Name" } })
+            @Html.ValidationMessageFor(model => model.Item1.ContactName)
+
+           
+            <label for="Item1.ContactTitle">@Html.DisplayNameFor(model => model.Item1.ContactTitle)</label>
+            @Html.EditorFor(model => model.Item1.ContactTitle, new { htmlAttributes = new { placeholder = "Enter Contact Title" } })
+            @Html.ValidationMessageFor(model => model.Item1.ContactTitle)
+       
+
+            <label for="Item1.ContactNumber">@Html.DisplayNameFor(model => model.Item1.ContactNumber)</label>
+            @Html.EditorFor(model => model.Item1.ContactNumber, new { htmlAttributes = new { placeholder = "Enter Contact Number" } })
+            if (TempData["NumberWrongFormat"] != null)
+            {
+                @Html.ValidationMessage("ContactNumber", TempData["NumberWrongFormat"])
+            }
+
+            <label for="Item1.ContactMail">@Html.DisplayNameFor(model => model.Item1.ContactMail)</label>
+            @Html.EditorFor(model => model.Item1.ContactMail, new { htmlAttributes = new { placeholder = "Enter Contact Mail" } })
+            if (TempData["EmailWrongFormat"] != null)
+            {
+                @Html.ValidationMessage("ContactMail",TempData["EmailWrongFormat"])
+            }
+            
+            <div id="checkbox">
+                <label for="f-option">Do You Have Office365 ?</label>
+                <input type="radio"  id="y-option" name="selector"/>
+                <label for="y-option">Yes</label>
+                <input type="radio" id="n-option" name="selector" />
+                <label for="n-option">No</label>
+            </div>
+        
+        <div id="officeItemY">
+            @foreach (var Sub in Model.Item2)
+            {
+            <label for=@Sub.SubscriptionName.Replace(" ","_").ToString()>@Sub.SubscriptionName</label>
+                @Html.Hidden(Sub.MonthlyFee.ToString(), Sub.SubscriptionID)
+                @Html.TextBox(Sub.SubscriptionName, null, new { @type = "number", @placeholder = "Enter Number of " + Sub.SubscriptionName + " you have.." })
+            }
+        </div>
+        <div id="officeItemN">
+            <label for="OfficeRequest">Requested Number</label>
+            <input type="number" name="OfficeRequest" placeholder="Enter Number Of Office 365 you want" />
+        </div>
+        
+        <input type="submit" value="Create" />
+    }
+
 </div>
+
+
+@section scripts
+{
+    <script type="text/javascript" src="@Url.Content("/Scripts/script.js")"></script>
+}

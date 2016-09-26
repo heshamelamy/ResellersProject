@@ -16,79 +16,77 @@
 }
 
 
-@{
-    List<SelectListItem> select = new List<SelectListItem>();
-    foreach (var item in Model.Item2)
+
+
+<div class="contactContainer">
+    <div class="banner">
+        <div>Create View Module</div>
+    </div>
+
+    @using (Html.BeginForm("Upgrade", "Client", FormMethod.Post, new { @id = "contactItem" }))
     {
-        select.Add(new SelectListItem
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true)
+
+        @Html.Hidden("Item1.ClientID",Model.Item1.ClientID)
+
+        <label for="Item1.ClientName">@Html.DisplayNameFor(model => model.Item1.ClientName)</label>
+        @Html.EditorFor(model => model.Item1.ClientName, new { htmlAttributes = new { placeholder = "Enter Client Name", @readonly = "readonly" } })
+        @Html.ValidationMessageFor(model => model.Item1.ClientName)
+
+
+        <label for="Item1.ContactName">@Html.DisplayNameFor(model => model.Item1.ContactName)</label>
+        @Html.EditorFor(model => model.Item1.ContactName, new { htmlAttributes = new { placeholder = "Enter Contact Name", @readonly = "readonly" } })
+        @Html.ValidationMessageFor(model => model.Item1.ContactName)
+
+
+        <label for="Item1.ContactTitle">@Html.DisplayNameFor(model => model.Item1.ContactTitle)</label>
+        @Html.EditorFor(model => model.Item1.ContactTitle, new { htmlAttributes = new { placeholder = "Enter Contact Title", @readonly = "readonly" } })
+        @Html.ValidationMessageFor(model => model.Item1.ContactTitle)
+
+
+        <label for="Item1.ContactNumber">@Html.DisplayNameFor(model => model.Item1.ContactNumber)</label>
+        @Html.EditorFor(model => model.Item1.ContactNumber, new { htmlAttributes = new { placeholder = "Enter Contact Number", @readonly = "readonly" } })
+        if (TempData["NumberWrongFormat"] != null)
         {
-            Text = item.SubscriptionName,
-            Value = item.SubscriptionID.ToString()
-        });
-    }
-}
-
-<h2>Upgrade</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>ClientViewModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-           @Html.HiddenFor(m=>m.Item1.ClientID)
-        </div>
-        <div class="form-group">
-            @Html.HiddenFor(m => m.Item1.ResellerID)
-        </div>
-
-        <div class="form-group">
-            @Html.HiddenFor(m => m.Item1.ClientName)
-        </div>
-        <div class="form-group">
-            @Html.HiddenFor(m => m.Item1.ContactMail)
-        </div>
-        <div class="form-group">
-            @Html.HiddenFor(m => m.Item1.ContactName)
-        </div>
-        <div class="form-group">
-            @Html.HiddenFor(m => m.Item1.ContactNumber)
-        </div>
-        <div class="form-group">
-            @Html.HiddenFor(m => m.Item1.ContactTitle)
-        </div>
-        <div class="form-group">
-            @Html.HiddenFor(m => m.Item1.Expiry)
-        </div>
-
-        <div class="form-group">
-            @Html.Hidden("Status", "Activated")
-        </div>
-
-        @Html.LabelFor(m => m.Item1.NumberofLicenses)
-
-        @foreach (var Sub in Model.Item2)
-        {
-            <div class="form-group">
-                <div class="col-md-10">
-                    @Html.DropDownList(Sub.MonthlyFee.ToString(), select)
-                    @Html.TextBox(Sub.SubscriptionName, null, new { @type = "number" })
-                </div>
-            </div>
+            @Html.ValidationMessage("ContactNumber", TempData["NumberWrongFormat"])
         }
 
+        <label for="Item1.ContactMail">@Html.DisplayNameFor(model => model.Item1.ContactMail)</label>
+        @Html.EditorFor(model => model.Item1.ContactMail, new { htmlAttributes = new { placeholder = "Enter Contact Mail", @readonly = "readonly" } })
+        if (TempData["EmailWrongFormat"] != null)
+        {
+            @Html.ValidationMessage("ContactMail", TempData["EmailWrongFormat"])
+        }
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+        <div id="checkbox">
+            <label for="f-option">Do You Have Office365 ?</label>
+            <input type="radio" id="y-option" name="selector" />
+            <label for="y-option">Yes</label>
+            <input type="radio" id="n-option" name="selector" />
+            <label for="n-option">No</label>
         </div>
-    </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index",new {ResellerID=Model.Item1.ResellerID})
+        <div id="officeItemY">
+            @foreach (var Sub in Model.Item2)
+            {
+                <label for=@Sub.SubscriptionName.Replace(" ","_").ToString()>@Sub.SubscriptionName</label>
+                @Html.Hidden(Sub.MonthlyFee.ToString(), Sub.SubscriptionID)
+                @Html.TextBox(Sub.SubscriptionName, null, new { @type = "number", @placeholder = "Enter Number of " + Sub.SubscriptionName + " you have.." })
+            }
+        </div>
+        <div id="officeItemN">
+            <label for="OfficeRequest">Requested Number</label>
+            <input type="number" name="OfficeRequest" placeholder="Enter Number Of Office 365 you want" />
+        </div>
+
+        <input type="submit" value="Upgrade" />
+    }
+
 </div>
+
+@section scripts
+{
+    <script type="text/javascript" src="@Url.Content("/Scripts/script.js")"></script>
+}

@@ -14,42 +14,69 @@
 {
     <div class="alert alert-danger">@TempData["EditError"]</div>
 }
+<head>
+    <title>Edit Reseller</title>
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+</head>
 
-<h2>Edit</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+
+<div class="contactContainer">
+    <div class="banner">
+        <div>Edit</div>
+    </div>
+    @using (Html.BeginForm("Edit", "Reseller", FormMethod.Post, new {@id="contactItem"}))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("ResellerID", Model.ResellerID)
+        <label for="Name">@Html.DisplayNameFor(model=>model.Name)</label>
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { placeholder = "Enter Full Name" } })
+        if(User.IsInRole("Global Admin"))
+        {
+             <label for="ClientsQuota">@Html.DisplayNameFor(model => model.ClientsQuota)</label>
+            @Html.EditorFor(model => model.ClientsQuota, new { htmlAttributes = new { placeholder = "Enter Clients Quota" } })
+        
+        }
+        <input type="submit" value="Save" />
+    }
+</div>
+
+
     
-    <div class="form-horizontal">
+    
+    
+    
+    
+    <!--
+         <div class="form-horizontal">
         <h4>ResellerViewModel</h4>
         <hr />
-        @Html.ValidationSummary(true)
+        @@Html.ValidationSummary(true)
         <div class="form-group">
-            @Html.Hidden("ResellerID",Model.ResellerID)
+            @@Html.Hidden("ResellerID",Model.ResellerID)
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            @@Html.LabelFor(model => model.Name, new { @@class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
+                @@Html.EditorFor(model => model.Name)
+                @@Html.ValidationMessageFor(model => model.Name)
             </div>
         </div>
 
         <div class="form-group">
-            @if (User.IsInRole("Global Admin"))
+            @@*if (User.IsInRole("Global Admin"))
                {
-                     @Html.LabelFor(model => model.ClientsQuota, new { @class = "control-label col-md-2" })
+                     @@Html.LabelFor(model => model.ClientsQuota, new { @@class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.ClientsQuota)
-                        @Html.ValidationMessageFor(model => model.ClientsQuota)
+                        @@Html.EditorFor(model => model.ClientsQuota)
+                        @@Html.ValidationMessageFor(model => model.ClientsQuota)
                     </div>
                }
                else
                  {
-                     @Html.Hidden("ClientsQuota",Model.ClientsQuota)
-                 }
+                     @@Html.Hidden("ClientsQuota",Model.ClientsQuota)
+                 }*@@
               
         </div>
 
@@ -59,8 +86,7 @@
             </div>
         </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+    -->
+   

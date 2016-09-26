@@ -18,7 +18,6 @@ namespace HubManPractices.Repository
         private static Role ResellerRole = new Role {Name = "Reseller Admin", Permissions = new List<Permission>() };
 
 
-
         protected override void Seed(ApplicationEntities context)
         {
 
@@ -36,20 +35,20 @@ namespace HubManPractices.Repository
             var E1 = new OfficeSubscription() { SubscriptionID = Guid.NewGuid(), SubscriptionName = "Office E1", MonthlyFee = 8 };
             var E3 = new OfficeSubscription() { SubscriptionID = Guid.NewGuid(), SubscriptionName = "Office E3", MonthlyFee = 20 };
             var E5 = new OfficeSubscription() { SubscriptionID = Guid.NewGuid(), SubscriptionName = "Office E5", MonthlyFee = 33 };
-            var NoOffice = new OfficeSubscription() { SubscriptionID = Guid.NewGuid(), SubscriptionName = "NoOffice", MonthlyFee = 0 };
+            var Unknown = new OfficeSubscription() { SubscriptionID = Guid.NewGuid(), SubscriptionName = "UnKnown Licenses", MonthlyFee = 0 };
 
             context.OfficeSubscriptions.AddOrUpdate(ProPlus);
             context.OfficeSubscriptions.AddOrUpdate(E1);
             context.OfficeSubscriptions.AddOrUpdate(E3);
             context.OfficeSubscriptions.AddOrUpdate(E5);
-            context.OfficeSubscriptions.AddOrUpdate(NoOffice);
+            context.OfficeSubscriptions.AddOrUpdate(Unknown);
         }
 
 
         private static void AddUserAndRoles(ApplicationEntities context)
         {
-            var GlobalAdmin = new ApplicationUser() { Email = "amr.elsehemy@itworx.com", SecurityStamp = Guid.NewGuid().ToString(), UserName = "AmrElSehemy", PasswordHash = new PasswordHasher().HashPassword("global123") };
-            var GlobalAdmin2 = new ApplicationUser() { Email = "omar.elsakka@itworx.com", SecurityStamp = Guid.NewGuid().ToString(), UserName = "OmarElSakka", PasswordHash = new PasswordHasher().HashPassword("global123") };
+            var GlobalAdmin = new ApplicationUser() { Email = "heshamelelamy@gmail.com", SecurityStamp = Guid.NewGuid().ToString(), UserName = "AmrElSehemy", PasswordHash = new PasswordHasher().HashPassword("global123") };
+            var GlobalAdmin2 = new ApplicationUser() { Email = "heshamelelamy@gmail.com", SecurityStamp = Guid.NewGuid().ToString(), UserName = "OmarElSakka", PasswordHash = new PasswordHasher().HashPassword("global123") };
             var ResellerAdmin = new ApplicationUser() {SecurityStamp = Guid.NewGuid().ToString(), UserName = "adminreseller", PasswordHash = new PasswordHasher().HashPassword("reseller123") };
            
 

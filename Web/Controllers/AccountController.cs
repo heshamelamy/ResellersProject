@@ -50,15 +50,22 @@ namespace WebApp.Controllers
                 {
                     TempData["NameAndMailExistsAndDeleted"] = "The Client you are trying to add was deleted , Choose What To Do :";
                     Client client = new Client() { Expiry = null, IsExpiryNull = true, ClientName = Fc["Item1.ClientName"], ContactMail = Fc["Item1.ContactMail"], ContactName = Fc["Item1.ContactName"], ContactNumber = Int32.Parse(Fc["Item1.ContactNumber"]), ContactTitle = Fc["Item1.ContactTitle"], ResellerID = Guid.Parse(Fc["ResellerID"]) };
-                    IEnumerable<OfficeSubscription> Subscriptions = SubscriptionsService.GetAllSubscriptions();
-                    foreach (var Sub in Subscriptions)
+                    if(Fc["OfficeRequest"]=="")
                     {
-                        string idx = Sub.MonthlyFee.ToString();
-                        if (Fc[Sub.SubscriptionName] != "" && Fc[Sub.SubscriptionName] != "0")
+                        IEnumerable<OfficeSubscription> Subscriptions = SubscriptionsService.GetAllSubscriptions();
+                        foreach (var Sub in Subscriptions)
                         {
-                            client.NumberofLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
-                            client.ClientSubscriptions.Add(new ClientSubscriptions() { SubscriptionID = Guid.Parse(Fc[idx]), UsersPerSubscription = Int32.Parse(Fc[Sub.SubscriptionName]), OfficeSubscription = SubscriptionsService.GetById(Guid.Parse(Fc[idx])) });
+                            string idx = Sub.MonthlyFee.ToString();
+                            if (Fc[Sub.SubscriptionName] != "" && Fc[Sub.SubscriptionName] != "0")
+                            {
+                                client.NumberofLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
+                                client.ClientSubscriptions.Add(new ClientSubscriptions() { SubscriptionID = Guid.Parse(Fc[idx]), UsersPerSubscription = Int32.Parse(Fc[Sub.SubscriptionName]), OfficeSubscription = SubscriptionsService.GetById(Guid.Parse(Fc[idx])) });
+                            }
                         }
+                    }
+                    else
+                    {
+                        client.NumberofLicenses = Int32.Parse(Fc["OfficeRequest"]);
                     }
 
                     return View("~/Views/Client/Exist.cshtml", ClientService.MapToViewModel(client));
@@ -69,24 +76,26 @@ namespace WebApp.Controllers
                     Client client = new Client() { ClientID = Guid.NewGuid(), Expiry = null, IsExpiryNull = true, ClientName = Fc["Item1.ClientName"], ContactMail = Fc["Item1.ContactMail"], ContactName = Fc["Item1.ContactName"], ContactNumber = Int32.Parse(Fc["Item1.ContactNumber"]), ContactTitle = Fc["Item1.ContactTitle"], ResellerID = Guid.Parse(Fc["ResellerID"]) };
                     client.reseller = ResellerService.GetById(Guid.Parse(Fc["ResellerID"]));
 
-
-                    IEnumerable<OfficeSubscription> Subscriptions = SubscriptionsService.GetAllSubscriptions();
                     int NumberOfLicenses = 0;
-                    foreach (var Sub in Subscriptions)
+                    IEnumerable<OfficeSubscription> Subscriptions = SubscriptionsService.GetAllSubscriptions();
+                    if(Fc["OfficeRequest"]=="")
                     {
-                        if (Fc[Sub.SubscriptionName] != "" && Fc[Sub.SubscriptionName] != "0")
+                        
+                        foreach (var Sub in Subscriptions)
                         {
-                            NumberOfLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
+                            if (Fc[Sub.SubscriptionName] != "" && Fc[Sub.SubscriptionName] != "0")
+                            {
+                                NumberOfLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
+                            }
                         }
                     }
-
-                    if (!ClientService.Exists(client) || ClientService.ExistsAndDeleted(client))
+                    else
                     {
-
-                        if (ClientService.ExistsAndDeleted(client))
-                        {
-                            client = ClientService.GetDeletedClient(client);
-                        }
+                        NumberOfLicenses=Int32.Parse(Fc["OfficeRequest"]);
+                    }
+                   
+                    if (!ClientService.Exists(client))
+                    {
                         client.NumberofLicenses = NumberOfLicenses;
                         client.Status = "On Hold";
                         foreach (var Sub in Subscriptions)
@@ -194,6 +203,10 @@ namespace WebApp.Controllers
             [AllowAnonymous]
             public ActionResult Login(string returnUrl)
             {
+                if(User.Identity.IsAuthenticated)
+                {
+                    return RedirectToAction("Index", "Reseller");
+                }
                 ViewBag.ReturnUrl = returnUrl;
                 return View();
             }
@@ -530,7 +543,7 @@ namespace WebApp.Controllers
             public ActionResult LogOff()
             {
                 AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Account");
             }
 
             //

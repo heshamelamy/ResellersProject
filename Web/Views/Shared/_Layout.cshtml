@@ -6,42 +6,41 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/Style.css" rel="stylesheet" type="text/css" />
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Resellers Manager", "Index", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    @if (Request.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("Resellers", "Index", "Reseller")</li>
-                    }
-                    
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+
+    <div class="nav">
+        <div class="nav-left">
+            <ul>
+                <li><a href="/Home/Index">Home</a></li>
+                @if (Request.IsAuthenticated)
+                {
+                    <li><a href="/Reseller/Index">Resellers</a></li>
+                }
+            </ul>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p><strong>&copy; </strong>@DateTime.Now.Year - ITWorx Application</p>
-        </footer>
+        @Html.Partial("_LoginPartial")
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+<!--
+  <hr />
+    <footer>
+        <p><strong>&copy; </strong>@@DateTime.Now.Year - ITWorx Application</p>
+    </footer>
+-->
+
+    
+
+
+
+   
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

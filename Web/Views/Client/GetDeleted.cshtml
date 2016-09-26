@@ -5,66 +5,71 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>GetDeleted</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ClientName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ContactName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ContactNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ContactMail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ContactTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumberofLicenses)
-        </th>
-        <th></th>
-    </tr>
+<div class="contactContainer">
+    <div class="banner">
+        <div>Deleted Clients</div>
+    </div>
+    <div class="clearfix"></div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClientName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactMail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumberofLicenses)
-        </td>
-        <td>
-            @using (Html.BeginForm("Reactivate", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
-            {
-                @Html.Hidden("ClientName", item.ClientName)
-                @Html.Hidden("ContactMail", item.ContactMail)
-                <input type="submit" value="Reactivate" class="btn btn-danger btn-xs" style="margin-right:30px" />
+    <div class="clientListRow">
+        <div class="clientListHeader">
+            <div class="clientListRowHeader">
+                #
+            </div>
+            <div class="clientListRowHeader">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().ClientName)
+            </div>
+            <div class="clientListRowHeader">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Status)
+            </div>
+            <div class="clientListRowHeader">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().ContactNumber)
+            </div>
+            <div class="clientListRowHeader">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Expiry)
+            </div>
+            <div class="clientListRowHeader">
+                Action
+            </div>
+        </div>
+
+        <div class="clientListBody">
+
+            @{
+                var i = 0;
             }
-        </td>
-    </tr>
-}
+            @foreach (var item in Model)
+            {
+                ++i;
+                <div class="clientListRowBody">
+                    <div class="clientListRowBodyContainer">@i</div>
+                    <div class="clientListRowBodyContainer">@item.ClientName</div>
+                    <div class="clientListRowBodyContainer">@item.Status</div>
+                    <div class="clientListRowBodyContainer">@item.ContactNumber</div>
+                    @if (@item.IsExpiryNull == true)
+                    {
+                        <div class="clientListRowBodyContainer">No Expiry Yet</div>
+                    }
+                    else
+                    {
+                        <div class="clientListRowBodyContainer">@item.Expiry.ToString("MM-dd-yy")</div>
+                    }
+                    <div class="action">
+                     @using (Html.BeginForm("Reactivate", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
+                        {
+                            @Html.Hidden("ClientName", item.ClientName)
+                            @Html.Hidden("ContactMail", item.ContactMail)
+                            <input type="submit" value="Reactivate" data-type="reactivate" style="margin-right:30px" />
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 
-</table>
+
+</div>
+
+
+
