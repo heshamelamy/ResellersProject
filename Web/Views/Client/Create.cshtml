@@ -53,7 +53,13 @@
             <label for="Item1.ContactTitle">@Html.DisplayNameFor(model => model.Item1.ContactTitle)</label>
             @Html.EditorFor(model => model.Item1.ContactTitle, new { htmlAttributes = new { placeholder = "Enter Contact Title" } })
             @Html.ValidationMessageFor(model => model.Item1.ContactTitle)
-       
+
+
+            <label for="Item1.Location">@Html.DisplayNameFor(model => model.Item1.Location)</label>
+            @Html.EditorFor(model => model.Item1.Location, new { htmlAttributes = new { placeholder = "Enter Your Location.." } })
+            @Html.ValidationMessageFor(model => model.Item1.Location)
+
+
 
             <label for="Item1.ContactNumber">@Html.DisplayNameFor(model => model.Item1.ContactNumber)</label>
             @Html.EditorFor(model => model.Item1.ContactNumber, new { htmlAttributes = new { placeholder = "Enter Contact Number" } })
@@ -67,8 +73,13 @@
             if (TempData["EmailWrongFormat"] != null)
             {
                 @Html.ValidationMessage("ContactMail",TempData["EmailWrongFormat"])
-            }
-            
+        }
+
+
+        <label for="Item1.Seats">@Html.DisplayNameFor(model => model.Item1.Seats)</label>
+            @Html.EditorFor(model => model.Item1.Seats, new { htmlAttributes = new { placeholder = "Enter Number Of Seats.." } })
+            @Html.ValidationMessageFor(model => model.Item1.Seats)
+
             <div id="checkbox">
                 <label for="f-option">Do You Have Office365 ?</label>
                 <input type="radio"  id="y-option" name="selector"/>
@@ -85,10 +96,7 @@
                 @Html.TextBox(Sub.SubscriptionName, null, new { @type = "number", @placeholder = "Enter Number of " + Sub.SubscriptionName + " you have.." })
             }
         </div>
-        <div id="officeItemN">
-            <label for="OfficeRequest">Requested Number</label>
-            <input type="number" name="OfficeRequest" placeholder="Enter Number Of Office 365 you want" />
-        </div>
+       
         
         <input type="submit" value="Create" />
     }

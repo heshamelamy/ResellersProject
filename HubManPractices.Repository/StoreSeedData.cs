@@ -35,13 +35,13 @@ namespace HubManPractices.Repository
             var E1 = new OfficeSubscription() { SubscriptionID = Guid.NewGuid(), SubscriptionName = "Office E1", MonthlyFee = 8 };
             var E3 = new OfficeSubscription() { SubscriptionID = Guid.NewGuid(), SubscriptionName = "Office E3", MonthlyFee = 20 };
             var E5 = new OfficeSubscription() { SubscriptionID = Guid.NewGuid(), SubscriptionName = "Office E5", MonthlyFee = 33 };
-            var Unknown = new OfficeSubscription() { SubscriptionID = Guid.NewGuid(), SubscriptionName = "UnKnown Licenses", MonthlyFee = 0 };
+            //var Unknown = new OfficeSubscription() { SubscriptionID = Guid.NewGuid(), SubscriptionName = "UnKnown Licenses", MonthlyFee = 0 };
 
             context.OfficeSubscriptions.AddOrUpdate(ProPlus);
             context.OfficeSubscriptions.AddOrUpdate(E1);
             context.OfficeSubscriptions.AddOrUpdate(E3);
             context.OfficeSubscriptions.AddOrUpdate(E5);
-            context.OfficeSubscriptions.AddOrUpdate(Unknown);
+            //context.OfficeSubscriptions.AddOrUpdate(Unknown);
         }
 
 

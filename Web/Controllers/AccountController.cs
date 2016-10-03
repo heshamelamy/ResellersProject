@@ -49,25 +49,18 @@ namespace WebApp.Controllers
                 if (ClientService.ClientNameAndMailExistsAndDeleted(Fc["Item1.ClientName"], Fc["Item1.ContactMail"]))
                 {
                     TempData["NameAndMailExistsAndDeleted"] = "The Client you are trying to add was deleted , Choose What To Do :";
-                    Client client = new Client() { Expiry = null, IsExpiryNull = true, ClientName = Fc["Item1.ClientName"], ContactMail = Fc["Item1.ContactMail"], ContactName = Fc["Item1.ContactName"], ContactNumber = Int32.Parse(Fc["Item1.ContactNumber"]), ContactTitle = Fc["Item1.ContactTitle"], ResellerID = Guid.Parse(Fc["ResellerID"]) };
-                    if(Fc["OfficeRequest"]=="")
-                    {
+                    Client client = new Client() { Expiry = null, IsExpiryNull = true, ClientName = Fc["Item1.ClientName"], ContactMail = Fc["Item1.ContactMail"], ContactName = Fc["Item1.ContactName"], ContactNumber = Int32.Parse(Fc["Item1.ContactNumber"]), ContactTitle = Fc["Item1.ContactTitle"], ResellerID = Guid.Parse(Fc["ResellerID"]),Seats=Int32.Parse(Fc["Item1.Seats"]),Location=Fc["Item1.Location"],CreationDate=DateTime.Now};
                         IEnumerable<OfficeSubscription> Subscriptions = SubscriptionsService.GetAllSubscriptions();
                         foreach (var Sub in Subscriptions)
                         {
                             string idx = Sub.MonthlyFee.ToString();
                             if (Fc[Sub.SubscriptionName] != "" && Fc[Sub.SubscriptionName] != "0")
                             {
-                                client.NumberofLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
                                 client.ClientSubscriptions.Add(new ClientSubscriptions() { SubscriptionID = Guid.Parse(Fc[idx]), UsersPerSubscription = Int32.Parse(Fc[Sub.SubscriptionName]), OfficeSubscription = SubscriptionsService.GetById(Guid.Parse(Fc[idx])) });
                             }
                         }
-                    }
-                    else
-                    {
-                        client.NumberofLicenses = Int32.Parse(Fc["OfficeRequest"]);
-                    }
-
+                    
+              
                     return View("~/Views/Client/Exist.cshtml", ClientService.MapToViewModel(client));
                 }
 
@@ -76,28 +69,16 @@ namespace WebApp.Controllers
                     Client client = new Client() { ClientID = Guid.NewGuid(), Expiry = null, IsExpiryNull = true, ClientName = Fc["Item1.ClientName"], ContactMail = Fc["Item1.ContactMail"], ContactName = Fc["Item1.ContactName"], ContactNumber = Int32.Parse(Fc["Item1.ContactNumber"]), ContactTitle = Fc["Item1.ContactTitle"], ResellerID = Guid.Parse(Fc["ResellerID"]) };
                     client.reseller = ResellerService.GetById(Guid.Parse(Fc["ResellerID"]));
 
-                    int NumberOfLicenses = 0;
                     IEnumerable<OfficeSubscription> Subscriptions = SubscriptionsService.GetAllSubscriptions();
-                    if(Fc["OfficeRequest"]=="")
-                    {
-                        
-                        foreach (var Sub in Subscriptions)
-                        {
-                            if (Fc[Sub.SubscriptionName] != "" && Fc[Sub.SubscriptionName] != "0")
-                            {
-                                NumberOfLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        NumberOfLicenses=Int32.Parse(Fc["OfficeRequest"]);
-                    }
+        
+          
                    
                     if (!ClientService.Exists(client))
                     {
-                        client.NumberofLicenses = NumberOfLicenses;
+                        client.Seats = Int32.Parse(Fc["Item1.Seats"]);
                         client.Status = "On Hold";
+                        client.CreationDate = DateTime.Now;
+                        client.Location = Fc["Item1.Location"];
                         foreach (var Sub in Subscriptions)
                         {
                             if (Fc[Sub.SubscriptionName] != "" && Fc[Sub.SubscriptionName] != "0")

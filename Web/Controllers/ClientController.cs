@@ -104,17 +104,8 @@ namespace WebApp.Controllers
         public ActionResult ReAdd(FormCollection Fc)
         {
             Client ToReAdd = ClientService.GetClientByNameAndMail(Fc["ClientName"], Fc["ContactMail"]);
-             ToReAdd.NumberofLicenses=0;
               IEnumerable<OfficeSubscription> Subscriptions = SubscriptionService.GetAllSubscriptions();
-                foreach (var Sub in Subscriptions)
-                {
-                    string idx = Sub.MonthlyFee.ToString();
-                    if (Fc[idx] != "")
-                    {   
-                        ToReAdd.NumberofLicenses += Int32.Parse(Fc[idx]);
-                    }
-                }
-
+     
                 foreach(var Sub in ToReAdd.ClientSubscriptions)
                 {
                     if (Fc[Sub.OfficeSubscription.MonthlyFee.ToString()]!= "")
@@ -126,6 +117,7 @@ namespace WebApp.Controllers
                 ToReAdd.ContactName = Fc["ContactName"];
                 ToReAdd.ContactNumber = Int32.Parse(Fc["ContactNumber"]);
                 ToReAdd.ContactTitle = Fc["ContactTitle"];
+                ToReAdd.Seats = Int32.Parse(Fc["Seats"]);
                 ToReAdd.Expiry = null;
                 ToReAdd.IsDeleted = false;
                 ToReAdd.IsExpiryNull = true;
@@ -245,36 +237,8 @@ namespace WebApp.Controllers
                 {
                     IEnumerable<OfficeSubscription> Subscriptions = SubscriptionService.GetAllSubscriptions();
                     client.IsExpiryNull = false;
-                    if(Fc["OfficeRequest"]=="")
-                    {
-                        foreach (var Sub in Subscriptions)
-                        {
-                            if (Fc[Sub.SubscriptionName] != "")
-                                client.NumberofLicenses += Int32.Parse(Fc[Sub.SubscriptionName]);
-                        }
-                    }
-                    else
-                    {
-                        client.NumberofLicenses += Int32.Parse(Fc["OfficeRequest"]);
-                    }
-                   
-                    foreach (var Sub in Subscriptions)
-                    {
-                        if (Fc[Sub.SubscriptionName] != "" && Fc[Sub.SubscriptionName] != "0")
-                        {
-                            string idx = Sub.MonthlyFee.ToString();
-                            ClientSubscriptions ClientSub= ClientService.GetClientSubscription(client.ClientID, Sub.SubscriptionID);
-                            if(ClientSub==null)
-                            {
-                                //No Determined Office Licenses but now he has ..
-                                client.ClientSubscriptions.Add(new ClientSubscriptions() { SubscriptionID = Guid.Parse(Fc[idx]), UsersPerSubscription = Int32.Parse(Fc[Sub.SubscriptionName]), OfficeSubscription = SubscriptionService.GetById(Guid.Parse(Fc[idx])) });
-                            }
-                            else
-                            {
-                                ClientSub.UsersPerSubscription += Int32.Parse(Fc[Sub.SubscriptionName]);
-                            }
-                        }
-                    }
+                    client.Seats += Int32.Parse(Fc["Item1.Seats"]);
+   
                     ClientService.SaveClient();
                     HubManPractices.Models.Action Upgrade = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Upgraded", Client = ClientService.GetById(client.ClientID), Date = DateTime.Now};
                     ActionService.CreateAction(Upgrade);

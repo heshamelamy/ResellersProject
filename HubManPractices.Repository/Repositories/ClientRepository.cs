@@ -23,7 +23,7 @@ namespace HubManPractices.Repository.Repositories
                         Found.ContactName = client.ContactName;
                         Found.ContactNumber = client.ContactNumber;
                         Found.ContactTitle = client.ContactTitle;
-                        Found.NumberofLicenses = client.NumberofLicenses;
+                        Found.Seats = client.Seats;
                         Found.IsExpiryNull = true;            
                         DbContext.Commit();
                  }
