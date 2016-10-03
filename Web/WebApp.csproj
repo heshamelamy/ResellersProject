@@ -212,6 +212,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\vodafone.png" />
+    <Content Include="Content\Images\zain.PNG" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -289,6 +291,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="css\" />
     <Folder Include="Filters\Models\" />
+    <Folder Include="Views\Upload\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HubManPractices.Model\HubManPractices.Model.csproj">

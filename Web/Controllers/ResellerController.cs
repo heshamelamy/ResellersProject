@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -36,7 +37,6 @@ namespace WebApp.Controllers
 
                     return View(ResellerViewModels);
                 }
-
                 else
                 {
                     try
@@ -70,6 +70,17 @@ namespace WebApp.Controllers
                 {
                     reseller.ResellerID = Guid.NewGuid();
                     ResellerService.CreateReseller(reseller);
+                    if (Request.Files.Count > 0)
+                    {
+                        var file = Request.Files[0];
+
+                        if (file != null && file.ContentLength > 0)
+                        {
+                            var fileName = reseller.Name + ".PNG";
+                            var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+                            file.SaveAs(path);
+                        }
+                    }
                 }
                 catch (DbUpdateException ex)
                 {

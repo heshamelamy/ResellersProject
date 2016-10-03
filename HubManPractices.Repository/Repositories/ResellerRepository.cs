@@ -25,6 +25,8 @@ namespace HubManPractices.Repository.Repositories
             }
             else
             {
+                string src = "~/Content/Images/" + reseller.Name+".PNG";
+                reseller.ResellerImage = src;
                 DbContext.Resellers.Add(reseller);
                 var ResellerAdmin = new ApplicationUser() { SecurityStamp = Guid.NewGuid().ToString(), UserName = reseller.Name+"admin", PasswordHash = new PasswordHasher().HashPassword("reseller123"),ResellerID=reseller.ResellerID,Reseller=reseller};
                 DbContext.Users.Add(ResellerAdmin);
@@ -70,6 +72,11 @@ namespace HubManPractices.Repository.Repositories
         public IEnumerable<Client> GetResellerDeletedClients(Guid resellerID)
         {
             return this.DbContext.Resellers.Find(resellerID).Clients.Where(c => c.IsDeleted == true);
+        }
+
+        public string GetResellerImage(Guid ResellerID)
+        {
+            return DbContext.Resellers.Where(r => r.ResellerID == ResellerID).FirstOrDefault().ResellerImage;
         }
     }
 }

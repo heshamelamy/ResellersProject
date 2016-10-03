@@ -57,6 +57,11 @@ namespace HubManPractices.Service
             return Mapper.Map<Reseller,ResellerViewModel>(reseller);
         }
 
+        public string GetResellerImage(Guid ResellerID)
+        {
+            return resellersRepository.GetResellerImage(ResellerID);
+        }
+
 
         public Reseller GetById(Guid ResellerID)
         {

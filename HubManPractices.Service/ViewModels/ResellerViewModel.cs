@@ -15,6 +15,7 @@ namespace HubManPractices.Service.ViewModels
         }
         public Guid ResellerID { get; set; }
         public string Name { get; set; }
+        public virtual string ResellerImage { get; set; }
         public int ClientsQuota { get; set; }
         public virtual ICollection<Client> Clients { get; set; }
     }

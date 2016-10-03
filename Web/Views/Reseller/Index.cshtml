@@ -42,6 +42,10 @@
 <div class="contactContainer">
     <div class="banner">
         <div>Resellers</div>
+        @if(User.IsInRole("Reseller Admin"))
+        {
+            <img src="@Url.Content(Model.FirstOrDefault().ResellerImage)"/>
+        }
         <div class="showClients">
             @if (Html.Action("HasPermission", "Reseller", new { pname = "Add Reseller" }).ToString() == "True")
             {

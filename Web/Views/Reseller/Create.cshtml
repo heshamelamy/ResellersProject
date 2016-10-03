@@ -21,13 +21,14 @@
     <div class="banner">
         <div>Create</div>
     </div>
-    @using (Html.BeginForm("Create", "Reseller", FormMethod.Post, new { @id = "contactItem" }))
+    @using (Html.BeginForm("Create", "Reseller", FormMethod.Post,new { enctype = "multipart/form-data", id="contactItem"}))
     {
         @Html.AntiForgeryToken()
         <label for="Name">@Html.DisplayNameFor(model => model.Name)</label>
         @Html.EditorFor(model => model.Name, new { htmlAttributes = new { placeholder = "Enter Full Name" } })
         <label for="ClientsQuota">@Html.DisplayNameFor(model => model.ClientsQuota)</label>
         @Html.EditorFor(model => model.ClientsQuota, new { htmlAttributes = new { placeholder = "Enter Clients Quota" } })
+        <input type="file" name="somefile">
         <input type="submit" value="Create" />
     }
 </div>

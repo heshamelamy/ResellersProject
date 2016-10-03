@@ -14,6 +14,7 @@ namespace HubManPractices.Models
             Clients = new List<Client>();
         }
         public Guid ResellerID { get; set; }
+        public virtual string ResellerImage { get; set; }
 
         public string Name { get; set; }
         public int ClientsQuota { get; set; }
