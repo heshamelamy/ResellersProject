@@ -35,6 +35,9 @@ $(document).ready(function() {
 	$("#imgInp").change(function () {
 	    readURL(this);
 	});
+
+	
+
 });
 
 
@@ -49,4 +52,6 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+
 
