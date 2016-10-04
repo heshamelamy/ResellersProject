@@ -280,6 +280,7 @@
     <Content Include="Views\Client\Exist.cshtml" />
     <Content Include="Views\Client\GetDeleted.cshtml" />
     <Content Include="Views\Reseller\Index.cshtml" />
+    <Content Include="Views\Reseller\ResellerIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

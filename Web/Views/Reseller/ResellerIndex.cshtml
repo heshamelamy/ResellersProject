@@ -1,0 +1,35 @@
+﻿@model Tuple<IEnumerable<HubManPractices.Service.ViewModels.ClientViewModel>, IEnumerable<HubManPractices.Service.ViewModels.ClientViewModel>,Dictionary<string,int>>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ResellerIndex</title>
+</head>
+<body>
+    <div> 
+        @foreach (var item in Model.Item1)
+        {
+            <div>@item.ClientName</div>
+            <div>@item.ContactMail</div>
+            <div>@item.ContactName</div>
+            <div>@item.ContactTitle</div>
+        }
+
+        <br />
+        <br />
+
+        @foreach(var item in Model.Item2)
+        {
+            <div>@item.ClientName</div>
+            <div>@item.CreationDate.ToString("MM-dd-yy")</div>
+        }
+
+    </div>
+</body>
+</html>

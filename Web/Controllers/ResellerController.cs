@@ -19,12 +19,14 @@ namespace WebApp.Controllers
     {
         private readonly IRoleService RoleService;
         private readonly IResellerService ResellerService;
+        private readonly IClientService ClientService;
 
 
-        public ResellerController(IResellerService resellerservice,IRoleService Rs)
+        public ResellerController(IResellerService resellerservice,IRoleService Rs,IClientService Cs)
         {
             this.ResellerService = resellerservice;
             this.RoleService = Rs;
+            this.ClientService = Cs;
         }
         // GET: Reseller
         [MyAuthFilter(Roles= "Global Admin , Reseller Admin")]
@@ -42,7 +44,7 @@ namespace WebApp.Controllers
                     try
                     {
                         ResellerViewModels = ResellerService.MapToViewModel(ResellerService.GetUserReseller(User.Identity.GetUserId()));
-                        return View(ResellerViewModels);
+                        return RedirectToAction("ResellerIndex",new { ResellerID=ResellerViewModels.FirstOrDefault().ResellerID});
                     }
                     catch(NullReferenceException ex)
                     {
@@ -52,7 +54,14 @@ namespace WebApp.Controllers
                 }
             
         }
-
+        public ActionResult ResellerIndex(Guid ResellerID)
+        {
+            IEnumerable<ClientViewModel> clientViewModels = ClientService.MapToViewModel(ResellerService.GetResellerClients(ResellerID));
+            IEnumerable<ClientViewModel> Recent10Clients = ClientService.MapToViewModel(ResellerService.GetRecent10Clients(ResellerService.GetResellerClients(ResellerID)));
+            Dictionary<string, int> chartData = ResellerService.GetChartData(ResellerID);
+            var myTuple = new Tuple<IEnumerable<ClientViewModel>, IEnumerable<ClientViewModel>,Dictionary<string,int>>(clientViewModels, Recent10Clients,chartData);
+            return View(myTuple);
+        }
         [MyAuthFilter(Roles = "Global Admin")]
         public ActionResult Create()
         {

@@ -102,5 +102,27 @@ namespace HubManPractices.Service
         {
             return resellersRepository.GetResellerDeletedClients(resellerID);
         }
+
+        public IEnumerable<Client> GetRecent10Clients(IEnumerable<Client> clients)
+        {
+            List <Client> myList = clients.ToList();
+            List <Client> ordered = myList.OrderByDescending(m => m.CreationDate).ToList();
+            return ordered.Take(5);
+        }
+
+        public Dictionary<string,int> GetChartData(Guid ResellerID)
+        {
+            int CurrentYear = DateTime.Now.Year;
+            int CurrentMonth = DateTime.Now.Month;
+            List<Client> AllResellerClients = GetResellerClients(ResellerID).ToList();
+            var GroupedData = AllResellerClients.Where(m=>m.CreationDate.Month <= CurrentMonth && m.CreationDate.Year==CurrentYear).GroupBy(x => x.CreationDate.Month).ToList();
+            Dictionary<string,int> chartdata = new Dictionary<string, int>();
+            foreach (var item in GroupedData)
+            {
+                string month = item.FirstOrDefault().CreationDate.ToString("MMMM");
+                chartdata[month] = item.Count();
+            }
+            return chartdata;
+        }
     }
 }

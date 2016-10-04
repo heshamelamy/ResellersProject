@@ -77,7 +77,7 @@ namespace WebApp.Controllers
                     {
                         client.Seats = Int32.Parse(Fc["Item1.Seats"]);
                         client.Status = "On Hold";
-                        client.CreationDate = DateTime.Now;
+                        client.CreationDate = new DateTime(2016, 8, 18);
                         client.Location = Fc["Item1.Location"];
                         foreach (var Sub in Subscriptions)
                         {
