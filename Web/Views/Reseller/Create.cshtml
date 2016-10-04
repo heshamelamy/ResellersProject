@@ -28,8 +28,16 @@
         @Html.EditorFor(model => model.Name, new { htmlAttributes = new { placeholder = "Enter Full Name" } })
         <label for="ClientsQuota">@Html.DisplayNameFor(model => model.ClientsQuota)</label>
         @Html.EditorFor(model => model.ClientsQuota, new { htmlAttributes = new { placeholder = "Enter Clients Quota" } })
-        <input type="file" name="somefile">
+        <input type='file' id="imgInp" />
+        <img id="blah" src="#" alt="your image" />
         <input type="submit" value="Create" />
     }
 </div>
 
+
+
+@section scripts
+{
+    <script type="text/javascript" src="@Url.Content("/Scripts/script.js")"></script>
+
+}
