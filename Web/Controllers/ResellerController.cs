@@ -195,13 +195,16 @@ namespace WebApp.Controllers
         }
         public string  GetImageUrl(string UserID)
         {
-
-            if (System.Web.HttpContext.Current.Cache[ResellerService.GetUserReseller(UserID).FirstOrDefault().Name] == null)
+            if(User.IsInRole("Global Admin"))
             {
-                System.Web.HttpContext.Current.Cache.Insert(ResellerService.GetUserReseller(UserID).FirstOrDefault().Name, ResellerService.GetUserReseller(UserID).FirstOrDefault().ResellerImage.ToString(), null, Cache.NoAbsoluteExpiration, Cache.NoSlidingExpiration);
+                return "";
+            }
+            if (System.Web.HttpContext.Current.Cache[UserID] == null)
+            {
+                System.Web.HttpContext.Current.Cache.Insert(UserID, ResellerService.GetUserReseller(UserID).FirstOrDefault().ResellerImage.ToString(), null, Cache.NoAbsoluteExpiration, Cache.NoSlidingExpiration);
             }
 
-            return System.Web.HttpContext.Current.Cache[ResellerService.GetUserReseller(UserID).FirstOrDefault().Name].ToString();
+            return System.Web.HttpContext.Current.Cache[UserID].ToString();
         }
     }
 }
