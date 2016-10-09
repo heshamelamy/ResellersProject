@@ -11,8 +11,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
+using Util;
 using WebApp.Filters;
-
+using System.Web.Caching;
 namespace WebApp.Controllers
 {
     public class ResellerController : Controller
@@ -191,6 +192,16 @@ namespace WebApp.Controllers
             if (RoleService.HasPermission(User.Identity.GetUserId(), PName) == null)
                 return false;
             return true;
+        }
+        public string  GetImageUrl(string UserID)
+        {
+
+            if (System.Web.HttpContext.Current.Cache[ResellerService.GetUserReseller(UserID).FirstOrDefault().Name] == null)
+            {
+                System.Web.HttpContext.Current.Cache.Insert(ResellerService.GetUserReseller(UserID).FirstOrDefault().Name, ResellerService.GetUserReseller(UserID).FirstOrDefault().ResellerImage.ToString(), null, Cache.NoAbsoluteExpiration, Cache.NoSlidingExpiration);
+            }
+
+            return System.Web.HttpContext.Current.Cache[ResellerService.GetUserReseller(UserID).FirstOrDefault().Name].ToString();
         }
     }
 }

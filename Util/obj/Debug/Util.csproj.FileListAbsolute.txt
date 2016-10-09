@@ -161,6 +161,5 @@ C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Util\bin\Debug\System.Web.Razo
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Util\bin\Debug\System.Web.WebPages.xml
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Util\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Util\bin\Debug\System.Web.WebPages.Razor.xml
-C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Util\obj\Debug\Util.csprojResolveAssemblyReference.cache
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Util\obj\Debug\Util.dll
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Util\obj\Debug\Util.pdb

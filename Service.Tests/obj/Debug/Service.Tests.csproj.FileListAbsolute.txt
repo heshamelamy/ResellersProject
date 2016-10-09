@@ -72,7 +72,6 @@ C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Service.Tests\bin\Debug\System
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Service.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Service.Tests\bin\Debug\Microsoft.Owin.Security.OAuth.dll
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Service.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
-C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Service.Tests\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Service.Tests\bin\Debug\HubManPractices.Model.pdb
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Service.Tests\bin\Debug\HubManPractices.Repository.pdb
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Service.Tests\bin\Debug\HubManPractices.Service.pdb

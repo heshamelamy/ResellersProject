@@ -63,7 +63,7 @@ namespace WebApp.Controllers
                     ResellerClients = ResellerClients.OrderBy(s => s.ClientName);
                     break;
             }
-            int pageSize = 3;
+            int pageSize = 4;
             int pageNumber = (page ?? 1);
             return View(ClientService.MapToViewModel(ResellerClients).ToPagedList(pageNumber, pageSize));
         }

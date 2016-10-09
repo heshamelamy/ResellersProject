@@ -156,6 +156,5 @@ C:\Users\Hesham.elalaimy\Desktop\ResellersProject\HubManPractices.Model\bin\Debu
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.WebPages.xml
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\HubManPractices.Model\bin\Debug\System.Web.WebPages.Razor.xml
-C:\Users\Hesham.elalaimy\Desktop\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.csprojResolveAssemblyReference.cache
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.dll
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\HubManPractices.Model\obj\Debug\HubManPractices.Model.pdb
