@@ -234,6 +234,8 @@
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
+    <Content Include="scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="scripts\script.js" />
     <Content Include="Web.config" />
@@ -290,6 +292,7 @@
     <Content Include="Views\Client\GetDeleted.cshtml" />
     <Content Include="Views\Reseller\Index.cshtml" />
     <Content Include="Views\Reseller\ResellerIndex.cshtml" />
+    <Content Include="Views\Client\ClientListPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

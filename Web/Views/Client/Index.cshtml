@@ -1,5 +1,4 @@
 ﻿@model PagedList.IPagedList<HubManPractices.Service.ViewModels.ClientViewModel>
-@using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
@@ -50,105 +49,9 @@
     </div>
     <div class="clearfix"></div>
 
-    <div class="clientListRow">
-        <div class="clientListHeader">
-            <div class="clientListRowHeader">
-                #
-            </div>
-            <div class="clientListRowHeader">
-                @Html.ActionLink("Client Name", "Index", new { ResellerID = TempData["ResellerID"], sortOrder = ViewBag.NameSortParm })            
-            </div>
-            <div class="clientListRowHeader">
-                @Html.ActionLink("Expiry Date", "Index", new { ResellerID = TempData["ResellerID"], sortOrder = ViewBag.DateSortParm })
-            </div>
-            <div class="clientListRowHeader">
-                Action
-            </div>
-        </div>
-
-        <div class="clientListBody">
-
-           
-               
-           @{
-                var i = 0;
-            }
-            @foreach (var item in Model)
-            {
-                ++i;
-                <div class="clientListRowBody">
-                    <div class="clientListRowBodyContainer">@i</div>
-                    <div class="clientListRowBodyContainer">@item.ClientName</div>
-                    @if(@item.IsExpiryNull==true)
-                    {
-                        <div class="clientListRowBodyContainer">No Expiry Yet</div>
-                    }
-                    else 
-                    {
-                        <div class="clientListRowBodyContainer">@item.Expiry.ToString("MM-dd-yy")</div>
-                    }
-                    <div class="action">
-                        @if (Html.Action("HasPermission", "Client", new { pname = "Upgrade Client" }).ToString() == "True" && item.Status != "On Hold" && item.Status != "Waiting For Renewal")
-                        {
-                            <a href="/Client/Upgrade?ClientID=@item.ClientID" data-type="upgrade">Upgrade</a>
-                        }
-
-                        @if (Html.Action("HasPermission", "Client", new { pname = "Activate Client" }).ToString() == "True" && item.Status != "Activated" && item.Status != "Waiting For Renewal")
-                        {
-                            using (Html.BeginForm("Activate", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
-                            {
-                                @Html.Hidden("ClientID", item.ClientID)
-                                <input type="submit" value="Activate" data-type="activate" />
-                            }
-                        }
-
-                        @if (Html.Action("HasPermission", "Client", new { pname = "Delete Client" }).ToString() == "True")
-                        {
-                            using (Html.BeginForm("Delete", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
-                            {
-                                @Html.Hidden("ClientID", item.ClientID)
-                                <input type="submit" value="Delete" data-type="Delete" />
-                            }
-                        }
-
-                        @if (Html.Action("HasPermission", "Client", new { pname = "Suspend Client" }).ToString() == "True" && item.Status != "Suspended" && item.Status != "On Hold" && item.Status != "Waiting For Renewal")
-                        {
-                            using (Html.BeginForm("Suspend", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
-                            {
-                                @Html.Hidden("ClientID", item.ClientID)
-                                <input type="submit" value="Suspend" data-type="suspend" />
-                            }
-                        }
-
-                        @if (Html.Action("HasPermission", "Client", new { pname = "Renew Client" }).ToString() == "True" && item.Expiry <= DateTime.Now && !item.IsExpiryNull)
-                        {
-                            using (Html.BeginForm("Renew", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
-                            {
-                                @Html.Hidden("ClientID", item.ClientID)
-                                <input type="submit" value="Renew" data-type="renew" />
-                            }
-                        }
-
-
-                    </div>
-                </div>
-            }
-        </div>
-    
-
-
-
+    <div id="ClientList">
+        @Html.Partial("ClientListPartial",Model)
     </div>
-    
- 
-
-    
-</div>
-
-
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, ResellerID = TempData["ResellerID"], sortOrder = ViewBag.CurrentSort }))
-
 
 
 

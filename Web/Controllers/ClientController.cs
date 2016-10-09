@@ -63,9 +63,17 @@ namespace WebApp.Controllers
                     ResellerClients = ResellerClients.OrderBy(s => s.ClientName);
                     break;
             }
-            int pageSize = 4;
+            int pageSize = 2;
             int pageNumber = (page ?? 1);
-            return View(ClientService.MapToViewModel(ResellerClients).ToPagedList(pageNumber, pageSize));
+
+            if(Request.IsAjaxRequest())
+            {
+                return (ActionResult)PartialView("ClientListPartial", ClientService.MapToViewModel(ResellerClients).ToPagedList(pageNumber, pageSize));
+            }
+            else
+            {
+                return View(ClientService.MapToViewModel(ResellerClients).ToPagedList(pageNumber, pageSize));
+            }
         }
         [MyAuthFilter(Roles="Global Admin,Reseller Admin")]
         public ActionResult Create(Guid ResellerID)
