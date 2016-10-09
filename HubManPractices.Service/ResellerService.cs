@@ -124,5 +124,10 @@ namespace HubManPractices.Service
             }
             return chartdata;
         }
+
+        public void AddResellerUser(Reseller r, string UserMail)
+        {
+            resellersRepository.AddResellerUser(r, UserMail);
+        }
     }
 }

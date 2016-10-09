@@ -28,7 +28,9 @@
         @Html.EditorFor(model => model.Name, new { htmlAttributes = new { placeholder = "Enter Full Name" } })
         <label for="ClientsQuota">@Html.DisplayNameFor(model => model.ClientsQuota)</label>
         @Html.EditorFor(model => model.ClientsQuota, new { htmlAttributes = new { placeholder = "Enter Clients Quota" } })
-        <input type='file' id="imgInp" />
+        <label for="ResellerMail">Reseller Mail</label>
+       <input type="text" id="ResellerMail" name="ResellerMail" placeholder="Enter Your Reseller Mail" />
+        <input type='file' name="file" id="imgInp" />
         <img id="blah" src="#" alt="your image" />
         <input type="submit" value="Create" />
     }

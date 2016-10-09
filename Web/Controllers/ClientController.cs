@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebApp.Filters;
 using System.Data.Entity.Infrastructure;
+using PagedList;
 
 namespace WebApp.Controllers
 {
@@ -30,8 +31,12 @@ namespace WebApp.Controllers
         }
         // GET: Client
         [MyAuthFilter(Roles="Global Admin , Reseller Admin")]
-        public ActionResult Index(Guid ResellerID)
+        public ActionResult Index(Guid ResellerID,string sortOrder, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
             IEnumerable<Client> ResellerClients = ResellerService.GetResellerClients(ResellerID);
             foreach(var client in ResellerClients)
             {
@@ -43,7 +48,24 @@ namespace WebApp.Controllers
                 }
             }
             TempData["ResellerID"] = ResellerID;
-            return View(ClientService.MapToViewModel(ResellerClients));
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    ResellerClients = ResellerClients.OrderByDescending(s => s.ClientName);
+                    break;
+                case "Date":
+                    ResellerClients = ResellerClients.OrderBy(s => s.Expiry);
+                    break;
+                case "date_desc":
+                    ResellerClients = ResellerClients.OrderByDescending(s => s.Expiry);
+                    break;
+                default:
+                    ResellerClients = ResellerClients.OrderBy(s => s.ClientName);
+                    break;
+            }
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(ClientService.MapToViewModel(ResellerClients).ToPagedList(pageNumber, pageSize));
         }
         [MyAuthFilter(Roles="Global Admin,Reseller Admin")]
         public ActionResult Create(Guid ResellerID)

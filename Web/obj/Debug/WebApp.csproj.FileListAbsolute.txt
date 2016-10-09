@@ -568,3 +568,7 @@ C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Web\bin\System.Web.Helpers.xml
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Web\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Web\obj\Debug\WebApp.dll
 C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Web\obj\Debug\WebApp.pdb
+C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Web\bin\PagedList.dll
+C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Web\bin\PagedList.Mvc.dll
+C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Web\bin\PagedList.xml
+C:\Users\Hesham.elalaimy\Desktop\ResellersProject\Web\bin\PagedList.Mvc.xml

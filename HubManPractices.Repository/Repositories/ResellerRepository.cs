@@ -28,12 +28,17 @@ namespace HubManPractices.Repository.Repositories
                 string src = "~/Content/Images/" + reseller.Name+".PNG";
                 reseller.ResellerImage = src;
                 DbContext.Resellers.Add(reseller);
-                var ResellerAdmin = new ApplicationUser() { SecurityStamp = Guid.NewGuid().ToString(), UserName = reseller.Name+"admin", PasswordHash = new PasswordHasher().HashPassword("reseller123"),ResellerID=reseller.ResellerID,Reseller=reseller};
-                DbContext.Users.Add(ResellerAdmin);
-                Role ResellerRole = DbContext.Roles.Where(r => r.Name == "Reseller Admin").FirstOrDefault();
-                DbContext.ApplicationUserRoles.Add(new ApplicationUserRole() { RoleId = ResellerRole.Id, UserId = ResellerAdmin.Id });
                 DbContext.Commit();
             }
+        }
+
+        public void AddResellerUser(Reseller reseller,string UserMail)
+        {
+            var ResellerAdmin = new ApplicationUser() { Email=UserMail ,SecurityStamp = Guid.NewGuid().ToString(), UserName = reseller.Name + "admin", PasswordHash = new PasswordHasher().HashPassword("reseller123"), ResellerID = reseller.ResellerID, Reseller = reseller };
+            DbContext.Users.Add(ResellerAdmin);
+            Role ResellerRole = DbContext.Roles.Where(r => r.Name == "Reseller Admin").FirstOrDefault();
+            DbContext.ApplicationUserRoles.Add(new ApplicationUserRole() { RoleId = ResellerRole.Id, UserId = ResellerAdmin.Id });
+            DbContext.Commit();
         }
 
         public override void Delete(Reseller reseller)

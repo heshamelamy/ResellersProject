@@ -1,4 +1,6 @@
-﻿@model IEnumerable<HubManPractices.Service.ViewModels.ClientViewModel>
+﻿@model PagedList.IPagedList<HubManPractices.Service.ViewModels.ClientViewModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -33,8 +35,7 @@
     <div class="alert alert-danger">@TempData["DeleteError"]</div>
 }
 
-
-<div class="contactContainer">
+    <div class="contactContainer">
     <div class="banner">
         <div>Clients</div>
         <div class="addClient">
@@ -55,16 +56,10 @@
                 #
             </div>
             <div class="clientListRowHeader">
-                @Html.DisplayNameFor(model => model.FirstOrDefault().ClientName)
+                @Html.ActionLink("Client Name", "Index", new { ResellerID = TempData["ResellerID"], sortOrder = ViewBag.NameSortParm })            
             </div>
             <div class="clientListRowHeader">
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Status)
-            </div>
-            <div class="clientListRowHeader">
-                @Html.DisplayNameFor(model => model.FirstOrDefault().ContactNumber)
-            </div>
-            <div class="clientListRowHeader">
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Expiry)
+                @Html.ActionLink("Expiry Date", "Index", new { ResellerID = TempData["ResellerID"], sortOrder = ViewBag.DateSortParm })
             </div>
             <div class="clientListRowHeader">
                 Action
@@ -73,7 +68,9 @@
 
         <div class="clientListBody">
 
-            @{
+           
+               
+           @{
                 var i = 0;
             }
             @foreach (var item in Model)
@@ -82,8 +79,6 @@
                 <div class="clientListRowBody">
                     <div class="clientListRowBodyContainer">@i</div>
                     <div class="clientListRowBodyContainer">@item.ClientName</div>
-                    <div class="clientListRowBodyContainer">@item.Status</div>
-                    <div class="clientListRowBodyContainer">@item.ContactNumber</div>
                     @if(@item.IsExpiryNull==true)
                     {
                         <div class="clientListRowBodyContainer">No Expiry Yet</div>
@@ -139,23 +134,20 @@
                 </div>
             }
         </div>
-    </div>
     
 
+
+
+    </div>
+    
+ 
+
+    
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, ResellerID = TempData["ResellerID"], sortOrder = ViewBag.CurrentSort }))
 
 
 
@@ -164,9 +156,11 @@
 
 <!--
     
+
+    @*
     <p>
-    @@Html.ActionLink("Add Client", "Create", new { ResellerID =TempData["ResellerID"]})
-    @@Html.ActionLink("Show Deleted Clients", "GetDeleted", new { ResellerID = TempData["ResellerID"] }, new { @@style = "float:right" })
+    @Html.ActionLink("Add Client", "Create", new { ResellerID =TempData["ResellerID"]})
+    @Html.ActionLink("Show Deleted Clients", "GetDeleted", new { ResellerID = TempData["ResellerID"] }, new { @style = "float:right" })
 </p>
 
 
@@ -177,65 +171,72 @@
 <table class="table">
     <tr>
         <th>
-            @@Html.DisplayNameFor(model => model.ClientName)
+            @Html.ActionLink("Client Name", "Index", new { ResellerID=TempData["ResellerID"] ,sortOrder = ViewBag.NameSortParm })
         </th>
         <th>
-            @@Html.DisplayNameFor(model => model.Status)
+            @Html.ActionLink("Expiry Date", "Index", new { ResellerID = TempData["ResellerID"], sortOrder = ViewBag.DateSortParm })
         </th>
         <th></th>
     </tr>
 
-@@foreach (var item in Model) {
+@foreach (var item in Model) {
     <tr>
         <td>
-            @@Html.DisplayFor(modelItem => item.ClientName)
+            @Html.DisplayFor(modelItem => item.ClientName)
         </td>
         <td>
-            @@Html.DisplayFor(modelItem=>item.Status)
-        </td>
-        <td>
-            @@if (Html.Action("HasPermission", "Client", new { pname = "Upgrade Client" }).ToString() == "True"  && item.Status != "On Hold" && item.Status!="Waiting For Renewal")
+            @if (item.IsExpiryNull != true)
             {
-                @@Html.ActionLink("Upgrade", "Upgrade", new { ClientID = item.ClientID }, new { @@class = "btn btn-primary btn-xs" })
-                @@: |
+                <div class="clientListRowBodyContainer">@item.Expiry.ToString("MM-dd-yy")</div>
+            }
+            else
+            {
+                <div class="clientListRowBodyContainer">No Expiry Yet</div>
+            }
+        </td>
+        <td>
+            @if (Html.Action("HasPermission", "Client", new { pname = "Upgrade Client" }).ToString() == "True"  && item.Status != "On Hold" && item.Status!="Waiting For Renewal")
+            {
+                @Html.ActionLink("Upgrade", "Upgrade", new { ClientID = item.ClientID }, new { @class = "btn btn-primary btn-xs" })
+                @: |
             }        
-           @@*@@if(Html.Action("HasPermission", "Client", new { pname = "Activate Client" }).ToString() == "True" && item.Status != "Activated" && item.Status != "Waiting For Renewal")
+           @if(Html.Action("HasPermission", "Client", new { pname = "Activate Client" }).ToString() == "True" && item.Status != "Activated" && item.Status != "Waiting For Renewal")
             {
-                using (Html.BeginForm("Activate", "Client", FormMethod.Post, new { @@style = "display:inline-block" }))
+                using (Html.BeginForm("Activate", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
                 {
-                    @@Html.Hidden("ClientID", item.ClientID)
+                    @Html.Hidden("ClientID", item.ClientID)
                     <input type="submit" value="Activate" class="btn btn-success btn-xs" />
                 }
-                @@: |
+                @: |
             }
 
-          @@if (Html.Action("HasPermission", "Client", new { pname = "Delete Client" }).ToString() == "True")
+          @if (Html.Action("HasPermission", "Client", new { pname = "Delete Client" }).ToString() == "True")
             {
        
-                    using (Html.BeginForm("Delete", "Client", FormMethod.Post, new { @@style = "display:inline-block" }))
+                    using (Html.BeginForm("Delete", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
                     {
-                        @@Html.Hidden("ClientID", item.ClientID)
+                        @Html.Hidden("ClientID", item.ClientID)
                         <input type="submit" value="Delete" class="btn btn-danger btn-xs" />
                 }
                 
             }
-            @@if (Html.Action("HasPermission", "Client", new { pname = "Suspend Client" }).ToString() == "True" && item.Status!= "Suspended" && item.Status!="On Hold" && item.Status != "Waiting For Renewal")
+            @if (Html.Action("HasPermission", "Client", new { pname = "Suspend Client" }).ToString() == "True" && item.Status!= "Suspended" && item.Status!="On Hold" && item.Status != "Waiting For Renewal")
             {
                 
-                   @@* using (Html.BeginForm("Suspend", "Client", FormMethod.Post, new { @@style = "display:inline-block" }))
+                    using (Html.BeginForm("Suspend", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
                     {
-                    @@Html.Hidden("ClientID", item.ClientID)
+                    @Html.Hidden("ClientID", item.ClientID)
                     <input type="submit" value="Suspend" class="btn btn-info btn-xs" />
                 }
                
             }
 
-            @@if (Html.Action("HasPermission", "Client", new { pname = "Renew Client" }).ToString() == "True" && item.Expiry <= DateTime.Now && !item.IsExpiryNull)
+           @if (Html.Action("HasPermission", "Client", new { pname = "Renew Client" }).ToString() == "True" && item.Expiry <= DateTime.Now && !item.IsExpiryNull)
             {
-                @@: |
-                    using (Html.BeginForm("Renew", "Client", FormMethod.Post, new { @@style = "display:inline-block" }))
+                @: |
+                    using (Html.BeginForm("Renew", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
                     {
-                    @@Html.Hidden("ClientID", item.ClientID)
+                    @Html.Hidden("ClientID", item.ClientID)
                     <input type="submit" value="Renew" class="btn btn-primary btn-xs" />
                 }
             }
@@ -244,6 +245,7 @@
 }
 
 </table>
-
+<br />
+        *@
+    
 -->
-

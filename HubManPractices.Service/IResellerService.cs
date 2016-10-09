@@ -25,6 +25,7 @@ namespace HubManPractices.Service
         IEnumerable<Client> GetResellerDeletedClients(Guid resellerID);
         string GetResellerImage(Guid ResellerID);
         IEnumerable<Client> GetRecent10Clients(IEnumerable<Client> clients);
-        Dictionary<string,int> GetChartData(Guid ResellerID);
+        Dictionary<string, int> GetChartData(Guid ResellerID);
+        void AddResellerUser(Reseller r, string UserMail);
     }
 }

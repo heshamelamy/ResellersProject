@@ -71,14 +71,20 @@ namespace WebApp.Controllers
         }
         [HttpPost]
         [MyAuthFilter(Roles = "Global Admin")]
-        public ActionResult Create(Reseller reseller)
+        public ActionResult Create(FormCollection Fc)
         {
             if (HasPermission("Add Reseller"))
             {
                 try
                 {
+                    Reseller reseller = new Reseller() { Name = Fc["Name"], ClientsQuota = Int32.Parse(Fc["ClientsQuota"]) };
                     reseller.ResellerID = Guid.NewGuid();
                     ResellerService.CreateReseller(reseller);
+                    if(EmailCorrectFormat(Fc["ResellerMail"]))
+                    {
+                        ResellerService.AddResellerUser(reseller, Fc["ResellerMail"]);
+                    }
+                    
                     if (Request.Files.Count > 0)
                     {
                         var file = Request.Files[0];
@@ -106,6 +112,13 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index");
             }
             return View("~/Views/Home/UnAuthorized.cshtml");
+        }
+
+        private bool EmailCorrectFormat(string mail)
+        {
+            if (mail.Contains(".com") && mail.Contains("@"))
+                return true;
+            else return false;
         }
 
         [MyAuthFilter(Roles = "Global Admin, Reseller Admin")]
