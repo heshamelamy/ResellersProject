@@ -171,3 +171,11 @@ C:\Users\Hesham\Desktop\ResellersProject\HubManPractices.Repository\bin\Debug\Sy
 C:\Users\Hesham\Desktop\ResellersProject\HubManPractices.Repository\obj\Debug\HubManPractices.Repository.csprojResolveAssemblyReference.cache
 C:\Users\Hesham\Desktop\ResellersProject\HubManPractices.Repository\obj\Debug\HubManPractices.Repository.dll
 C:\Users\Hesham\Desktop\ResellersProject\HubManPractices.Repository\obj\Debug\HubManPractices.Repository.pdb
+C:\Users\Hesham.elalaimy\Desktop\ResellersProject\HubManPractices.Repository\bin\Debug\System.Web.Razor.dll
+C:\Users\Hesham.elalaimy\Desktop\ResellersProject\HubManPractices.Repository\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Hesham.elalaimy\Desktop\ResellersProject\HubManPractices.Repository\bin\Debug\System.Web.WebPages.dll
+C:\Users\Hesham.elalaimy\Desktop\ResellersProject\HubManPractices.Repository\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Hesham.elalaimy\Desktop\ResellersProject\HubManPractices.Repository\bin\Debug\System.Web.Razor.xml
+C:\Users\Hesham.elalaimy\Desktop\ResellersProject\HubManPractices.Repository\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Hesham.elalaimy\Desktop\ResellersProject\HubManPractices.Repository\bin\Debug\System.Web.WebPages.xml
+C:\Users\Hesham.elalaimy\Desktop\ResellersProject\HubManPractices.Repository\bin\Debug\System.Web.WebPages.Deployment.xml
