@@ -45,6 +45,7 @@ namespace WebApp.Controllers
                     try
                     {
                         ResellerViewModels = ResellerService.MapToViewModel(ResellerService.GetUserReseller(User.Identity.GetUserId()));
+                        TempData["ResellerID"] = ResellerViewModels.FirstOrDefault().ResellerID;
                         return RedirectToAction("ResellerIndex",new { ResellerID=ResellerViewModels.FirstOrDefault().ResellerID});
                     }
                     catch(NullReferenceException ex)
@@ -205,6 +206,11 @@ namespace WebApp.Controllers
             }
 
             return System.Web.HttpContext.Current.Cache[UserID].ToString();
+        }
+        public Guid GetResellerID(string UserID)
+        {
+            Reseller reseller = ResellerService.GetUserReseller(UserID).FirstOrDefault();
+            return reseller.ResellerID;
         }
     }
 }

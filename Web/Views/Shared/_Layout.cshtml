@@ -8,8 +8,24 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" href="~/Content/style.css" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     @RenderSection("scripts", required: false)
-    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+    @RenderSection("Styles", false)
+    <script>
+        $(document).ready(function () {
+
+                var current = location.pathname;
+                $('.action ul li a').each(function () {
+                    var $this = $(this);
+                    // if the current path is like this link, make it active
+                    if ($this.attr('href').indexOf(current) !== -1) {
+                        $this.addClass('active');
+                    }
+                })
+
+        });
+    </script>
 </head>
 
 
@@ -26,18 +42,35 @@
             image = "";
         }
     }
-   
 
+    <div class="nav" style="background-image:url(@image.Replace("~","").ToString()">
+        <div class="navLeft">
+            <a href="#">
+                <img src="/Content/Images/logo.png"alt="Itworx Hub"/>
+            </a>
+        </div>
+        <div class="navRight">
+            <div class="brand-logo">
+                <a href="#">
+                    <img src="~/Content/Images/zain-logo.png" alt="zain logo"/>
+                </a>
+            </div>
 
-    <div class="nav" id="nav" style="background-image:url(@image.Replace("~","").ToString()">
-        <div class="nav-left">
-            <ul>
-                <li><a href="/Home/Index">Home</a></li>
-                @if (Request.IsAuthenticated)
-                {
-                    <li><a href="/Reseller/Index">Resellers</a></li>
-                }
-            </ul>
+            <div class="action">
+                <ul>
+                    <li><a href="@Url.Action("ResellerIndex", "Reseller", new { ResellerID = Html.Action("GetResellerID", "Reseller", new { UserID = User.Identity.GetUserId() }) })"><i class="fa fa-th" aria-hidden="true"></i>Welcome</a></li>
+                    <li><a href="@Url.Action("Index", "Client", new { ResellerID = Html.Action("GetResellerID", "Reseller", new { UserID = User.Identity.GetUserId() })})" ><i class="fa fa-briefcase" aria-hidden="true"></i>Clients</a></li>
+                    <li><a href="#"><i class="fa fa-pie-chart" aria-hidden="true"></i>Statistics</a></li>
+                </ul>
+            </div>
+            <div class="setting">
+                <p>Welcome:</p>
+                <p>Mohamed</p>
+                <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-gear" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-pie-chart" aria-hidden="true"></i></a>
+                <a href="#">عربي</a>
+            </div>
         </div>
         @Html.Partial("_LoginPartial")
     </div>
@@ -59,5 +92,7 @@
 
    
     @Scripts.Render("~/bundles/bootstrap")
+
+    
 </body>
 </html>

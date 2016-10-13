@@ -1,0 +1,98 @@
+@import 'https://fonts.googleapis.com/css?family=Lato|Montserrat';
+* {
+margin: 0;
+padding: 0;
+}
+body{
+overflow-x: hidden;
+background: url(/Content/Images/loginbanner.jpg) no-repeat 0px 0px;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+background-color: #cceaf4;
+}
+h1, h2, h3, h4, h5, h6 {
+margin: 0;
+padding: 0;
+}
+.wrapper > .loginAbout {
+	width: 62.6%;
+	background-color: rgba(255, 255, 255, .2);
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0 auto;
+}
+.wrapper > .loginAbout > a > img{
+margin: 35px 0px 60px 20px
+}
+.wrapper > .loginAbout > .info {padding: 25px 30px;}
+.wrapper > .loginAbout > .info > h3 {
+    width: 170px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;font-weight: 400;color: #131514;
+}
+.wrapper > .loginAbout > .info > p {
+	color: #fff;
+	width: 30%;
+	padding-top: 30px;
+	font-family: 'Lato', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+}
+.wrapper > .login {
+	width: 45.5%;
+	height: 60%;
+	background-color: rgba(255, 255, 255, .6);
+	position: absolute;
+	left: 63%;
+	top: 54%;
+	transform: translate(-50%, -50%);
+	margin: 0 auto;
+	display: block;
+	border-radius: 3px;
+	-webkit-box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);
+}
+.wrapper > .login > .loginDetails {
+    text-align: center;
+    position: absolute;
+    left: 50%;top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+}
+.wrapper > .login > .loginDetails > div{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #131514;
+    text-transform: uppercase;
+    float: left;
+    margin-bottom: 25px;
+}
+.wrapper > .login > .loginDetails > input:not(:last-child) {
+display: block;
+margin: 0 auto;
+padding-left: 20px;
+width: 306px;
+height: 49px;
+border: none;
+outline: none;
+border-bottom: 3px solid #c1c1c1;
+margin-bottom:11px;
+}
+.wrapper > .login > .loginDetails > input[type="submit"] {
+float: right;
+margin-top: 14px;
+padding: 16.5px 62px;
+cursor: pointer;
+background-color: #3399cc;
+border: none;
+color: #fff;
+font-family: 'Montserrat', sans-serif;
+font-size: 12px;
+}

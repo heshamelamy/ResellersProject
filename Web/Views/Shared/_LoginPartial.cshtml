@@ -15,12 +15,4 @@
         @Html.AntiForgeryToken()   
     }
 }
-else
-{
-    <div class="nav-right">
-        <ul>
-            <li>@Html.ActionLink("Log in", "Login", "Account", new { returnUrl = "/Reseller/Index" }, htmlAttributes: new { id = "loginLink" })</li>
-        </ul>
-    </div>
-   
-}
+

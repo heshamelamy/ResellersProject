@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
 @if (TempData["Create Success"] != null)
 {
@@ -34,24 +33,20 @@
     <div class="alert alert-danger">@TempData["DeleteError"]</div>
 }
 
-    <div class="contactContainer">
-    <div class="banner">
+
+<div id="users">
+    <div class="clientBanner">
         <div>Clients</div>
-        <div class="addClient">
-            @if (Html.Action("HasPermission", "Reseller", new { pname = "Add Reseller" }).ToString() == "True")
-            {
-                @Html.ActionLink("Add Client", "Create", new { ResellerID = TempData["ResellerID"] })
-            }
-        </div>
-        <div class="showDeletedClients">
-            @Html.ActionLink("Show Deleted Clients", "GetDeleted", new { ResellerID = TempData["ResellerID"] })
+        <div class="search">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="Search for clients and data" />
         </div>
     </div>
-    <div class="clearfix"></div>
-
     <div id="ClientList">
-            @Html.Partial("ClientListPartial", Model)
-        </div>
+        @Html.Partial("ClientListPartial", Model)
+    </div>
+</div>
+ 
 
 
 

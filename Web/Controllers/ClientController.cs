@@ -21,7 +21,7 @@ namespace WebApp.Controllers
         private readonly ISubscriptionsService SubscriptionService;
         private readonly IActionService ActionService;
 
-        public ClientController(IActionService As,IClientService clientservice, IResellerService resellerservice,IRoleService Rs,ISubscriptionsService SS)
+        public ClientController(IActionService As, IClientService clientservice, IResellerService resellerservice, IRoleService Rs, ISubscriptionsService SS)
         {
             this.ActionService = As;
             this.ClientService = clientservice;
@@ -30,15 +30,15 @@ namespace WebApp.Controllers
             this.SubscriptionService = SS;
         }
         // GET: Client
-        [MyAuthFilter(Roles="Global Admin , Reseller Admin")]
-        public ActionResult Index(Guid ResellerID,string sortOrder, int? page)
+        [MyAuthFilter(Roles = "Global Admin , Reseller Admin")]
+        public ActionResult Index(Guid ResellerID, string sortOrder, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
             IEnumerable<Client> ResellerClients = ResellerService.GetResellerClients(ResellerID);
-            foreach(var client in ResellerClients)
+            foreach (var client in ResellerClients)
             {
                 client.reseller = ResellerService.GetById(ResellerID);
                 if (ClientService.NeedsRenewal(client))
@@ -66,7 +66,7 @@ namespace WebApp.Controllers
             int pageSize = 2;
             int pageNumber = (page ?? 1);
 
-            if(Request.IsAjaxRequest())
+            if (Request.IsAjaxRequest())
             {
                 return (ActionResult)PartialView("ClientListPartial", ClientService.MapToViewModel(ResellerClients).ToPagedList(pageNumber, pageSize));
             }
@@ -75,10 +75,10 @@ namespace WebApp.Controllers
                 return View(ClientService.MapToViewModel(ResellerClients).ToPagedList(pageNumber, pageSize));
             }
         }
-        [MyAuthFilter(Roles="Global Admin,Reseller Admin")]
+        [MyAuthFilter(Roles = "Global Admin,Reseller Admin")]
         public ActionResult Create(Guid ResellerID)
         {
-            if(HasPermission("Add Client"))
+            if (HasPermission("Add Client"))
             {
                 if (ResellerService.QuotaFull(ResellerID))
                 {
@@ -89,11 +89,11 @@ namespace WebApp.Controllers
                 {
                     TempData["ResellerID"] = ResellerID;
                     Client client = new Client();
-                    ClientViewModel c= ClientService.MapToViewModel(client);
-                    IEnumerable<OfficeSubscriptionViewModel> Subscriptions= SubscriptionService.MapToViewModel(SubscriptionService.GetAllSubscriptions());
+                    ClientViewModel c = ClientService.MapToViewModel(client);
+                    IEnumerable<OfficeSubscriptionViewModel> Subscriptions = SubscriptionService.MapToViewModel(SubscriptionService.GetAllSubscriptions());
                     var myTuple = new Tuple<ClientViewModel, IEnumerable<OfficeSubscriptionViewModel>>(c, Subscriptions);
                     return View(myTuple);
-                }  
+                }
             }
             return View("~/Views/Home/UnAuthorized.cshtml");
         }
@@ -107,8 +107,8 @@ namespace WebApp.Controllers
             ToReactivate.Status = "On Hold";
             ToReactivate.Expiry = null;
             ToReactivate.IsExpiryNull = true;
-            var i=0;
-            foreach(var Sub in ToReactivate.ClientSubscriptions)
+            var i = 0;
+            foreach (var Sub in ToReactivate.ClientSubscriptions)
             {
                 ToReactivate.ClientSubscriptions.ElementAt(i).IsDeleted = false;
                 i++;
@@ -117,16 +117,16 @@ namespace WebApp.Controllers
             {
                 ClientService.EditClient(ToReactivate);
             }
-            catch(DbUpdateException ex)
+            catch (DbUpdateException ex)
             {
                 TempData["ReActivateError"] = "Error in Readding the client again..";
                 return RedirectToAction("Create", new { ResellerID = ToReactivate.ResellerID });
             }
-           
+
             HubManPractices.Models.Action Reactivate = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "ReAactivated", Client = ToReactivate, Date = DateTime.Now };
             ActionService.CreateAction(Reactivate);
             TempData["ReactivateClient"] = "The Client has been Reactivated";
-            return RedirectToAction("Index", new { ResellerID = ToReactivate.ResellerID});
+            return RedirectToAction("Index", new { ResellerID = ToReactivate.ResellerID });
         }
 
         [HttpPost]
@@ -134,34 +134,34 @@ namespace WebApp.Controllers
         public ActionResult ReAdd(FormCollection Fc)
         {
             Client ToReAdd = ClientService.GetClientByNameAndMail(Fc["ClientName"], Fc["ContactMail"]);
-              IEnumerable<OfficeSubscription> Subscriptions = SubscriptionService.GetAllSubscriptions();
-     
-                foreach(var Sub in ToReAdd.ClientSubscriptions)
+            IEnumerable<OfficeSubscription> Subscriptions = SubscriptionService.GetAllSubscriptions();
+
+            foreach (var Sub in ToReAdd.ClientSubscriptions)
+            {
+                if (Fc[Sub.OfficeSubscription.MonthlyFee.ToString()] != "")
                 {
-                    if (Fc[Sub.OfficeSubscription.MonthlyFee.ToString()]!= "")
-                    {
-                        Sub.IsDeleted = false;
-                        Sub.UsersPerSubscription = Int32.Parse(Fc[Sub.OfficeSubscription.MonthlyFee.ToString()]);
-                    }
+                    Sub.IsDeleted = false;
+                    Sub.UsersPerSubscription = Int32.Parse(Fc[Sub.OfficeSubscription.MonthlyFee.ToString()]);
                 }
-                ToReAdd.ContactName = Fc["ContactName"];
-                ToReAdd.ContactNumber = Int32.Parse(Fc["ContactNumber"]);
-                ToReAdd.ContactTitle = Fc["ContactTitle"];
-                ToReAdd.Seats = Int32.Parse(Fc["Seats"]);
-                ToReAdd.Expiry = null;
-                ToReAdd.IsDeleted = false;
-                ToReAdd.IsExpiryNull = true;
-                ToReAdd.Status = Fc["Status"];
-                try
-                {
-                    ClientService.EditClient(ToReAdd);                
-                }
-                catch(DbUpdateException ex)
-                {
-                    TempData["ReAddError"] = "Error in Readding the client again..";
-                    return RedirectToAction("Create", new { ResellerID = ToReAdd.ResellerID});
-                }
-                return RedirectToAction("Index", new { ResellerID = ToReAdd.ResellerID }); 
+            }
+            ToReAdd.ContactName = Fc["ContactName"];
+            ToReAdd.ContactNumber = Int32.Parse(Fc["ContactNumber"]);
+            ToReAdd.ContactTitle = Fc["ContactTitle"];
+            ToReAdd.Seats = Int32.Parse(Fc["Seats"]);
+            ToReAdd.Expiry = null;
+            ToReAdd.IsDeleted = false;
+            ToReAdd.IsExpiryNull = true;
+            ToReAdd.Status = Fc["Status"];
+            try
+            {
+                ClientService.EditClient(ToReAdd);
+            }
+            catch (DbUpdateException ex)
+            {
+                TempData["ReAddError"] = "Error in Readding the client again..";
+                return RedirectToAction("Create", new { ResellerID = ToReAdd.ResellerID });
+            }
+            return RedirectToAction("Index", new { ResellerID = ToReAdd.ResellerID });
         }
 
         [MyAuthFilter(Roles = "Global Admin,Reseller Admin")]
@@ -175,14 +175,14 @@ namespace WebApp.Controllers
                 try
                 {
                     ClientService.DeleteClient(ToBeDeleted);
-                    HubManPractices.Models.Action Terminate = new HubManPractices.Models.Action() {ActionID=Guid.NewGuid(),ActionName="Terminated",Client=ToBeDeleted,Date=DateTime.Now};
+                    HubManPractices.Models.Action Terminate = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Terminated", Client = ToBeDeleted, Date = DateTime.Now };
                     ActionService.CreateAction(Terminate);
-                    return RedirectToAction("Index",new { ResellerID = ToBeDeleted.ResellerID });
+                    return RedirectToAction("Index", new { ResellerID = ToBeDeleted.ResellerID });
                 }
                 catch (Exception ex)
                 {
                     TempData["DeleteError"] = "Error in Deleting the Client";
-                    return RedirectToAction("Index", new { ResellerID=ToBeDeleted.ResellerID});
+                    return RedirectToAction("Index", new { ResellerID = ToBeDeleted.ResellerID });
                 }
 
             }
@@ -201,7 +201,7 @@ namespace WebApp.Controllers
                 {
                     ToBeSuspended.Status = "Suspended";
                     ClientService.SaveClient();
-                    HubManPractices.Models.Action Suspend = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Suspended", Client = ToBeSuspended, Date = DateTime.Now};
+                    HubManPractices.Models.Action Suspend = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Suspended", Client = ToBeSuspended, Date = DateTime.Now };
                     ActionService.CreateAction(Suspend);
                     return RedirectToAction("Index", new { ResellerID = ToBeSuspended.ResellerID });
                 }
@@ -268,17 +268,17 @@ namespace WebApp.Controllers
                     IEnumerable<OfficeSubscription> Subscriptions = SubscriptionService.GetAllSubscriptions();
                     client.IsExpiryNull = false;
                     client.Seats += Int32.Parse(Fc["Item1.Seats"]);
-   
+
                     ClientService.SaveClient();
-                    HubManPractices.Models.Action Upgrade = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Upgraded", Client = ClientService.GetById(client.ClientID), Date = DateTime.Now};
+                    HubManPractices.Models.Action Upgrade = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Upgraded", Client = ClientService.GetById(client.ClientID), Date = DateTime.Now };
                     ActionService.CreateAction(Upgrade);
                 }
-                catch(DbUpdateException ex)
+                catch (DbUpdateException ex)
                 {
                     TempData["Upgrade Update Error"] = "Error while updating the entries";
                     return RedirectToAction("Upgrade", new { ClientID = client.ClientID });
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     TempData["Upgrade Error"] = "Error in function Upgrade";
                     return RedirectToAction("Upgrade", new { ClientID = client.ClientID });
@@ -305,7 +305,7 @@ namespace WebApp.Controllers
                     ToBeRenewd.Expiry = DateTime.Now.AddMonths(1).Date;
                     ToBeRenewd.IsExpiryNull = false;
                     ClientService.SaveClient();
-                    HubManPractices.Models.Action Renewal = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Renewal", Client = ToBeRenewd, Date = DateTime.Now};
+                    HubManPractices.Models.Action Renewal = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Renewal", Client = ToBeRenewd, Date = DateTime.Now };
                     ActionService.CreateAction(Renewal);
                     return RedirectToAction("Index", new { ResellerID = ToBeRenewd.ResellerID });
                 }
@@ -324,6 +324,7 @@ namespace WebApp.Controllers
         {
             return View(ClientService.MapToViewModel(ResellerService.GetResellerDeletedClients(ResellerID)));
         }
+
 
         public bool HasPermission(string PName)
         {

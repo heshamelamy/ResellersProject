@@ -4,89 +4,101 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 
-<div class="clientListRow">
-    <div class="clientListHeader">
-        <div class="clientListRowHeader">
-            #
-        </div>
-        <div class="clientListRowHeader">
-            @Html.ActionLink("Client Name", "Index", new { ResellerID = TempData["ResellerID"], sortOrder = ViewBag.NameSortParm })
-        </div>
-        <div class="clientListRowHeader">
-            @Html.ActionLink("Expiry Date", "Index", new { ResellerID = TempData["ResellerID"], sortOrder = ViewBag.DateSortParm })
-        </div>
-        <div class="clientListRowHeader">
-            Action
+<div class="client">
+    <div id="box"></div>
+    <div class="clientDetails">
+        <div id="clientitem">All Clients</div>
+        <div id="clientCount">@Model.Count from @Model.FirstOrDefault().reseller.Clients.Count </div>
+    </div>
+    <div class="clientHeader">
+        <div class="clientHeaderRow">
+            <div class="clientHeaderItem wHash">#</div>
+            <div class="clientHeaderItem wClient">
+                @Html.DisplayNameFor(m => m.FirstOrDefault().ClientName)
+            </div>
+            <div class="clientHeaderItem wStatus">
+                @Html.DisplayNameFor(m=>m.FirstOrDefault().Status)
+            </div>
+            <div class="clientHeaderItem wContact">
+                @Html.DisplayNameFor(m=>m.FirstOrDefault().ContactNumber)
+            </div>
+            <div class="clientHeaderItem wExpiry">
+               @Html.DisplayNameFor(m => m.FirstOrDefault().Expiry)
+            </div>
+            <div class="clientHeaderItem wAction">
+                ACTIONS
+            </div>
         </div>
     </div>
-
-    <div class="clientListBody">
+    <div class="clientBody list">
         @{
             var i = 0;
         }
+           
         @foreach (var item in Model)
         {
             ++i;
-            <div class="clientListRowBody">
-                <div class="clientListRowBodyContainer">@i</div>
-                <div class="clientListRowBodyContainer">@item.ClientName</div>
-                @if (@item.IsExpiryNull == true)
-                {
-                    <div class="clientListRowBodyContainer">No Expiry Yet</div>
-                }
-                else
-                {
-                    <div class="clientListRowBodyContainer">@item.Expiry.ToString("MM-dd-yy")</div>
-                }
-                <div class="action">
-                    @if (Html.Action("HasPermission", "Client", new { pname = "Upgrade Client" }).ToString() == "True" && item.Status != "On Hold" && item.Status != "Waiting For Renewal")
-                    {
-                        <a href="/Client/Upgrade?ClientID=@item.ClientID" data-type="upgrade">Upgrade</a>
-                    }
-
-                    @if (Html.Action("HasPermission", "Client", new { pname = "Activate Client" }).ToString() == "True" && item.Status != "Activated" && item.Status != "Waiting For Renewal")
-                    {
-                        using (Html.BeginForm("Activate", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
-                        {
-                            @Html.Hidden("ClientID", item.ClientID)
-                            <input type="submit" value="Activate" data-type="activate" />
-                        }
-                    }
-
-                    @if (Html.Action("HasPermission", "Client", new { pname = "Delete Client" }).ToString() == "True")
-                    {
-                        using (Html.BeginForm("Delete", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
-                        {
-                            @Html.Hidden("ClientID", item.ClientID)
-                            <input type="submit" value="Delete" data-type="Delete" />
-                        }
-                    }
-
-                    @if (Html.Action("HasPermission", "Client", new { pname = "Suspend Client" }).ToString() == "True" && item.Status != "Suspended" && item.Status != "On Hold" && item.Status != "Waiting For Renewal")
-                    {
-                        using (Html.BeginForm("Suspend", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
-                        {
-                            @Html.Hidden("ClientID", item.ClientID)
-                            <input type="submit" value="Suspend" data-type="suspend" />
-                        }
-                    }
-
-                    @if (Html.Action("HasPermission", "Client", new { pname = "Renew Client" }).ToString() == "True" && item.Expiry <= DateTime.Now && !item.IsExpiryNull)
-                    {
-                        using (Html.BeginForm("Renew", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
-                        {
-                            @Html.Hidden("ClientID", item.ClientID)
-                            <input type="submit" value="Renew" data-type="renew" />
-                        }
-                    }
-
-
-                </div>
-            </div>
+           <div class="clientBodyRow">
+               <div class="clientBodyItem wHash"><p class="hash">@i</p></div>
+               <div class="clientBodyItem wClient"><p class="name">@item.ClientName</p></div>
+               <div class="clientBodyItem wStatus"><p class="status">@item.Status</p></div>
+               <div class="clientBodyItem wContact"><p class="number">@item.ContactNumber</p></div>
+               @if (item.IsExpiryNull == true)
+               {
+                    <div class="clientBodyItem wExpiry"><p class="date">No Expiry Yet</p></div>
+               }
+               else
+               {
+                    <div class="clientBodyItem wExpiry"><p class="date">@item.Expiry.ToString("MM - dd - yy")</p></div>
+               }
+               <div class="clientBodyItem wAction">
+                   @if (Html.Action("HasPermission", "Client", new { pname = "Upgrade Client" }).ToString() == "True" && item.Status != "On Hold" && item.Status != "Waiting For Renewal")
+                   {
+                       <a href="/Client/Upgrade?ClientID=@item.ClientID" data-type="upgrade">Upgrade</a>
+                   }
+                   @if (Html.Action("HasPermission", "Client", new { pname = "Activate Client" }).ToString() == "True" && item.Status != "Activated" && item.Status != "Waiting For Renewal")
+                   {
+                       using (Html.BeginForm("Activate", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
+                       {
+                           @Html.Hidden("ClientID", item.ClientID)
+                           <input type="submit" value="Activate" data-type="activate" />
+                       }
+                   }
+                   @if (Html.Action("HasPermission", "Client", new { pname = "Delete Client" }).ToString() == "True")
+                   {
+                       using (Html.BeginForm("Delete", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
+                       {
+                           @Html.Hidden("ClientID", item.ClientID)
+                           <input type="submit" value="Delete" data-type="Delete" />
+                       }
+                   }
+                   @if (Html.Action("HasPermission", "Client", new { pname = "Suspend Client" }).ToString() == "True" && item.Status != "Suspended" && item.Status != "On Hold" && item.Status != "Waiting For Renewal")
+                   {
+                       using (Html.BeginForm("Suspend", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
+                       {
+                           @Html.Hidden("ClientID", item.ClientID)
+                           <input type="submit" value="Suspend" data-type="suspend" />
+                       }
+                   }
+                   @if (Html.Action("HasPermission", "Client", new { pname = "Renew Client" }).ToString() == "True" && item.Expiry <= DateTime.Now && !item.IsExpiryNull)
+                   {
+                       using (Html.BeginForm("Renew", "Client", FormMethod.Post, new { @style = "display:inline-block" }))
+                       {
+                           @Html.Hidden("ClientID", item.ClientID)
+                           <input type="submit" value="Renew" data-type="renew" />
+                       }
+                   }
+               </div>
+           </div>
         }
     </div>
+      
 
 </div>
+    
+    
+
+
 
 <br />
 

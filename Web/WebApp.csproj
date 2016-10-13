@@ -220,17 +220,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\font-awesome.css" />
     <Content Include="Content\Images\vodafone.png" />
     <Content Include="Content\Images\zain.PNG" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\wstyle.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.22.19-build00125.js" />
     <Content Include="scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />

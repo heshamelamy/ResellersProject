@@ -55,3 +55,18 @@ function readURL(input) {
 
 
 
+$(function () {
+    $("#bars li .bar").each(function (key, bar) {
+        var percentage = $(this).data('percentage');
+
+        $(this).animate({
+            'height': percentage + '%'
+        }, 1000);
+    });
+
+});
+var options = {
+    valueNames: ['hash', 'name', 'status', 'number', 'date']
+};
+
+var userList = new List('users', options);
