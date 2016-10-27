@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="@Url.Content("~/Content/wstyle.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div class="wrapper">
@@ -24,9 +24,9 @@
             @Html.AntiForgeryToken()
             <div class="loginDetails">
                 <div>Welcome back</div>
-                @Html.TextBoxFor(m => m.UserName, new { @placeholder = "UserName" })
+                @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Username" })
                 @Html.ValidationMessageFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.Password, new { type = "password", @placeholder = "Enter Your Password" })
+                @Html.TextBoxFor(m => m.Password, new { type = "password", @placeholder = "Password" })
                 @Html.ValidationMessageFor(m => m.Password)
                 <input type="submit" value="LOGIN" />
             </div>

@@ -1,60 +1,3 @@
-$(document).ready(function() {
-    $('input[type="radio"]').click(function() {
-       if($(this).attr('id') == 'y-option') {
-            $('#officeItemY').fadeIn();         
-       }
-
-       else {
-            $('#officeItemY').fadeOut();   
-       }
-   });
-	$('input[type="radio"]').click(function() {
-       if($(this).attr('id') == 'n-option') {
-            $('#officeItemN').fadeIn();           
-       }
-
-       else {
-            $('#officeItemN').fadeOut();   
-       }
-   });
-	$('#y-option').click(function() {     
-    $('html,body').animate({
-        scrollTop :720          //$("#officeItemN").offset().top();                         
-    }, 1000);
-});
-	$('#n-option').click(function() {     
-    $('html,body').animate({
-        scrollTop :400                
-    }, 1000);
-});
-	$("i").click(function () {
-    $('.search > input[type="text"],.search > .out > .fa').toggle();
-	$('.nav-left,.nav-right').toggle()("display","none");
-	});
-
-	$("#imgInp").change(function () {
-	    readURL(this);
-	});
-
-	
-
-});
-
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#blah').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-
-
 $(function () {
     $("#bars li .bar").each(function (key, bar) {
         var percentage = $(this).data('percentage');
@@ -65,8 +8,51 @@ $(function () {
     });
 
 });
+
+$(".toggleAction > .fa-bars").click(
+  function () {
+      $(".mobileNavContainer").css("transform", " translateX(0%)");
+      $(".toggleAction > .fa-times").css("display", " block");
+      $(".toggleAction > .fa-bars").css("display", " none");
+      $(".toggleIcon ").css("background", " #0b82aa");
+      $("body").removeClass("colosed").addClass("open");
+      $(".toggleIcon").css("border-bottom", "2px solid rgb(11,130,170)");
+      $(".navLeft").css("border-bottom", "2px solid white");
+      $(".navRight").css("border-bottom", "2px solid white");
+  });
+
+$(".toggleAction > .fa-times , .mobileNavBg").click(
+  function () {
+      $(".mobileNavContainer").css("transform", " translateX(-100%)");
+      $(".toggleAction > .fa-times").css("display", " none");
+      $(".toggleAction > .fa-bars").css("display", " block");
+      $(".toggleIcon ").css("background", " #0095c7");
+      $("body").removeClass("open").addClass("colosed");
+      $(".toggleIcon").css("border-bottom", "none");
+      $(".navLeft").css("border-bottom", "none");
+      $(".navRight").css("border-bottom", "none");
+
+  });
+
+
+$(function () {
+    $(".popupExit").click(
+      function (e) {
+          $(".overlay").css("visibility", " hidden");
+          $(".view-client-popup").css("visibility", " hidden");
+          $(".add-client-popup").css("visibility", " hidden");
+      });
+
+    $(".upgradeIcon, .viewClient, .addClient").click(
+      function (e) {
+          e.preventDefault();
+          $(".overlay").css("visibility", " visible");
+      });
+});
+
 var options = {
     valueNames: ['hash', 'name', 'status', 'number', 'date']
 };
 
 var userList = new List('users', options);
+

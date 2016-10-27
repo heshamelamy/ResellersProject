@@ -176,6 +176,7 @@
     <Compile Include="ViewModels\Mappings\DomainToViewModelMappingProfile.cs" />
     <Compile Include="ViewModels\Mappings\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="ViewModels\OfficeSubscriptionViewModel.cs" />
+    <Compile Include="ViewModels\ResellerIndexViewModel.cs" />
     <Compile Include="ViewModels\ResellerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

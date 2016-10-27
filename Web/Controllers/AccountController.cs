@@ -44,12 +44,12 @@ namespace WebApp.Controllers
             [HttpPost]
             public async Task<ActionResult> SendEmail(FormCollection Fc)
             {
-                if (EmailIsCorrectFormat(Fc["Item1.ContactMail"]) && Fc["Item1.ContactNumber"].ToString().Count()==11)
+                if (EmailIsCorrectFormat(Fc["ContactMail"]) && Fc["ContactNumber"].ToString().Count()==11)
               {
-                if (ClientService.ClientNameAndMailExistsAndDeleted(Fc["Item1.ClientName"], Fc["Item1.ContactMail"]))
+                if (ClientService.ClientNameAndMailExistsAndDeleted(Fc["ClientName"], Fc["ContactMail"]))
                 {
                     TempData["NameAndMailExistsAndDeleted"] = "The Client you are trying to add was deleted , Choose What To Do :";
-                    Client client = new Client() { Expiry = null, IsExpiryNull = true, ClientName = Fc["Item1.ClientName"], ContactMail = Fc["Item1.ContactMail"], ContactName = Fc["Item1.ContactName"], ContactNumber = Int32.Parse(Fc["Item1.ContactNumber"]), ContactTitle = Fc["Item1.ContactTitle"], ResellerID = Guid.Parse(Fc["ResellerID"]),Seats=Int32.Parse(Fc["Item1.Seats"]),Location=Fc["Item1.Location"],CreationDate=DateTime.Now};
+                    Client client = new Client() { Expiry = null, IsExpiryNull = true, ClientName = Fc["ClientName"], ContactMail = Fc["ContactMail"], ContactName = Fc["ContactName"], ContactNumber = Int32.Parse(Fc["ContactNumber"]), ContactTitle = Fc["ContactTitle"], ResellerID = Guid.Parse(Fc["ResellerID"]),Seats=Int32.Parse(Fc["Seats"]),Location=Fc["Location"],CreationDate=DateTime.Now};
                         IEnumerable<OfficeSubscription> Subscriptions = SubscriptionsService.GetAllSubscriptions();
                         foreach (var Sub in Subscriptions)
                         {
@@ -66,7 +66,7 @@ namespace WebApp.Controllers
 
                 try
                 {
-                    Client client = new Client() { ClientID = Guid.NewGuid(), Expiry = null, IsExpiryNull = true, ClientName = Fc["Item1.ClientName"], ContactMail = Fc["Item1.ContactMail"], ContactName = Fc["Item1.ContactName"], ContactNumber = Int32.Parse(Fc["Item1.ContactNumber"]), ContactTitle = Fc["Item1.ContactTitle"], ResellerID = Guid.Parse(Fc["ResellerID"]) };
+                    Client client = new Client() { ClientID = Guid.NewGuid(), Expiry = null, IsExpiryNull = true, ClientName = Fc["ClientName"], ContactMail = Fc["ContactMail"], ContactName = Fc["ContactName"], ContactNumber = Int32.Parse(Fc["ContactNumber"]), ContactTitle = Fc["ContactTitle"], ResellerID = Guid.Parse(Fc["ResellerID"]) };
                     client.reseller = ResellerService.GetById(Guid.Parse(Fc["ResellerID"]));
 
                     IEnumerable<OfficeSubscription> Subscriptions = SubscriptionsService.GetAllSubscriptions();
@@ -75,18 +75,19 @@ namespace WebApp.Controllers
                    
                     if (!ClientService.Exists(client))
                     {
-                        client.Seats = Int32.Parse(Fc["Item1.Seats"]);
+                        client.Seats = Int32.Parse(Fc["Seats"]);
                         client.Status = "On Hold";
-                        client.CreationDate = new DateTime(2016, 8, 18);
-                        client.Location = Fc["Item1.Location"];
-                        foreach (var Sub in Subscriptions)
+                        client.CreationDate = DateTime.Now;
+                        client.Location = Fc["Location"];
+                        //UNCOMMENT when its available in PopUp ..
+                        /*foreach (var Sub in Subscriptions)
                         {
                             if (Fc[Sub.SubscriptionName] != "" && Fc[Sub.SubscriptionName] != "0")
                             {
                                 string idx = Sub.MonthlyFee.ToString();
                                 client.ClientSubscriptions.Add(new ClientSubscriptions() { ClientID = client.ClientID, SubscriptionID = Guid.Parse(Fc[idx]), UsersPerSubscription = Int32.Parse(Fc[Sub.SubscriptionName]) });
                             }
-                        }
+                        }*/
                         ClientService.CreateClient(client);
                         HubManPractices.Models.Action OnHold = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "On Hold", Client = client, Date = DateTime.Now };
                         ActionService.CreateAction(OnHold);
@@ -111,7 +112,7 @@ namespace WebApp.Controllers
                         await UserManager.SendEmailAsync(global.Id, "Client is Added ", Body);
                     }
                     TempData["Create Success"] = "Client Created Successfully";
-                    return RedirectToAction("Index", "Client", new { ResellerID = Guid.Parse(Fc["ResellerID"]) });
+                    return RedirectToAction("ResellerIndex", "Reseller", new { ResellerID = Guid.Parse(Fc["ResellerID"]) });
                 }
                 catch (DbUpdateException ex)
                 {
@@ -121,13 +122,13 @@ namespace WebApp.Controllers
                 catch (Exception ex)
                 {
                     TempData["ErrorCreate"] = "Error in adding Client";
-                    return RedirectToAction("Create", "Client", new { ResellerID = Guid.Parse(Fc["ResellerID"]) });
+                    return RedirectToAction("ResellerIndex", "Reseller", new { ResellerID = Guid.Parse(Fc["ResellerID"]) });
                 }
 
             }
                else
             {
-                if (!EmailIsCorrectFormat(Fc["Item1.ContactMail"]))
+                if (!EmailIsCorrectFormat(Fc["ContactMail"]))
                 {
                     TempData["EmailWrongFormhat"] = "The E-mail You entered is not in the correct format";
                     return RedirectToAction("Create", "Client", new { ResellerID = Guid.Parse(Fc["ResellerID"]) });

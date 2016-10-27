@@ -262,12 +262,12 @@ namespace WebApp.Controllers
         {
             if (HasPermission("Upgrade Client"))
             {
-                Client client = ClientService.GetById(Guid.Parse(Fc["Item1.ClientID"]));
+                Client client = ClientService.GetById(Guid.Parse(Fc["ClientUpgradeID"]));
                 try
                 {
                     IEnumerable<OfficeSubscription> Subscriptions = SubscriptionService.GetAllSubscriptions();
                     client.IsExpiryNull = false;
-                    client.Seats += Int32.Parse(Fc["Item1.Seats"]);
+                    client.Seats += Int32.Parse(Fc["SeatsUpgrade"]);
 
                     ClientService.SaveClient();
                     HubManPractices.Models.Action Upgrade = new HubManPractices.Models.Action() { ActionID = Guid.NewGuid(), ActionName = "Upgraded", Client = ClientService.GetById(client.ClientID), Date = DateTime.Now };

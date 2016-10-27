@@ -4,6 +4,9 @@
   margin: 20px 0;
   border-radius: 4px;
 }
+.pagination-container {
+    display: inline-block;
+}
 
 .pagination > li {
   display: inline;

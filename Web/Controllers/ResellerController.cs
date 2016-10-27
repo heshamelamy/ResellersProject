@@ -21,13 +21,14 @@ namespace WebApp.Controllers
         private readonly IRoleService RoleService;
         private readonly IResellerService ResellerService;
         private readonly IClientService ClientService;
+        private readonly ISubscriptionsService SubService;
 
-
-        public ResellerController(IResellerService resellerservice,IRoleService Rs,IClientService Cs)
+        public ResellerController(IResellerService resellerservice,IRoleService Rs,IClientService Cs,ISubscriptionsService Ss)
         {
             this.ResellerService = resellerservice;
             this.RoleService = Rs;
             this.ClientService = Cs;
+            this.SubService= Ss;
         }
         // GET: Reseller
         [MyAuthFilter(Roles= "Global Admin , Reseller Admin")]
@@ -61,8 +62,9 @@ namespace WebApp.Controllers
             IEnumerable<ClientViewModel> clientViewModels = ClientService.MapToViewModel(ResellerService.GetResellerClients(ResellerID));
             IEnumerable<ClientViewModel> Recent10Clients = ClientService.MapToViewModel(ResellerService.GetRecent10Clients(ResellerService.GetResellerClients(ResellerID)));
             Dictionary<string, int> chartData = ResellerService.GetChartData(ResellerID);
-            var myTuple = new Tuple<IEnumerable<ClientViewModel>, IEnumerable<ClientViewModel>,Dictionary<string,int>>(clientViewModels, Recent10Clients,chartData);
-            return View(myTuple);
+            IEnumerable<OfficeSubscriptionViewModel> Subs = SubService.MapToViewModel(SubService.GetAllSubscriptions());
+            ResellerIndexViewModel myModel = new ResellerIndexViewModel() { ChartData = chartData, RecentClients = Recent10Clients, Clients = clientViewModels, AllSubs = Subs };
+            return View(myModel);
         }
         [MyAuthFilter(Roles = "Global Admin")]
         public ActionResult Create()
